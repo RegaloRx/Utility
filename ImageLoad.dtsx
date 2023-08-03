@@ -1,0 +1,2591 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/22/2021 2:04:35 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HHI-LT-0108"
+  DTS:CreatorName="HHI\cmchenry-admin"
+  DTS:DTSID="{C21CE8A9-47B2-4AEA-B4CA-7E9F761845EB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ImageLoad"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{E3F6B5F6-C71E-4D29-8040-1291D12FB723}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RegaloRxSqlDev1.hhi.gd.Operations]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{562E9DE5-AA66-46AB-81DA-8288D9C47FA4}"
+      DTS:ObjectName="RegaloRxSqlDev1.hhi.gd.Operations">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;Initial Catalog=Operations;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesforceConn]"
+      DTS:CreationName="SALESFORCE TF"
+      DTS:DTSID="{3B5BC820-3795-4E8B-A71A-964759EEF004}"
+      DTS:ObjectName="SalesforceConn">
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::SFPW]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <TaskFactorySalesForceConnectionManager
+          ConnectionString="Username=data.sa@regalorx.org;ServerURL=https://login.salesforce.com/services/Soap/u/48.0;ServiceType=0;Timeout=60;UseProxy=False;ProxyHost=;ProxyUserName=;ProxyDomain=;ProxyPort=0;MessageListToHandle=;ReuseConnectionAcrossAllTasks=True;NumberOfRetries=0;ResponseStatusCodes=;RetryDelay=0;RetryMode=0;"
+          ConnectByProxy="False">
+          <Password
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"></Password>
+        </TaskFactorySalesForceConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SF_DWConn]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{8B859CDA-C7F0-4F97-A5A2-14AF4368A879}"
+      DTS:ObjectName="SF_DWConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;Initial Catalog=Salesforce;Integrated Security=True;Application Name=SSIS-Package-{8B859CDA-C7F0-4F97-A5A2-14AF4368A879}HHI-SQL1.MedVantx_Amgen_Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="RegaloRxSqlDev1.hhi.gd.Operations"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{56B79B7D-0D52-4839-9C72-93BDCD4A8D92}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C656369A-70EE-4D8E-817C-DFB8B99DA843}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ContentDocumentId">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCCE1EE0-52B3-4542-9871-A378BBB14723}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ListDocumentIds">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E2461516-CCF8-4447-B818-6DBCC8F7E12B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFPW">
+      <DTS:VariableValue
+        DTS:DataType="8">cCN75$1%jIAFDlStft1fsd4yso076RTnRSX</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">2,7,OnError,12,OnTaskFailed</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{56B79B7D-0D52-4839-9C72-93BDCD4A8D92}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\For Each Document Id"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{fa94e57b-40b8-477d-93f2-82bbe288346c}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="For Each Document Id">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{947860e4-b6f1-4c13-831e-f1ed04e460f7}"
+        DTS:ObjectName="{1550E830-A975-4B47-A929-E88319B8B6F2}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::ListDocumentIds" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Each Document Id\Load Content Version"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{c4405700-e4ef-45d6-88b9-6042c93c24c1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Content Version"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Each Document Id\Load Content Version\ContentVersion"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Upsert Destinaton; SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+                  description="The Upsert Destination takes input data coming from the pipeline and then conditionally inserts, updates or deletes data from the destination."
+                  name="ContentVersion"
+                  usesDispositions="true"
+                  version="14">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="DebugMode">false</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="DESTINATION_TABLE_NAME">[dbo].[ContentVersion]</property>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="ENABLE_IDENTITY_INSERT">false</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="INSERT_ROWS_COUNT_VARIABLE">&lt;Select Variable&gt;</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="UPDATE_ROWS_COUNT_VARIABLE">&lt;Select Variable&gt;</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="COMMAND_TIMEOUT">0</property>
+                    <property
+                      dataType="System.Int32"
+                      expressionType="Notify"
+                      name="UPDATE_METHOD"
+                      typeConverter="PW.TaskFactory.Enums+UpsertUpdateMethod">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="ACTION_UPDATE">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="ACTION_INSERT">true</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="POST_UPDATE_COLUMN"></property>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="TURN_OFF_INTERNAL_TRANSACTION">false</property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="ROW_FLAG_COLUMN"></property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="ROW_FLAG_COLUMN_INSERT_VALUE"></property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="ROW_FLAG_COLUMN_DELETE_VALUE"></property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="ROW_FLAG_COLUMN_REJECT_VALUE"></property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="ROW_FLAG_COLUMN_UPDATE_VALUE"></property>
+                    <property
+                      dataType="System.String"
+                      expressionType="Notify"
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      expressionType="Notify"
+                      name="AccessMode"
+                      typeConverter="PW.TaskFactory.Enums+UpsertAccessModeEnum">0</property>
+                    <property
+                      dataType="System.Int32"
+                      expressionType="Notify"
+                      name="UPSERT_METHOD"
+                      typeConverter="PW.TaskFactory.Enums+UpsertMethod">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates the Upsert destination will use a custom definition for it's temp table creation"
+                      expressionType="Notify"
+                      name="Use Custom Temp Table">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Definition of the custom temp table script"
+                      expressionType="Notify"
+                      name="Custom Temp Table Definition"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Use a merge statement for the insert and updates instead of two seperate insert and update statements"
+                      expressionType="Notify"
+                      name="Use Merge Statement">false</property>
+                    <property
+                      dataType="System.String"
+                      description="The script to run before each buffer is sent to the destination"
+                      expressionType="Notify"
+                      name="Before Script"></property>
+                    <property
+                      dataType="System.String"
+                      description="The script to run after each buffer is sent to the destination"
+                      expressionType="Notify"
+                      name="After Script"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Set to true if you want the component to fail if the before script throws an exception."
+                      expressionType="Notify"
+                      name="Fail Component If Before Script Throws Exception">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Set to true if you want the component to fail if the after script throws an exception."
+                      expressionType="Notify"
+                      name="Fail Component If After Script Throws Exception">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Allows you to set a table hint for the destination table (e.g. NOLOCK - SNAPSHOT)."
+                      expressionType="Notify"
+                      name="Table Hint"></property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">PW.TaskFactory.UpsertDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion.Connections[DestinationConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SF_DWConn]"
+                      connectionManagerRefId="Package.ConnectionManagers[SF_DWConn]"
+                      description="Connection for the destination"
+                      name="DestinationConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input]"
+                      errorOrTruncationOperation="Error or Truncation"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[Id]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Id]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Id]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">Id</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">true</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentDocumentId]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="ContentDocumentId"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentDocumentId]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentDocumentId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentDocumentId</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[IsLatest]"
+                          cachedDataType="bool"
+                          cachedName="IsLatest"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsLatest]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsLatest]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">IsLatest</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentUrl]"
+                          cachedDataType="wstr"
+                          cachedLength="1333"
+                          cachedName="ContentUrl"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentUrl]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentUrl]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentUrl</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentBodyId]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="ContentBodyId"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentBodyId]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentBodyId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentBodyId</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[VersionNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="VersionNumber"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[VersionNumber]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionNumber]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">VersionNumber</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[Title]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Title"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Title]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Title]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">Title</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[Description]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Description]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Description]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">Description</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ReasonForChange]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="ReasonForChange"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ReasonForChange]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ReasonForChange]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ReasonForChange</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[SharingOption]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="SharingOption"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SharingOption]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingOption]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">SharingOption</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[SharingPrivacy]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="SharingPrivacy"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SharingPrivacy]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingPrivacy]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">SharingPrivacy</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[PathOnClient]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="PathOnClient"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PathOnClient]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PathOnClient]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">PathOnClient</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[RatingCount]"
+                          cachedDataType="i4"
+                          cachedName="RatingCount"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[RatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[RatingCount]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">RatingCount</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[IsDeleted]"
+                          cachedDataType="bool"
+                          cachedName="IsDeleted"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsDeleted]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsDeleted]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">IsDeleted</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ContentModifiedDate"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentModifiedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentModifiedDate</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentModifiedById]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="ContentModifiedById"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentModifiedById]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedById]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentModifiedById</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[PositiveRatingCount]"
+                          cachedDataType="i4"
+                          cachedName="PositiveRatingCount"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PositiveRatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PositiveRatingCount]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">PositiveRatingCount</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[NegativeRatingCount]"
+                          cachedDataType="i4"
+                          cachedName="NegativeRatingCount"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[NegativeRatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[NegativeRatingCount]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">NegativeRatingCount</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[FeaturedContentBoost]"
+                          cachedDataType="i4"
+                          cachedName="FeaturedContentBoost"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FeaturedContentBoost]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentBoost]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">FeaturedContentBoost</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[FeaturedContentDate]"
+                          cachedDataType="dbDate"
+                          cachedName="FeaturedContentDate"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FeaturedContentDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">FeaturedContentDate</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[OwnerId]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="OwnerId"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[OwnerId]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[OwnerId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">OwnerId</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[CreatedById]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="CreatedById"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[CreatedById]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedById]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">CreatedById</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[CreatedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CreatedDate"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[CreatedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">CreatedDate</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[LastModifiedById]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="LastModifiedById"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[LastModifiedById]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedById]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">LastModifiedById</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[LastModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastModifiedDate"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[LastModifiedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">LastModifiedDate</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[SystemModstamp]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="SystemModstamp"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SystemModstamp]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SystemModstamp]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">SystemModstamp</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[TagCsv]"
+                          cachedDataType="wstr"
+                          cachedLength="2000"
+                          cachedName="TagCsv"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[TagCsv]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TagCsv]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">TagCsv</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[FileType]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="FileType"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FileType]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileType]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">FileType</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[PublishStatus]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="PublishStatus"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PublishStatus]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PublishStatus]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">PublishStatus</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[VersionData]"
+                          cachedDataType="image"
+                          cachedName="VersionData"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[VersionData]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionData]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">VersionData</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentSize]"
+                          cachedDataType="i4"
+                          cachedName="ContentSize"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentSize]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentSize]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentSize</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[FileExtension]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="FileExtension"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FileExtension]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileExtension]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">FileExtension</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[FirstPublishLocationId]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="FirstPublishLocationId"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FirstPublishLocationId]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FirstPublishLocationId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">FirstPublishLocationId</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[Origin]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Origin"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Origin]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Origin]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">Origin</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ContentLocation]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="ContentLocation"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentLocation]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentLocation]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ContentLocation</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[TextPreview]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TextPreview"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[TextPreview]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TextPreview]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">TextPreview</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ExternalDocumentInfo1]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="ExternalDocumentInfo1"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDocumentInfo1]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo1]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ExternalDocumentInfo1</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ExternalDocumentInfo2]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="ExternalDocumentInfo2"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDocumentInfo2]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo2]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ExternalDocumentInfo2</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[ExternalDataSourceId]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="ExternalDataSourceId"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDataSourceId]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDataSourceId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">ExternalDataSourceId</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[IsMajorVersion]"
+                          cachedDataType="bool"
+                          cachedName="IsMajorVersion"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsMajorVersion]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsMajorVersion]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">IsMajorVersion</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].Columns[IsAssetEnabled]"
+                          cachedDataType="bool"
+                          cachedName="IsAssetEnabled"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsAssetEnabled]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsAssetEnabled]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Mapped Column for Destination"
+                              name="DestinationColumn">IsAssetEnabled</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column A Key Column"
+                              name="IsKeyColumn">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Is Column An Identity Column"
+                              name="IsIdentityColumn">false</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentDocumentId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentDocumentId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsLatest]"
+                          dataType="bool"
+                          name="IsLatest" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentUrl]"
+                          dataType="wstr"
+                          length="1333"
+                          name="ContentUrl" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentBodyId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentBodyId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[VersionNumber]"
+                          dataType="wstr"
+                          length="20"
+                          name="VersionNumber" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Title]"
+                          dataType="wstr"
+                          length="255"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="1000"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ReasonForChange]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ReasonForChange" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SharingOption]"
+                          dataType="wstr"
+                          length="40"
+                          name="SharingOption" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SharingPrivacy]"
+                          dataType="wstr"
+                          length="40"
+                          name="SharingPrivacy" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PathOnClient]"
+                          dataType="wstr"
+                          length="500"
+                          name="PathOnClient" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[RatingCount]"
+                          dataType="i4"
+                          name="RatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsDeleted]"
+                          dataType="bool"
+                          name="IsDeleted" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ContentModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentModifiedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PositiveRatingCount]"
+                          dataType="i4"
+                          name="PositiveRatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[NegativeRatingCount]"
+                          dataType="i4"
+                          name="NegativeRatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FeaturedContentBoost]"
+                          dataType="i4"
+                          name="FeaturedContentBoost" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FeaturedContentDate]"
+                          dataType="dbTimeStamp"
+                          name="FeaturedContentDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[OwnerId]"
+                          dataType="wstr"
+                          length="18"
+                          name="OwnerId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[CreatedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="CreatedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[CreatedDate]"
+                          dataType="dbTimeStampOffset"
+                          name="CreatedDate"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[LastModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="LastModifiedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[LastModifiedDate]"
+                          dataType="dbTimeStampOffset"
+                          name="LastModifiedDate"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[SystemModstamp]"
+                          dataType="dbTimeStampOffset"
+                          name="SystemModstamp"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[TagCsv]"
+                          dataType="wstr"
+                          length="2000"
+                          name="TagCsv" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FileType]"
+                          dataType="wstr"
+                          length="20"
+                          name="FileType" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[PublishStatus]"
+                          dataType="wstr"
+                          length="40"
+                          name="PublishStatus" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[VersionData]"
+                          dataType="image"
+                          name="VersionData" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentSize]"
+                          dataType="i4"
+                          name="ContentSize" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FileExtension]"
+                          dataType="wstr"
+                          length="40"
+                          name="FileExtension" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[FirstPublishLocationId]"
+                          dataType="wstr"
+                          length="18"
+                          name="FirstPublishLocationId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Origin]"
+                          dataType="wstr"
+                          length="40"
+                          name="Origin" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ContentLocation]"
+                          dataType="wstr"
+                          length="40"
+                          name="ContentLocation" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[TextPreview]"
+                          dataType="wstr"
+                          length="255"
+                          name="TextPreview" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDocumentInfo1]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ExternalDocumentInfo1" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDocumentInfo2]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ExternalDocumentInfo2" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[ExternalDataSourceId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ExternalDataSourceId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[Checksum]"
+                          dataType="wstr"
+                          length="50"
+                          name="Checksum" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsMajorVersion]"
+                          dataType="bool"
+                          name="IsMajorVersion" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input].ExternalColumns[IsAssetEnabled]"
+                          dataType="bool"
+                          name="IsAssetEnabled" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Error Output"
+                      synchronousInputId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorDescription]"
+                          dataType="wstr"
+                          length="1024"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion.Outputs[Error Output].Columns[ErrorDescription]"
+                          name="ErrorDescription" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Each Document Id\Load Content Version\ContentVersion Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="SalesForce.com Source;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+                  description="Retrieves data from SalesForce.com objects"
+                  name="ContentVersion Source"
+                  usesDispositions="true"
+                  version="11">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows returned in each batch from SalesForce.com"
+                      name="BatchSize">500</property>
+                    <property
+                      dataType="System.String"
+                      description="The statement used to query data from SalesForce.com"
+                      expressionType="Notify"
+                      name="QueryStatement">SELECT 
+ 	Id, 
+	ContentDocumentId, 
+	IsLatest, 
+	ContentUrl, 
+	ContentBodyId, 
+	VersionNumber, 
+	Title, 
+	Description, 
+	ReasonForChange, 
+	SharingOption, 
+	SharingPrivacy, 
+	PathOnClient, 
+	RatingCount, 
+	IsDeleted, 
+	ContentModifiedDate, 
+	ContentModifiedById, 
+	PositiveRatingCount, 
+	NegativeRatingCount, 
+	FeaturedContentBoost, 
+	FeaturedContentDate, 
+	OwnerId, 
+	CreatedById, 
+	CreatedDate, 
+	LastModifiedById, 
+	LastModifiedDate, 
+	SystemModstamp, 
+	TagCsv, 
+	FileType, 
+	PublishStatus, 
+	VersionData, 
+	ContentSize, 
+	FileExtension, 
+	FirstPublishLocationId, 
+	Origin, 
+	ContentLocation, 
+	TextPreview, 
+	ExternalDocumentInfo1, 
+	ExternalDocumentInfo2, 
+	ExternalDataSourceId, 
+	Checksum, 
+	IsMajorVersion, 
+	IsAssetEnabled 
+ FROM 
+	ContentVersion
+WHERE ContentDocumentId = '&lt;@User::ContentDocumentId&gt;'</property>
+                    <property
+                      dataType="System.String"
+                      description="The name of the SalesForce.com object"
+                      expressionType="Notify"
+                      name="SalesForceObjectName">ContentVersion</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Include deleted records in source data"
+                      expressionType="Notify"
+                      name="IncludeDeleted">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Set to true if a custom query is being used"
+                      expressionType="Notify"
+                      name="UseQuery">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Set to true if the local dates should be converted to UTC before being used in a where statement"
+                      expressionType="Notify"
+                      name="ConvertDatesToUTC">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The type of query to execute (Normal or Bulk Query)"
+                      expressionType="Notify"
+                      name="Query Mode"
+                      typeConverter="PW.TaskFactory.SalesForceSource+QueryMode">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The format in which the dates will be outputted"
+                      expressionType="Notify"
+                      name="Output Date Timezone"
+                      typeConverter="PW.TaskFactory.SalesForceBulkJob+OutputDateTimezone">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds of to wait between polling checks for job status"
+                      name="Bulk Query Polling Interval">2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The concurrency mode for the bulk query job"
+                      expressionType="Notify"
+                      name="Bulk Query Concurrency Mode"
+                      typeConverter="PW.TaskFactory.SalesForceBulkJob+ConcurrencyModeEnum">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Set to true if xml results in columns should be wrapped with a &lt;root&gt; element. This makes it easier to parse in the down flow."
+                      expressionType="Notify"
+                      name="Wrap Xml With Root Element">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      expressionType="Notify"
+                      name="DebugMode">false</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">PW.TaskFactory.SalesForceSource</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Connections[SALESFORCE]"
+                      connectionManagerID="Package.ConnectionManagers[SalesforceConn]"
+                      connectionManagerRefId="Package.ConnectionManagers[SalesforceConn]"
+                      description="Connection to the SalesForce.com account"
+                      name="SALESFORCE" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data]"
+                      name="SalesForce Data">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Id]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Id]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentDocumentId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentDocumentId]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentDocumentId]"
+                          name="ContentDocumentId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsLatest]"
+                          dataType="bool"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsLatest]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsLatest]"
+                          name="IsLatest"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentUrl]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentUrl]"
+                          length="1333"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentUrl]"
+                          name="ContentUrl"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentBodyId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentBodyId]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentBodyId]"
+                          name="ContentBodyId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[VersionNumber]"
+                          length="20"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionNumber]"
+                          name="VersionNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Title]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Title]"
+                          length="255"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Title]"
+                          name="Title"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Description]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Description]"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Description]"
+                          name="Description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ReasonForChange]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ReasonForChange]"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ReasonForChange]"
+                          name="ReasonForChange"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingOption]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SharingOption]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingOption]"
+                          name="SharingOption"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingPrivacy]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SharingPrivacy]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SharingPrivacy]"
+                          name="SharingPrivacy"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PathOnClient]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PathOnClient]"
+                          length="500"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PathOnClient]"
+                          name="PathOnClient"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[RatingCount]"
+                          dataType="i4"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[RatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[RatingCount]"
+                          name="RatingCount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsDeleted]"
+                          dataType="bool"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsDeleted]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsDeleted]"
+                          name="IsDeleted"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentModifiedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedDate]"
+                          name="ContentModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedById]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentModifiedById]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentModifiedById]"
+                          name="ContentModifiedById"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PositiveRatingCount]"
+                          dataType="i4"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PositiveRatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PositiveRatingCount]"
+                          name="PositiveRatingCount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[NegativeRatingCount]"
+                          dataType="i4"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[NegativeRatingCount]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[NegativeRatingCount]"
+                          name="NegativeRatingCount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentBoost]"
+                          dataType="i4"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FeaturedContentBoost]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentBoost]"
+                          name="FeaturedContentBoost"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FeaturedContentDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FeaturedContentDate]"
+                          name="FeaturedContentDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[OwnerId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[OwnerId]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[OwnerId]"
+                          name="OwnerId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedById]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[CreatedById]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedById]"
+                          name="CreatedById"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[CreatedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[CreatedDate]"
+                          name="CreatedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedById]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[LastModifiedById]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedById]"
+                          name="LastModifiedById"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[LastModifiedDate]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[LastModifiedDate]"
+                          name="LastModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SystemModstamp]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SystemModstamp]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[SystemModstamp]"
+                          name="SystemModstamp"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TagCsv]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[TagCsv]"
+                          length="2000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TagCsv]"
+                          name="TagCsv"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FileType]"
+                          length="20"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileType]"
+                          name="FileType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PublishStatus]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PublishStatus]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[PublishStatus]"
+                          name="PublishStatus"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionData]"
+                          dataType="image"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[VersionData]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[VersionData]"
+                          name="VersionData"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentSize]"
+                          dataType="i4"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentSize]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentSize]"
+                          name="ContentSize"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileExtension]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FileExtension]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FileExtension]"
+                          name="FileExtension"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FirstPublishLocationId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FirstPublishLocationId]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[FirstPublishLocationId]"
+                          name="FirstPublishLocationId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Origin]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Origin]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[Origin]"
+                          name="Origin"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentLocation]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentLocation]"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ContentLocation]"
+                          name="ContentLocation"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TextPreview]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[TextPreview]"
+                          length="255"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[TextPreview]"
+                          name="TextPreview"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDocumentInfo1]"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo1]"
+                          name="ExternalDocumentInfo1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDocumentInfo2]"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDocumentInfo2]"
+                          name="ExternalDocumentInfo2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDataSourceId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDataSourceId]"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[ExternalDataSourceId]"
+                          name="ExternalDataSourceId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsMajorVersion]"
+                          dataType="bool"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsMajorVersion]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsMajorVersion]"
+                          name="IsMajorVersion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsAssetEnabled]"
+                          dataType="bool"
+                          errorOrTruncationOperation="SalesForce"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsAssetEnabled]"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].Columns[IsAssetEnabled]"
+                          name="IsAssetEnabled"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentDocumentId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentDocumentId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsLatest]"
+                          dataType="bool"
+                          name="IsLatest" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentUrl]"
+                          dataType="wstr"
+                          length="1333"
+                          name="ContentUrl" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentBodyId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentBodyId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[VersionNumber]"
+                          dataType="wstr"
+                          length="20"
+                          name="VersionNumber" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Title]"
+                          dataType="wstr"
+                          length="255"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="1000"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ReasonForChange]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ReasonForChange" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SharingOption]"
+                          dataType="wstr"
+                          length="40"
+                          name="SharingOption" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SharingPrivacy]"
+                          dataType="wstr"
+                          length="40"
+                          name="SharingPrivacy" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PathOnClient]"
+                          dataType="wstr"
+                          length="500"
+                          name="PathOnClient" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[RatingCount]"
+                          dataType="i4"
+                          name="RatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsDeleted]"
+                          dataType="bool"
+                          name="IsDeleted" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ContentModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="ContentModifiedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PositiveRatingCount]"
+                          dataType="i4"
+                          name="PositiveRatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[NegativeRatingCount]"
+                          dataType="i4"
+                          name="NegativeRatingCount" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FeaturedContentBoost]"
+                          dataType="i4"
+                          name="FeaturedContentBoost" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FeaturedContentDate]"
+                          dataType="dbDate"
+                          name="FeaturedContentDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[OwnerId]"
+                          dataType="wstr"
+                          length="18"
+                          name="OwnerId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[CreatedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="CreatedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[CreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="CreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[LastModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="LastModifiedById" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[LastModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="LastModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[SystemModstamp]"
+                          dataType="dbTimeStamp"
+                          name="SystemModstamp" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[TagCsv]"
+                          dataType="wstr"
+                          length="2000"
+                          name="TagCsv" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FileType]"
+                          dataType="wstr"
+                          length="20"
+                          name="FileType" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[PublishStatus]"
+                          dataType="wstr"
+                          length="40"
+                          name="PublishStatus" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[VersionData]"
+                          dataType="image"
+                          name="VersionData" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentSize]"
+                          dataType="i4"
+                          name="ContentSize" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FileExtension]"
+                          dataType="wstr"
+                          length="40"
+                          name="FileExtension" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[FirstPublishLocationId]"
+                          dataType="wstr"
+                          length="18"
+                          name="FirstPublishLocationId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[Origin]"
+                          dataType="wstr"
+                          length="40"
+                          name="Origin" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ContentLocation]"
+                          dataType="wstr"
+                          length="40"
+                          name="ContentLocation" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[TextPreview]"
+                          dataType="wstr"
+                          length="255"
+                          name="TextPreview" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDocumentInfo1]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ExternalDocumentInfo1" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDocumentInfo2]"
+                          dataType="wstr"
+                          length="1000"
+                          name="ExternalDocumentInfo2" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[ExternalDataSourceId]"
+                          dataType="wstr"
+                          length="18"
+                          name="ExternalDataSourceId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsMajorVersion]"
+                          dataType="bool"
+                          name="IsMajorVersion" />
+                        <externalMetadataColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data].ExternalColumns[IsAssetEnabled]"
+                          dataType="bool"
+                          name="IsAssetEnabled" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output]"
+                      isErrorOut="true"
+                      name="SalesForce Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorDescription]"
+                          dataType="wstr"
+                          length="1024"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ErrorDescription]"
+                          name="ErrorDescription" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentDocumentId]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentDocumentId]"
+                          name="ContentDocumentId" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsLatest]"
+                          dataType="bool"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsLatest]"
+                          name="IsLatest" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentUrl]"
+                          dataType="wstr"
+                          length="1333"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentUrl]"
+                          name="ContentUrl" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentBodyId]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentBodyId]"
+                          name="ContentBodyId" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[VersionNumber]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[VersionNumber]"
+                          name="VersionNumber" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Title]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Title]"
+                          name="Title" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Description]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Description]"
+                          name="Description" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ReasonForChange]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ReasonForChange]"
+                          name="ReasonForChange" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SharingOption]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SharingOption]"
+                          name="SharingOption" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SharingPrivacy]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SharingPrivacy]"
+                          name="SharingPrivacy" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PathOnClient]"
+                          dataType="wstr"
+                          length="500"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PathOnClient]"
+                          name="PathOnClient" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[RatingCount]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[RatingCount]"
+                          name="RatingCount" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsDeleted]"
+                          dataType="bool"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsDeleted]"
+                          name="IsDeleted" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentModifiedDate]"
+                          name="ContentModifiedDate" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentModifiedById]"
+                          name="ContentModifiedById" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PositiveRatingCount]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PositiveRatingCount]"
+                          name="PositiveRatingCount" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[NegativeRatingCount]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[NegativeRatingCount]"
+                          name="NegativeRatingCount" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FeaturedContentBoost]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FeaturedContentBoost]"
+                          name="FeaturedContentBoost" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FeaturedContentDate]"
+                          dataType="dbDate"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FeaturedContentDate]"
+                          name="FeaturedContentDate" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[OwnerId]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[OwnerId]"
+                          name="OwnerId" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[CreatedById]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[CreatedById]"
+                          name="CreatedById" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[CreatedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[CreatedDate]"
+                          name="CreatedDate" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[LastModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[LastModifiedById]"
+                          name="LastModifiedById" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[LastModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[LastModifiedDate]"
+                          name="LastModifiedDate" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SystemModstamp]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[SystemModstamp]"
+                          name="SystemModstamp" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[TagCsv]"
+                          dataType="wstr"
+                          length="2000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[TagCsv]"
+                          name="TagCsv" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FileType]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FileType]"
+                          name="FileType" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PublishStatus]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[PublishStatus]"
+                          name="PublishStatus" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[VersionData]"
+                          dataType="image"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[VersionData]"
+                          name="VersionData" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentSize]"
+                          dataType="i4"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentSize]"
+                          name="ContentSize" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FileExtension]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FileExtension]"
+                          name="FileExtension" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FirstPublishLocationId]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[FirstPublishLocationId]"
+                          name="FirstPublishLocationId" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Origin]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[Origin]"
+                          name="Origin" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentLocation]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ContentLocation]"
+                          name="ContentLocation" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[TextPreview]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[TextPreview]"
+                          name="TextPreview" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDocumentInfo1]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDocumentInfo1]"
+                          name="ExternalDocumentInfo1" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDocumentInfo2]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDocumentInfo2]"
+                          name="ExternalDocumentInfo2" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDataSourceId]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[ExternalDataSourceId]"
+                          name="ExternalDataSourceId" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsMajorVersion]"
+                          dataType="bool"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsMajorVersion]"
+                          name="IsMajorVersion" />
+                        <outputColumn
+                          refId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsAssetEnabled]"
+                          dataType="bool"
+                          lineageId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Error Output].Columns[IsAssetEnabled]"
+                          name="IsAssetEnabled" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Each Document Id\Load Content Version.Paths[SalesForce Data]"
+                  endId="Package\For Each Document Id\Load Content Version\ContentVersion.Inputs[Input]"
+                  name="SalesForce Data"
+                  startId="Package\For Each Document Id\Load Content Version\ContentVersion Source.Outputs[SalesForce Data]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7680693C-5384-4ED6-948B-CF7362D4B173}"
+          DTS:ObjectName="{7680693C-5384-4ED6-948B-CF7362D4B173}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ContentDocumentId" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Document Ids"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{70624ce2-efb1-41ad-9a5d-a205d046e86d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Document Ids"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B859CDA-C7F0-4F97-A5A2-14AF4368A879}"
+          SQLTask:SqlStatementSource="SELECT&#xA; CDL.ContentDocumentId&#xA;FROM&#xA;&#x9;ContentDocumentLink CDL&#xA;&#x9;LEFT OUTER JOIN ContentVersion CV&#xA;&#x9;&#x9;ON CDL.ContentDocumentId = CV.ContentDocumentId&#xA;WHERE&#xA;&#x9;CV.ContentDocumentId IS NULL"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ListDocumentIds" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4528D66-014B-4B74-A1AB-5E562984F5C4}"
+      DTS:From="Package\Get Document Ids"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\For Each Document Id" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\For Each Document Id\Load Content Version"
+          TopLeft="20,25" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="213.333333333334,125.333333333334"
+          Size="213.333333333334,168"
+          Id="Package\For Each Document Id"
+          TopLeft="414.749997336417,36.8499943163989" />
+        <NodeLayout
+          Size="165.333333333334,42"
+          Id="Package\Get Document Ids"
+          TopLeft="66.6249987240881,104.999993026257" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="231.958332057421,123.424993671328">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.791665278996,0"
+              Start="0,0"
+              End="175.291665278996,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="175.291665278996,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\For Each Document Id\Load Content Version">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\For Each Document Id\Load Content Version\ContentVersion Source"
+          TopLeft="138,77" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\For Each Document Id\Load Content Version\ContentVersion"
+          TopLeft="149,209" />
+        <EdgeLayout
+          Id="Package\For Each Document Id\Load Content Version.Paths[SalesForce Data]"
+          TopLeft="227.833333333333,119.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.3333333333333"
+              Start="0,0"
+              End="0,81.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

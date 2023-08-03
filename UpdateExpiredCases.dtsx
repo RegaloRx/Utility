@@ -1,0 +1,1870 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/27/2021 9:21:42 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HHI-LT-0108"
+  DTS:CreatorName="HHI\cmchenry-admin"
+  DTS:DTSID="{47F4FFA5-88C6-4DC7-8144-48D05CB1F411}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="UpdateExpiredCases"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{A5A97551-2F7F-4A12-8AF7-8F09EE3A1D18}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesforceConn]"
+      DTS:CreationName="SALESFORCE TF"
+      DTS:DTSID="{4987094A-6685-4D46-94BA-B9EBC6C8F68A}"
+      DTS:ObjectName="SalesforceConn">
+      <DTS:PropertyExpression
+        DTS:Name="Password">"cCN75$1%jIAFDlStft1fsd4yso076RTnRSX"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <TaskFactorySalesForceConnectionManager
+          ConnectionString="Username=data.sa@regalorx.org;ServerURL=https://login.salesforce.com/services/Soap/u/48.0;ServiceType=0;Timeout=60;UseProxy=False;ProxyHost=;ProxyUserName=;ProxyDomain=;ProxyPort=0;MessageListToHandle=;ReuseConnectionAcrossAllTasks=True;NumberOfRetries=0;ResponseStatusCodes=;RetryDelay=0;RetryMode=0;"
+          ConnectByProxy="False">
+          <Password
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"></Password>
+        </TaskFactorySalesForceConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SF_DWConn]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{7AEAC04A-91D6-42F9-BCAC-D81969B6F203}"
+      DTS:ObjectName="SF_DWConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlDev1.hhi.gd;Initial Catalog=OtezlaDM;Integrated Security=True;Application Name=SSIS-Package-{7AEAC04A-91D6-42F9-BCAC-D81969B6F203}HHI-SQL1.MedVantx_Amgen_Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Update Salesforce"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3725DAD6-643A-4FEC-8357-2E6A190F03C5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Salesforce"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Salesforce\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	CSE.Id
+	, CSE.CaseNumber
+	, CD.Legacy_Id__c CovanceCaseId
+	, CD.[Status] AS CovanceStatus
+	--, CSE.[Status] AS SalesForceStatus
+	, CD.Sub_Status__c AS CovanceSubStatus
+	--, CSE.Sub_Status__c AS SalesForceSubStatus
+	--, CSE.PAP_Eligibility_Start_Date__c AS EligibilityStartDate
+	--, CSE.PAP_Eligibility_End_Date__c AS EligibilityEndDate
+	, CAST(CD.PAP_Eligibility_Start_Date__c as date) AS CovanceEligibilityStartDate
+	, CAST(CD.PAP_Eligibility_End_Date__c as date) AS CovanceEligibilityEndDate
+	--, PAT.FirstName + ' ' + PAT.LastName
+FROM Covance_DM_Otezla_CaseDetails CD
+	INNER JOIN [Case] CSE
+		ON CD.Legacy_Id__c = CSE.External_Id__c
+	INNER JOIN Contact PAT
+		ON CSE.ContactId = PAT.Id
+WHERE
+	CSE.[Status] = 'Pending'
+	AND CD.[Status] = 'Expired'</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Salesforce\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SF_DWConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[SF_DWConn]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CaseNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CaseNumber]"
+                      length="30"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CaseNumber]"
+                      name="CaseNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceCaseId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceCaseId]"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceCaseId]"
+                      name="CovanceCaseId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceStatus]"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceStatus]"
+                      name="CovanceStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceSubStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceSubStatus]"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceSubStatus]"
+                      name="CovanceSubStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityStartDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceEligibilityStartDate]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityStartDate]"
+                      name="CovanceEligibilityStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityEndDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceEligibilityEndDate]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityEndDate]"
+                      name="CovanceEligibilityEndDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CaseNumber]"
+                      dataType="wstr"
+                      length="30"
+                      name="CaseNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceCaseId]"
+                      dataType="wstr"
+                      length="50"
+                      name="CovanceCaseId" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="CovanceStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceSubStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="CovanceSubStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceEligibilityStartDate]"
+                      dataType="dbDate"
+                      name="CovanceEligibilityStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CovanceEligibilityEndDate]"
+                      dataType="dbDate"
+                      name="CovanceEligibilityEndDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CaseNumber]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CaseNumber]"
+                      name="CaseNumber" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceCaseId]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceCaseId]"
+                      name="CovanceCaseId" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceStatus]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceStatus]"
+                      name="CovanceStatus" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceSubStatus]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceSubStatus]"
+                      name="CovanceSubStatus" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityStartDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityStartDate]"
+                      name="CovanceEligibilityStartDate" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityEndDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityEndDate]"
+                      name="CovanceEligibilityEndDate" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Salesforce\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\Conditional Split.Outputs[Error]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Error"
+                  synchronousInputId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]} &gt; -1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ErrorCode &gt; -1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Salesforce\TF Error Output Description"
+              componentClassID="Microsoft.ManagedComponentHost"
+              name="TF Error Output Description"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Show warning">false</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Error Code">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Error Column">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Error Description">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Component Name">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Column Name">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Column Type">false</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="Add Column Length">false</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Input Lineage ID">#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]}|ErrorCode|DT_I4|0;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]}|ErrorColumn|DT_I4|0;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]}|ErrorCode|DT_I4|0;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]}|ErrorColumn|DT_I4|0;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]}|Id|DT_WSTR|18;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]}|ErrorDescription|DT_WSTR|1024;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]}|SalesForceId|DT_WSTR|18;#{Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]}|RowResult|DT_WSTR|10;#{Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]}|ErrorCode|DT_I4|0;#{Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]}|ErrorCode|DT_I4|0;#{Package\Update Salesforce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]}|ErrorColumn|DT_I4|0;#{Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input].Columns[ErrorCode]}|ErrorCode|DT_I4|0;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]}|Id|DT_WSTR|18;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]}|Id|DT_WSTR|18;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CaseNumber]}|CaseNumber|DT_WSTR|30;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CaseNumber]}|CaseNumber|DT_WSTR|30;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceCaseId]}|CovanceCaseId|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceCaseId]}|CovanceCaseId|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceStatus]}|CovanceStatus|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceStatus]}|CovanceStatus|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceSubStatus]}|CovanceSubStatus|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceSubStatus]}|CovanceSubStatus|DT_WSTR|50;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityStartDate]}|CovanceEligibilityStartDate|DT_DBDATE|0;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityStartDate]}|CovanceEligibilityStartDate|DT_DBDATE|0;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityEndDate]}|CovanceEligibilityEndDate|DT_DBDATE|0;#{Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CovanceEligibilityEndDate]}|CovanceEligibilityEndDate|DT_DBDATE|0;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[Id]}|Id|DT_WSTR|18;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CaseNumber]}|CaseNumber|DT_WSTR|30;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceCaseId]}|CovanceCaseId|DT_WSTR|50;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceStatus]}|CovanceStatus|DT_WSTR|50;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceSubStatus]}|CovanceSubStatus|DT_WSTR|50;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceEligibilityStartDate]}|CovanceEligibilityStartDate|DT_DBDATE|0;#{Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceEligibilityEndDate]}|CovanceEligibilityEndDate|DT_DBDATE|0;</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.ErrorOutputDescription</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0']"
+                  name="Error Input 469 - 'Error Input 0'">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CaseNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CaseNumber"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CaseNumber]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CovanceCaseId]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceCaseId"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceCaseId]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CovanceStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceStatus"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceStatus]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CovanceSubStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceSubStatus"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceSubStatus]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CovanceEligibilityStartDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CovanceEligibilityStartDate"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityStartDate]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[CovanceEligibilityEndDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CovanceEligibilityEndDate"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityEndDate]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          expressionType="Notify"
+                          name="Output Lineage ID">#{Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[ErrorDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="1024"
+                      cachedName="ErrorDescription"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          expressionType="Notify"
+                          name="Output Lineage ID">#{Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0'].Columns[Id1]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input]"
+                  dangling="true"
+                  name="Error Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output]"
+                  name="Error Description Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorCode]"
+                      name="EOD_ErrorCode" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorColumn]"
+                      name="EOD_ErrorColumn" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ErrorDescription]"
+                      name="EOD_ErrorDescription" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ComponentName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ComponentName]"
+                      name="EOD_ComponentName" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[EOD_ColumnName]"
+                      name="EOD_ColumnName" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Salesforce\TF SalesForce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="SalesForce.com Destination;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+              description="The SalesForce Destination will insert data into the selected SalesForce.com table."
+              name="TF SalesForce Destination"
+              usesDispositions="true"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the SalesForce.com object where the data will be inserted."
+                  expressionType="Notify"
+                  name="DestinationObjectName">Case</property>
+                <property
+                  dataType="System.String"
+                  description="The number of records that will be inserted in each batch"
+                  expressionType="Notify"
+                  name="BatchSize">10</property>
+                <property
+                  dataType="System.Int32"
+                  description="The action performed against the selected destination object"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceActionTypesEnum">2</property>
+                <property
+                  dataType="System.String"
+                  description="The externalid column from the selected salesforce object used in the upsert process"
+                  expressionType="Notify"
+                  name="UpsertExternalID"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRule"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule id for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRuleId"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Choose if data should be sent normally or with bulk insert"
+                  expressionType="Notify"
+                  name="DestinationMode"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceDestinationMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use multiple outputs and separate success results from error output"
+                  expressionType="Notify"
+                  name="UseLegacyOutputMode">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Ignore Null values in SalesForce Table"
+                  expressionType="Notify"
+                  name="IgnoreNullValues">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true to store the temporary zip file created to send to SalesForce on disk instead of in memory"
+                  expressionType="Notify"
+                  name="Use File Based Buffer In Bulk Zip Mode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="This sets the processing mode of the salesforce bulk api job. Parallel is the default and should be left as parallel unless you have a reason to select Serial"
+                  expressionType="Notify"
+                  name="Bulk Mode Job Concurrency Mode (Parallel or Serial)"
+                  typeConverter="PW.TaskFactory.SalesForceBulkJob+ConcurrencyModeEnum">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use this setting if you want to monitor each batch for the results of the rows being transferred. If this option is not selected, the ID outputted to the success output is the batch id."
+                  expressionType="Notify"
+                  name="Monitor the bulk batch and wait for results">false</property>
+                <property
+                  dataType="System.String"
+                  description="Set this property to override the temporary directory (default of the current users personal folder) of where the zip files are created in bulkzip mode"
+                  expressionType="Notify"
+                  name="Bulk Mode Temporary Directory"></property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.SalesForceDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Connections[SALESFORCE]"
+                  connectionManagerID="Package.ConnectionManagers[SalesforceConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesforceConn]"
+                  description="Connection to the SalesForce.com account"
+                  name="SALESFORCE" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="SalesForce Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CaseNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CaseNumber"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CaseNumber]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceCaseId]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceCaseId"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceCaseId]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceStatus"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceStatus]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceSubStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CovanceSubStatus"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceSubStatus]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceEligibilityStartDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CovanceEligibilityStartDate"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAP_Eligibility_Start_Date__c]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityStartDate]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[CovanceEligibilityEndDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CovanceEligibilityEndDate"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAP_Eligibility_End_Date__c]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[CovanceEligibilityEndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[ContactId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ContactId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Contact</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Contact</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Contact_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[AccountId]"
+                      dataType="wstr"
+                      length="18"
+                      name="AccountId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Account</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Account</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Account_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[AssetId]"
+                      dataType="wstr"
+                      length="18"
+                      name="AssetId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Asset</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Asset</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[SourceId]"
+                      dataType="wstr"
+                      length="18"
+                      name="SourceId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Source</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">EmailMessage</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[BusinessHoursId]"
+                      dataType="wstr"
+                      length="18"
+                      name="BusinessHoursId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">BusinessHours</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">BusinessHours</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[ParentId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ParentId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Parent</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Case</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Case_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[SuppliedName]"
+                      dataType="wstr"
+                      length="80"
+                      name="SuppliedName">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[SuppliedEmail]"
+                      dataType="wstr"
+                      length="80"
+                      name="SuppliedEmail">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[SuppliedPhone]"
+                      dataType="wstr"
+                      length="40"
+                      name="SuppliedPhone">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[SuppliedCompany]"
+                      dataType="wstr"
+                      length="80"
+                      name="SuppliedCompany">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="40"
+                      name="Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecordTypeId]"
+                      dataType="wstr"
+                      length="18"
+                      name="RecordTypeId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">RecordType</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">RecordType</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="40"
+                      name="Status">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Reason]"
+                      dataType="wstr"
+                      length="40"
+                      name="Reason">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Origin]"
+                      dataType="wstr"
+                      length="40"
+                      name="Origin">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Language]"
+                      dataType="wstr"
+                      length="40"
+                      name="Language">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Priority]"
+                      dataType="wstr"
+                      length="40"
+                      name="Priority">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[IsEscalated]"
+                      dataType="bool"
+                      name="IsEscalated">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Group</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[IsClosedOnCreate]"
+                      dataType="bool"
+                      name="IsClosedOnCreate">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Comments]"
+                      dataType="nText"
+                      name="Comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Product_Affiliation__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Product_Affiliation__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Product_Affiliation__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Product_Affiliation__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[HCP_Affiliation__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="HCP_Affiliation__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">HCP_Affiliation__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">HCP_Affiliation__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Sub_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sub_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Active_Rx__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Active_Rx__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Active_Rx__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Rx__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Active__c]"
+                      dataType="bool"
+                      name="Active__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Combined_Assets_over_limit__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Combined_Assets_over_limit__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[EligDetDateSet__c]"
+                      dataType="bool"
+                      name="EligDetDateSet__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Eligibility_Checklist_Complete__c]"
+                      dataType="bool"
+                      name="Eligibility_Checklist_Complete__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Eligibility_Determination_Date__c]"
+                      dataType="dbDate"
+                      name="Eligibility_Determination_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Eligibility_Qualifier__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Eligibility_Qualifier__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Eligibility_Qualifier__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Eligibility_Qualifier__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Case__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Insurance__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurance__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Last_Sub_Status_Change_Date__c]"
+                      dataType="dbTimeStamp"
+                      name="Last_Sub_Status_Change_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAPEndDateSet__c]"
+                      dataType="bool"
+                      name="PAPEndDateSet__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAPStartDateSet__c]"
+                      dataType="bool"
+                      name="PAPStartDateSet__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAP_Eligibility_End_Date__c]"
+                      dataType="dbDate"
+                      name="PAP_Eligibility_End_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PAP_Eligibility_Start_Date__c]"
+                      dataType="dbDate"
+                      name="PAP_Eligibility_Start_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Path_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Path_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Patient_Authorization__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Patient_Authorization__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Patient_Authorization__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Patient_Authorization__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Patient_Income__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Patient_Income__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Patient_Income__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Patient_Income__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Case__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Patient_Residency__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Patient_Residency__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Patient_Residency__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Patient_Residency__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Case__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Primary_Medical_Insurance__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Primary_Medical_Insurance__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Primary_Medical_Insurance__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Insurance__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Primary_Pharmacy_Insurance__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Primary_Pharmacy_Insurance__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Primary_Pharmacy_Insurance__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Insurance__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Reason_Code__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reason_Code__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Satisfied_Critical_MI__c]"
+                      dataType="bool"
+                      name="Satisfied_Critical_MI__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[PA_Follow_up_Item__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="PA_Follow_up_Item__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">PA_Follow_up_Item__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Followup_Item__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Patient_Reported_FPL_Threshold__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Patient_Reported_FPL_Threshold__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Phone__c]"
+                      dataType="wstr"
+                      length="40"
+                      name="Phone__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RX_Image_ID__c]"
+                      dataType="wstr"
+                      length="25"
+                      name="RX_Image_ID__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Document_Received_After_Determination__c]"
+                      dataType="bool"
+                      name="Document_Received_After_Determination__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Last_Activity_Update_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Activity_Update_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Record_Type_Value__c]"
+                      dataType="wstr"
+                      length="25"
+                      name="Record_Type_Value__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[External_Id__c]"
+                      dataType="wstr"
+                      length="36"
+                      name="External_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Internal_Comments__c]"
+                      dataType="nText"
+                      name="Internal_Comments__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Legacy_Case_Id__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Legacy_Case_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Legacy_Created_Date__c]"
+                      dataType="dbTimeStamp"
+                      name="Legacy_Created_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Legacy_Record_Id__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Legacy_Record_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salesforce Destination Error Output"
+                  synchronousInputId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output]"
+                  exclusionGroup="1"
+                  name="SalesForce Destination Success Output"
+                  synchronousInputId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      name="SalesForceId" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      name="RowResult" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Salesforce\TF Terminator Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Terminator Destination;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+              description="The terminator destination is used to terminate a data flow path without any setup"
+              name="TF Terminator Destination"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this property to True if you want to save buffer data to text file"
+                  expressionType="Notify"
+                  name="EnableDataDump">false</property>
+                <property
+                  dataType="System.String"
+                  description="Output file path for data dump"
+                  expressionType="Notify"
+                  name="DumpFilePath"></property>
+                <property
+                  dataType="System.String"
+                  description="Output file column separator"
+                  expressionType="Notify"
+                  name="ColumnSeparator">,</property>
+                <property
+                  dataType="System.String"
+                  description="Output file row separator"
+                  expressionType="Notify"
+                  name="RowSeparator">\r\n</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Unicode character support"
+                  expressionType="Notify"
+                  name="SupportUnicode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Output column names in the first row"
+                  expressionType="Notify"
+                  name="ColumnNamesInFirstRow">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.TerminatorDestination</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Update Salesforce\TF Terminator Destination.Inputs[TerminatorInput]"
+                  hasSideEffects="true"
+                  name="TerminatorInput">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Salesforce.Paths[ADO NET Source Output]"
+              endId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Update Salesforce.Paths[Error]"
+              endId="Package\Update Salesforce\TF Terminator Destination.Inputs[TerminatorInput]"
+              name="Error"
+              startId="Package\Update Salesforce\Conditional Split.Outputs[Error]" />
+            <path
+              refId="Package\Update Salesforce.Paths[Error Description Output]"
+              endId="Package\Update Salesforce\Conditional Split.Inputs[Conditional Split Input]"
+              name="Error Description Output"
+              startId="Package\Update Salesforce\TF Error Output Description.Outputs[Error Description Output]" />
+            <path
+              refId="Package\Update Salesforce.Paths[Salesforce Destination Error Output]"
+              endId="Package\Update Salesforce\TF Error Output Description.Inputs[Error Input 469 - 'Error Input 0']"
+              name="Salesforce Destination Error Output"
+              startId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Update Salesforce"
+          TopLeft="455,56" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Update Salesforce">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Update Salesforce\TF SalesForce Destination"
+          TopLeft="135,135" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Update Salesforce\ADO NET Source"
+          TopLeft="133,42" />
+        <EdgeLayout
+          Id="Package\Update Salesforce.Paths[ADO NET Source Output]"
+          TopLeft="212,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,51"
+              Start="0,0"
+              End="23,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="19,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,25.5"
+                    Point2="23,25.5"
+                    Point3="23,29.5" />
+                  <mssgle:LineSegment
+                    End="23,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Update Salesforce\TF Error Output Description"
+          TopLeft="155,234" />
+        <EdgeLayout
+          Id="Package\Update Salesforce.Paths[Salesforce Destination Error Output]"
+          TopLeft="235,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.5,57"
+              Start="0,0"
+              End="24.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="20.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5,28.5"
+                    Point2="24.5,28.5"
+                    Point3="24.5,32.5" />
+                  <mssgle:LineSegment
+                    End="24.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.65205078125,33.5,157.8041015625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Update Salesforce\Conditional Split"
+          TopLeft="162,337" />
+        <EdgeLayout
+          Id="Package\Update Salesforce.Paths[Error Description Output]"
+          TopLeft="259.5,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20,61"
+              Start="0,0"
+              End="-20,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="-4,30.5" />
+                  <mssgle:LineSegment
+                    End="-16,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16,30.5"
+                    Point2="-20,30.5"
+                    Point3="-20,34.5" />
+                  <mssgle:LineSegment
+                    End="-20,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Update Salesforce\TF Terminator Destination"
+          TopLeft="161,475" />
+        <EdgeLayout
+          Id="Package\Update Salesforce.Paths[Error]"
+          TopLeft="239.5,379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.5,96"
+              Start="0,0"
+              End="22.5,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44"
+                    Point2="0,48"
+                    Point3="4,48" />
+                  <mssgle:LineSegment
+                    End="18.5,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,48"
+                    Point2="22.5,48"
+                    Point3="22.5,52" />
+                  <mssgle:LineSegment
+                    End="22.5,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.14734375,53,40.7946875,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Salesforce\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

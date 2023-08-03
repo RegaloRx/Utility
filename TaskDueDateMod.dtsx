@@ -1,0 +1,2334 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/27/2021 9:21:42 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HHI-LT-0108"
+  DTS:CreatorName="HHI\cmchenry-admin"
+  DTS:DTSID="{82F0DEAF-4FFF-4F86-9883-C8BE91F434D5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TaskDueDateMod"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{850D938F-9488-4AA0-9B3C-463F3DADB332}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LetterFaxConn]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{F9B9A819-ADF9-498C-862D-C665DA36C3C5}"
+      DTS:ObjectName="LetterFaxConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;User ID=rmotley-admin;Initial Catalog=RegaloRx_Letters_And_Faxes;Integrated Security=True;Application Name=SSIS-Package-{F9B9A819-ADF9-498C-862D-C665DA36C3C5}HHI-SQL1.MedVantx_Amgen_Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesforceConn]"
+      DTS:CreationName="SALESFORCE TF"
+      DTS:DTSID="{C7CC8D9F-72B7-4424-B1E8-8DC5F4BFDBAA}"
+      DTS:ObjectName="SalesforceConn">
+      <DTS:PropertyExpression
+        DTS:Name="Password">"Cherimch46*Zp0ln6qHYDMqVnmcCbWw977gu"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <TaskFactorySalesForceConnectionManager
+          ConnectionString="Username=data.sa@regalorx.org;ServerURL=https://login.salesforce.com/services/Soap/u/48.0;ServiceType=0;Timeout=60;UseProxy=False;ProxyHost=;ProxyUserName=;ProxyDomain=;ProxyPort=0;MessageListToHandle=;ReuseConnectionAcrossAllTasks=True;NumberOfRetries=0;ResponseStatusCodes=;RetryDelay=0;RetryMode=0;"
+          ConnectByProxy="False">
+          <Password
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"></Password>
+        </TaskFactorySalesForceConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SF_DWConn]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{CB0453FA-636A-4003-9122-93AF0A7B2471}"
+      DTS:ObjectName="SF_DWConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;Initial Catalog=Salesforce;Integrated Security=True;Application Name=SSIS-Package-{CB0453FA-636A-4003-9122-93AF0A7B2471}HHI-SQL1.MedVantx_Amgen_Test;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Update Salesforce"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CD41C00E-2DC1-4A2F-9C3E-797633884DE1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Salesforce"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Salesforce\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH Tasks AS
+(
+	SELECT
+		CSE.CaseNumber
+		, ROW_NUMBER() OVER( ORDER BY ActivityDate, CaseNumber ) AS RowNum
+		,T.*
+	FROM
+		Task T
+		INNER JOIN [Case] CSE
+			ON T.Case__c = CSE.Id
+	WHERE
+		T.CreatedDate &gt; '2021-08-27'
+		AND Direction__c = 'Outbound'
+		AND T.[Type] = 'call'
+		AND CSE.Product_Name__c = 'Otezla'
+		AND T.[Status] = 'Not Started'
+		AND [Subject] = '1st Attempt MI'
+	--ORDER BY
+	--	RowNum
+)
+SELECT
+	Id, '2021-09-09' AS ActivityDate
+FROM
+	Tasks
+WHERE
+	RowNum BETWEEN 301 AND 450</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Salesforce\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SF_DWConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[SF_DWConn]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActivityDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ActivityDate]"
+                      length="10"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActivityDate]"
+                      name="ActivityDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ActivityDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="ActivityDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ActivityDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ActivityDate]"
+                      name="ActivityDate" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Salesforce\TF SalesForce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="SalesForce.com Destination;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+              description="The SalesForce Destination will insert data into the selected SalesForce.com table."
+              name="TF SalesForce Destination"
+              usesDispositions="true"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the SalesForce.com object where the data will be inserted."
+                  expressionType="Notify"
+                  name="DestinationObjectName">Task</property>
+                <property
+                  dataType="System.String"
+                  description="The number of records that will be inserted in each batch"
+                  expressionType="Notify"
+                  name="BatchSize">10</property>
+                <property
+                  dataType="System.Int32"
+                  description="The action performed against the selected destination object"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceActionTypesEnum">2</property>
+                <property
+                  dataType="System.String"
+                  description="The externalid column from the selected salesforce object used in the upsert process"
+                  expressionType="Notify"
+                  name="UpsertExternalID"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRule"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule id for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRuleId"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Choose if data should be sent normally or with bulk insert"
+                  expressionType="Notify"
+                  name="DestinationMode"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceDestinationMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use multiple outputs and separate success results from error output"
+                  expressionType="Notify"
+                  name="UseLegacyOutputMode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Ignore Null values in SalesForce Table"
+                  expressionType="Notify"
+                  name="IgnoreNullValues">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true to store the temporary zip file created to send to SalesForce on disk instead of in memory"
+                  expressionType="Notify"
+                  name="Use File Based Buffer In Bulk Zip Mode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="This sets the processing mode of the salesforce bulk api job. Parallel is the default and should be left as parallel unless you have a reason to select Serial"
+                  expressionType="Notify"
+                  name="Bulk Mode Job Concurrency Mode (Parallel or Serial)"
+                  typeConverter="PW.TaskFactory.SalesForceBulkJob+ConcurrencyModeEnum">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use this setting if you want to monitor each batch for the results of the rows being transferred. If this option is not selected, the ID outputted to the success output is the batch id."
+                  expressionType="Notify"
+                  name="Monitor the bulk batch and wait for results">false</property>
+                <property
+                  dataType="System.String"
+                  description="Set this property to override the temporary directory (default of the current users personal folder) of where the zip files are created in bulkzip mode"
+                  expressionType="Notify"
+                  name="Bulk Mode Temporary Directory"></property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.SalesForceDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Connections[SALESFORCE]"
+                  connectionManagerID="Package.ConnectionManagers[SalesforceConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesforceConn]"
+                  description="Connection to the SalesForce.com account"
+                  name="SALESFORCE" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="SalesForce Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].Columns[ActivityDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ActivityDate"
+                      externalMetadataColumnId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[ActivityDate]"
+                      lineageId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActivityDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[WhoId]"
+                      dataType="wstr"
+                      length="18"
+                      name="WhoId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Who</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Contact</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Contact_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[WhatId]"
+                      dataType="wstr"
+                      length="18"
+                      name="WhatId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">What</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Account</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Account_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[ActivityDate]"
+                      dataType="dbDate"
+                      name="ActivityDate">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="40"
+                      name="Status">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Priority]"
+                      dataType="wstr"
+                      length="40"
+                      name="Priority">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Group</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="40"
+                      name="Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallDurationInSeconds]"
+                      dataType="i4"
+                      name="CallDurationInSeconds">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallType]"
+                      dataType="wstr"
+                      length="40"
+                      name="CallType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallDisposition]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDisposition">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallObject]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallObject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[ReminderDateTime]"
+                      dataType="dbTimeStamp"
+                      name="ReminderDateTime">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[IsReminderSet]"
+                      dataType="bool"
+                      name="IsReminderSet">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceStartDateOnly]"
+                      dataType="dbDate"
+                      name="RecurrenceStartDateOnly">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceEndDateOnly]"
+                      dataType="dbDate"
+                      name="RecurrenceEndDateOnly">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceTimeZoneSidKey]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceTimeZoneSidKey">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceType]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceInterval]"
+                      dataType="i4"
+                      name="RecurrenceInterval">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceDayOfWeekMask]"
+                      dataType="i4"
+                      name="RecurrenceDayOfWeekMask">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceDayOfMonth]"
+                      dataType="i4"
+                      name="RecurrenceDayOfMonth">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceInstance]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceInstance">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceMonthOfYear]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceMonthOfYear">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceRegeneratedType]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceRegeneratedType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Batch_Name__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Batch_Name__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Direction__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Direction__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Job_Id__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fax_Job_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fax_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Template_s__c]"
+                      dataType="nText"
+                      name="Fax_Template_s__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Image_Name__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Image_Name__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Mailing_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mailing_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Mailing_Template__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mailing_Template__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Outcome__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Outcome__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Source__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[crms22__Summary_Comments__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="crms22__Summary_Comments__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Adverse_Event_Number__c]"
+                      dataType="wstr"
+                      length="20"
+                      name="Adverse_Event_Number__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Adverse_Event__c]"
+                      dataType="bool"
+                      name="Adverse_Event__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Case__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Case__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Case__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Case</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">External_Id__c|Legacy_Case_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Fax__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Fax__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Fax__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Fax_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Feedback__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Feedback__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Feedback__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Feedback__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Feedback_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Phone__c]"
+                      dataType="wstr"
+                      length="40"
+                      name="Phone__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Referral_Order__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Referral_Order__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Referral_Order__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Referral_Order__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Order_Id__c|Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Rx__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Rx__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Rx__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Rx__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">Legacy_Record_Id__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Workflow_Rule_Action__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Workflow_Rule_Action__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Workflow_Rule_Action__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Workflow_Rule_Action__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">ExternalId__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9ANI__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9ANI__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9AgentExtension__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9AgentExtension__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9AgentName__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9AgentName__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9Agent__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9Agent__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9CallType__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9CallType__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9Campaign__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9Campaign__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9DNIS__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9DNIS__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9HandleTime__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9HandleTime__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9SessionId__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9SessionId__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9TalkAndHoldTimeInSeconds__c]"
+                      dataType="r8"
+                      name="Five9__Five9TalkAndHoldTimeInSeconds__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9TaskType__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Five9__Five9TaskType__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9WrapTime__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9WrapTime__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Completed_Date_Time__c]"
+                      dataType="dbTimeStamp"
+                      name="Completed_Date_Time__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Contact_Id__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Contact_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Legacy_Created_Date__c]"
+                      dataType="dbTimeStamp"
+                      name="Legacy_Created_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input].ExternalColumns[Legacy_Record_Id__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Legacy_Record_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salesforce Destination Error Output"
+                  synchronousInputId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output]"
+                  exclusionGroup="1"
+                  name="SalesForce Destination Success Output"
+                  synchronousInputId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      name="SalesForceId" />
+                    <outputColumn
+                      refId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Update Salesforce\TF SalesForce Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      name="RowResult" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Salesforce.Paths[ADO NET Source Output]"
+              endId="Package\Update Salesforce\TF SalesForce Destination.Inputs[SalesForce Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Update Salesforce\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Tasks with No Address"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{959425c4-832f-4fd0-875c-b9787cfb2a7d}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Tasks with No Address"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Tasks with No Address\Task No Address Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="SalesForce.com Destination;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+              description="The SalesForce Destination will insert data into the selected SalesForce.com table."
+              name="Task No Address Destination"
+              usesDispositions="true"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the SalesForce.com object where the data will be inserted."
+                  expressionType="Notify"
+                  name="DestinationObjectName">Task</property>
+                <property
+                  dataType="System.String"
+                  description="The number of records that will be inserted in each batch"
+                  expressionType="Notify"
+                  name="BatchSize">10</property>
+                <property
+                  dataType="System.Int32"
+                  description="The action performed against the selected destination object"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceActionTypesEnum">2</property>
+                <property
+                  dataType="System.String"
+                  description="The externalid column from the selected salesforce object used in the upsert process"
+                  expressionType="Notify"
+                  name="UpsertExternalID"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRule"></property>
+                <property
+                  dataType="System.String"
+                  description="The assignment rule id for lead, case and account objects"
+                  expressionType="Notify"
+                  name="AssignmentRuleId"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Choose if data should be sent normally or with bulk insert"
+                  expressionType="Notify"
+                  name="DestinationMode"
+                  typeConverter="PW.TaskFactory.Enums+SalesForceDestinationMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use multiple outputs and separate success results from error output"
+                  expressionType="Notify"
+                  name="UseLegacyOutputMode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Ignore Null values in SalesForce Table"
+                  expressionType="Notify"
+                  name="IgnoreNullValues">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true to store the temporary zip file created to send to SalesForce on disk instead of in memory"
+                  expressionType="Notify"
+                  name="Use File Based Buffer In Bulk Zip Mode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="This sets the processing mode of the salesforce bulk api job. Parallel is the default and should be left as parallel unless you have a reason to select Serial"
+                  expressionType="Notify"
+                  name="Bulk Mode Job Concurrency Mode (Parallel or Serial)"
+                  typeConverter="PW.TaskFactory.SalesForceBulkJob+ConcurrencyModeEnum">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use this setting if you want to monitor each batch for the results of the rows being transferred. If this option is not selected, the ID outputted to the success output is the batch id."
+                  expressionType="Notify"
+                  name="Monitor the bulk batch and wait for results">false</property>
+                <property
+                  dataType="System.String"
+                  description="Set this property to override the temporary directory (default of the current users personal folder) of where the zip files are created in bulkzip mode"
+                  expressionType="Notify"
+                  name="Bulk Mode Temporary Directory"></property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.SalesForceDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Tasks with No Address\Task No Address Destination.Connections[SALESFORCE]"
+                  connectionManagerID="Package.ConnectionManagers[SalesforceConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesforceConn]"
+                  description="Connection to the SalesForce.com account"
+                  name="SALESFORCE" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="SalesForce Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].Columns[Mailing_Status__c]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="Mailing_Status__c"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Mailing_Status__c]"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Mailing_Status__c]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[WhoId]"
+                      dataType="wstr"
+                      length="18"
+                      name="WhoId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Who</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Contact</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[WhatId]"
+                      dataType="wstr"
+                      length="18"
+                      name="WhatId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">What</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Account</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[ActivityDate]"
+                      dataType="dbDate"
+                      name="ActivityDate">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="40"
+                      name="Status">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Priority]"
+                      dataType="wstr"
+                      length="40"
+                      name="Priority">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">User</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="40"
+                      name="Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallDurationInSeconds]"
+                      dataType="i4"
+                      name="CallDurationInSeconds">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallType]"
+                      dataType="wstr"
+                      length="40"
+                      name="CallType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallDisposition]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDisposition">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[CallObject]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallObject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[ReminderDateTime]"
+                      dataType="dbTimeStamp"
+                      name="ReminderDateTime">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[IsReminderSet]"
+                      dataType="bool"
+                      name="IsReminderSet">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceStartDateOnly]"
+                      dataType="dbDate"
+                      name="RecurrenceStartDateOnly">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceEndDateOnly]"
+                      dataType="dbDate"
+                      name="RecurrenceEndDateOnly">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceTimeZoneSidKey]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceTimeZoneSidKey">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceType]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceInterval]"
+                      dataType="i4"
+                      name="RecurrenceInterval">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceDayOfWeekMask]"
+                      dataType="i4"
+                      name="RecurrenceDayOfWeekMask">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceDayOfMonth]"
+                      dataType="i4"
+                      name="RecurrenceDayOfMonth">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceInstance]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceInstance">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceMonthOfYear]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceMonthOfYear">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[RecurrenceRegeneratedType]"
+                      dataType="wstr"
+                      length="40"
+                      name="RecurrenceRegeneratedType">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[npsp__Engagement_Plan_Task__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="npsp__Engagement_Plan_Task__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">npsp__Engagement_Plan_Task__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">npsp__Engagement_Plan_Task__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[npsp__Engagement_Plan__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="npsp__Engagement_Plan__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">npsp__Engagement_Plan__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">npsp__Engagement_Plan__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9ANI__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9ANI__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9AgentExtension__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9AgentExtension__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9AgentName__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9AgentName__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9Agent__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9Agent__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9CallType__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9CallType__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9Campaign__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9Campaign__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9DNIS__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9DNIS__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9HandleTime__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9HandleTime__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9SessionId__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9SessionId__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9TalkAndHoldTimeInSeconds__c]"
+                      dataType="r8"
+                      name="Five9__Five9TalkAndHoldTimeInSeconds__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9TaskType__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Five9__Five9TaskType__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Five9__Five9WrapTime__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Five9__Five9WrapTime__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Account__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Account__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Account</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Adverse_Event_Number__c]"
+                      dataType="wstr"
+                      length="20"
+                      name="Adverse_Event_Number__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Caller_Type__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Caller_Type__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Case__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Case__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Case__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Case</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Adverse_Event__c]"
+                      dataType="bool"
+                      name="Adverse_Event__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Direction__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Direction__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Job_Id__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Fax_Job_Id__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fax_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Fax_Template_s__c]"
+                      dataType="nText"
+                      name="Fax_Template_s__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Image_Name__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Image_Name__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Mailing_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mailing_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Mailing_Template__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mailing_Template__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Outcome__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Outcome__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Source__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Subject__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subject__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Batch_Name__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Batch_Name__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input].ExternalColumns[Workflow_Rule_Action__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Workflow_Rule_Action__c">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="RelationshipName">Workflow_Rule_Action__r</property>
+                        <property
+                          dataType="System.String"
+                          name="ReferenceType">Workflow_Rule_Action__c</property>
+                        <property
+                          dataType="System.String"
+                          name="ExternalID"></property>
+                        <property
+                          dataType="System.String"
+                          name="AvailableRefFields">ExternalId__c</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salesforce Destination Error Output"
+                  synchronousInputId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[Salesforce Destination Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[SalesForce Destination Success Output]"
+                  exclusionGroup="1"
+                  name="SalesForce Destination Success Output"
+                  synchronousInputId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[SalesForce Destination Success Output].Columns[SalesForceId]"
+                      name="SalesForceId" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Destination.Outputs[SalesForce Destination Success Output].Columns[RowResult]"
+                      name="RowResult" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Tasks with No Address\Task No Address Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Task No Address Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT
+	t.Id,
+	'Completed' as Status, 
+	'No Address Provided' as Mailing_Status__c  
+FROM Salesforce.dbo.Task as t
+	INNER JOIN dbo.LettersForPrint_Staging as l
+		ON t.id = l.taskid
+WHERE l.Return_Filename = 'No Address'
+		and t.Status = 'Not Started'
+
+              AND DocType != '07'</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Tasks with No Address\Task No Address Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LetterFaxConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[LetterFaxConn]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                      length="9"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Mailing_Status__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Mailing_Status__c]"
+                      length="19"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].Columns[Mailing_Status__c]"
+                      name="Mailing_Status__c"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="9"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output].ExternalColumns[Mailing_Status__c]"
+                      dataType="wstr"
+                      length="19"
+                      name="Mailing_Status__c" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Mailing_Status__c]"
+                      dataType="wstr"
+                      length="19"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[Mailing_Status__c]"
+                      name="Mailing_Status__c" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Tasks with No Address.Paths[ADO NET Source Output]"
+              endId="Package\Update Tasks with No Address\Task No Address Destination.Inputs[SalesForce Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Update Tasks with No Address\Task No Address Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Update Salesforce"
+          TopLeft="104,58" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Update Tasks with No Address"
+          TopLeft="104,160" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Update Salesforce">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Update Salesforce\TF SalesForce Destination"
+          TopLeft="135,135" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Update Salesforce\ADO NET Source"
+          TopLeft="134,48" />
+        <EdgeLayout
+          Id="Package\Update Salesforce.Paths[ADO NET Source Output]"
+          TopLeft="213,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22,45"
+              Start="0,0"
+              End="22,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="18,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18,22.5"
+                    Point2="22,22.5"
+                    Point3="22,26.5" />
+                  <mssgle:LineSegment
+                    End="22,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Salesforce\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update Tasks with No Address">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Update Tasks with No Address\Task No Address Destination"
+          TopLeft="132,213" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Update Tasks with No Address\Task No Address Source"
+          TopLeft="143,89" />
+        <EdgeLayout
+          Id="Package\Update Tasks with No Address.Paths[ADO NET Source Output]"
+          TopLeft="239.25,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Tasks with No Address\Task No Address Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
