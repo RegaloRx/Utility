@@ -7,13 +7,13 @@
   DTS:CreatorName="HHI\cmchenry-admin"
   DTS:DTSID="{50CD9CC8-A585-4E2A-8341-EC1CB2E5D137}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
   DTS:LocaleID="1033"
   DTS:ObjectName="TezeExtract"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="254"
-  DTS:VersionGUID="{781C838E-7F6A-4D4F-BE5F-8E35C290578D}">
+  DTS:VersionBuild="256"
+  DTS:VersionGUID="{0D015132-9E6A-4E00-98EB-0E4DF5835A91}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2895,8 +2895,7 @@
         DTS:Name="Password">@[User::SFPW]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <TaskFactorySalesForceConnectionManager
-          ConnectionString="Username=data.sa@regalorx.org;ServerURL=https://login.salesforce.com/services/Soap/u/48.0;ServiceType=0;Timeout=60;UseProxy=False;ProxyHost=;ProxyUserName=;ProxyDomain=;ProxyPort=0;MessageListToHandle=;ReuseConnectionAcrossAllTasks=True;NumberOfRetries=0;ResponseStatusCodes=;RetryDelay=0;RetryMode=0;"
-          ConnectByProxy="False">
+          ConnectionString="Username=data.sa@regalorx.org;ServerURL=https://login.salesforce.com/services/Soap/u/48.0;ServiceType=0;Timeout=60;UseProxy=False;ProxyHost=;ProxyUserName=;ProxyDomain=;ProxyPort=0;MessageListToHandle=;ReuseConnectionAcrossAllTasks=True;NumberOfRetries=0;ResponseStatusCodes=;RetryDelay=0;RetryMode=0;">
           <Password
             Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"></Password>
         </TaskFactorySalesForceConnectionManager>
@@ -2935,7 +2934,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ShipId"
-              DTS:DTSID="{994CE3CC-EF2A-4865-9A47-2353E02CB38E}"
+              DTS:DTSID="{583E4C6C-BA3F-4DC9-B405-2EDF21C360F9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2944,7 +2943,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case_Number__c"
-              DTS:DTSID="{93581D9D-DCC6-4320-B54A-8EAEB1FC80A7}"
+              DTS:DTSID="{0CB4EC84-6C0C-427B-A3A4-6414885B7250}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2953,7 +2952,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient_Id__c"
-              DTS:DTSID="{99A96319-68F0-4008-8C04-959826FE764D}"
+              DTS:DTSID="{B41A40BA-77C7-4E3B-8E90-59A893E514CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2962,7 +2961,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Order_ID__c"
-              DTS:DTSID="{1DCAA32C-9AEA-4D3A-A8DA-F96965C671EC}"
+              DTS:DTSID="{604FBF1E-5925-4FCC-A91F-293EF6491907}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2971,7 +2970,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Carrier__c"
-              DTS:DTSID="{EC093285-3592-471F-B9EC-5AB858AAB3B5}"
+              DTS:DTSID="{758DD7C0-7292-43CF-8FDB-A10D1A94BD6A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2980,7 +2979,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Days_Supply__c"
-              DTS:DTSID="{FB565EAB-96F5-464D-AF0D-C3EAD8AF4D07}"
+              DTS:DTSID="{8E97A518-1142-49CD-8DD7-BF82C37268C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2989,7 +2988,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Fill_Number__c"
-              DTS:DTSID="{BF84A943-9588-47EF-809B-7AECFB9FDCAD}"
+              DTS:DTSID="{89C59DC9-6986-45EF-971E-2FF26B1540AB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2998,7 +2997,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC_Number__c"
-              DTS:DTSID="{03B1514D-8F5F-4150-904A-1FC9541044D2}"
+              DTS:DTSID="{F8D1E23E-EA9B-4555-ADB0-05F2A5F0985D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3006,7 +3005,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Number_of_Fills_Remaining__c"
-              DTS:DTSID="{825F6CCE-B329-4CA2-AB94-7B7ED75AFA54}"
+              DTS:DTSID="{4FA30B7B-0B4C-4ACC-A7A7-DEEB219A7005}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3015,7 +3014,16 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Quantity_Shipped__c"
-              DTS:DTSID="{D90C5C24-F98C-4597-9D79-4C12A7C93CF7}"
+              DTS:DTSID="{0CF40ED0-AB8D-49D9-BFD0-9E13E89E3501}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ship_Date"
+              DTS:DTSID="{6B042043-9CD1-4B5A-B86B-5061D89BFBED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3024,7 +3032,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Rx_Number__c"
-              DTS:DTSID="{07EF8884-0229-44CC-88F1-0B884A0D1996}"
+              DTS:DTSID="{7176BEDA-99EA-444B-8453-520CEF428FAE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3033,7 +3041,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Tracking_Number__c"
-              DTS:DTSID="{2579F432-FE80-45AB-AA24-47ED04903AFD}"
+              DTS:DTSID="{967385D5-2B1E-483E-B833-235C7D86AF25}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3262,7 +3270,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Ship_Date_Formatted__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10005,6 +10013,15 @@ WHERE
                       name="Quantity_Shipped__c"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Date_Formatted__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Date_Formatted__c]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Date_Formatted__c]"
+                      name="Ship_Date_Formatted__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Rx_Number__c]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -10076,6 +10093,10 @@ WHERE
                       dataType="wstr"
                       length="50"
                       name="Quantity_Shipped__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Date_Formatted__c]"
+                      dataType="dbDate"
+                      name="Ship_Date_Formatted__c" />
                     <externalMetadataColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Rx_Number__c]"
                       dataType="wstr"
@@ -10152,6 +10173,11 @@ WHERE
                       length="50"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Quantity_Shipped__c]"
                       name="Quantity_Shipped__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Date_Formatted__c]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Date_Formatted__c]"
+                      name="Ship_Date_Formatted__c" />
                     <outputColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Rx_Number__c]"
                       dataType="wstr"
@@ -10300,6 +10326,12 @@ WHERE
                       cachedName="Tracking_Number__c"
                       externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[Tracking_Number__c]"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Tracking_Number__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_Date_Formatted__c]"
+                      cachedDataType="dbDate"
+                      cachedName="Ship_Date_Formatted__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[Ship_Date]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Date_Formatted__c]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10362,6 +10394,11 @@ WHERE
                       dataType="wstr"
                       length="50"
                       name="Tracking_Number__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[Ship_Date]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ship_Date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -10457,13 +10494,41 @@ WHERE
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42"
-          Id="Package\Extract Shipments"
-          TopLeft="366,322" />
+          Size="162,42"
+          Id="Package\Build Cases Table"
+          TopLeft="77,136" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Build Patients Table"
+          TopLeft="83,241" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Build Rx Table"
+          TopLeft="87,354" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Build Shipment Table"
+          TopLeft="101,463" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Drop Staging Tables"
+          TopLeft="79,31" />
         <NodeLayout
           Size="187,42"
           Id="Package\Extract Case Detail File"
           TopLeft="365,457" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Extract Patients"
+          TopLeft="362,141" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Extract Prescriptions"
+          TopLeft="355,216" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Extract Shipments"
+          TopLeft="366,322" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="458.5,457">
@@ -10498,10 +10563,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Extract Prescriptions"
-          TopLeft="355,216" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="445.25,322">
@@ -10524,10 +10585,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Extract Patients"
-          TopLeft="362,141" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="440.25,216">
@@ -10550,14 +10607,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\Build Cases Table"
-          TopLeft="77,136" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Build Patients Table"
-          TopLeft="83,241" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="158,178">
@@ -10592,10 +10641,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Build Rx Table"
-          TopLeft="87,354" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="169,283">
@@ -10630,10 +10675,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Build Shipment Table"
-          TopLeft="101,463" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="160,396">
@@ -10690,10 +10731,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Drop Staging Tables"
-          TopLeft="79,31" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="166,73">
@@ -10732,6 +10769,150 @@ WHERE
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Extract Case Detail File">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Extract Case Detail File\Flat File Destination"
+          TopLeft="159,137" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Extract Case Detail File\Case Source"
+          TopLeft="171,30" />
+        <EdgeLayout
+          Id="Package\Extract Case Detail File.Paths[ADO NET Source Output]"
+          TopLeft="242.25,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Case Detail File\Case Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Patients">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Extract Patients\Patient Dest"
+          TopLeft="115,193" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Extract Patients\Patient Source"
+          TopLeft="116,77" />
+        <EdgeLayout
+          Id="Package\Extract Patients.Paths[ADO NET Source Output]"
+          TopLeft="186.25,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Patients\Patient Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Prescriptions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Extract Prescriptions\Rx Source"
+          TopLeft="121,48" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Extract Prescriptions\Rx Dest"
+          TopLeft="123,173" />
+        <EdgeLayout
+          Id="Package\Extract Prescriptions.Paths[ADO NET Source Output]"
+          TopLeft="182.25,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Prescriptions\Rx Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Extract Shipments">
     <LayoutInfo>
       <GraphLayout
@@ -10769,146 +10950,8 @@ WHERE
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <TaskHost
-    design-time-name="Package\Extract Case Detail File">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Extract Case Detail File\Flat File Destination"
-          TopLeft="159,137" />
-        <NodeLayout
-          Size="137,42"
-          Id="Package\Extract Case Detail File\Case Source"
-          TopLeft="171,30" />
-        <EdgeLayout
-          Id="Package\Extract Case Detail File.Paths[ADO NET Source Output]"
-          TopLeft="242.25,72">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Shipments\Shipments Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract Prescriptions">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Extract Prescriptions\Rx Source"
-          TopLeft="121,48" />
-        <NodeLayout
-          Size="115,42"
-          Id="Package\Extract Prescriptions\Rx Dest"
-          TopLeft="123,173" />
-        <EdgeLayout
-          Id="Package\Extract Prescriptions.Paths[ADO NET Source Output]"
-          TopLeft="182.25,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,83"
-              Start="0,0"
-              End="0,75.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,75.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Prescriptions\Rx Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Case Detail File\Case Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract Patients">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Extract Patients\Patient Source"
-          TopLeft="116,77" />
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Extract Patients\Patient Dest"
-          TopLeft="115,193" />
-        <EdgeLayout
-          Id="Package\Extract Patients.Paths[ADO NET Source Output]"
-          TopLeft="186.25,119">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74"
-              Start="0,0"
-              End="0,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Patients\Patient Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
