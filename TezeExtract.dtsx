@@ -12,8 +12,8 @@
   DTS:ObjectName="TezeExtract"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="264"
-  DTS:VersionGUID="{01A513A8-6190-4115-8864-C3AE1CD3540A}">
+  DTS:VersionBuild="267"
+  DTS:VersionGUID="{1AC19F98-A972-45C7-861B-5F8378B59461}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3007,7 +3007,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ShipId"
-              DTS:DTSID="{8D6AA63F-37AE-47B0-9B32-F4E7AA4013B9}"
+              DTS:DTSID="{ADBAB06D-35C8-4041-959E-81B79356C37A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3016,7 +3016,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case_Number__c"
-              DTS:DTSID="{10687EC5-4FFC-429C-B4AD-487BC9F5CE56}"
+              DTS:DTSID="{B5CD2620-E679-410D-AA1F-40AEAA295A79}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3025,7 +3025,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient_Id__c"
-              DTS:DTSID="{19F3C233-BBED-444A-93B5-3307061E7A50}"
+              DTS:DTSID="{7F5FEF1C-1BC5-4455-A804-AE8B4A0765FE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3034,7 +3034,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Order_ID__c"
-              DTS:DTSID="{EFB907F4-A7E0-4D11-B6CB-4D152FD4E546}"
+              DTS:DTSID="{92AFE27E-BC52-47CB-8D2A-04F5ED947F62}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3043,7 +3043,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Carrier__c"
-              DTS:DTSID="{FD84EB90-A8BC-472A-A5BC-206ACFC40042}"
+              DTS:DTSID="{D37C9790-22FC-4D83-809D-D8D2F3B56B92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3052,7 +3052,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Days_Supply__c"
-              DTS:DTSID="{A26260F7-2B62-4B54-96AF-2548708FE9D2}"
+              DTS:DTSID="{C08DBD04-70F9-465C-9E93-FA7CB31586D8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3061,7 +3061,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Fill_Number__c"
-              DTS:DTSID="{FDDD07B1-0674-400A-BEBA-28C3CCA14FA6}"
+              DTS:DTSID="{946E4336-9F3B-4C64-BF10-8792B97597F0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3070,7 +3070,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC_Number__c"
-              DTS:DTSID="{782CAEF8-5C9C-4B93-924B-9FEE4C73B8A4}"
+              DTS:DTSID="{5956D137-2EED-4F76-9647-1C7309257C5A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3078,7 +3078,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Number_of_Fills_Remaining__c"
-              DTS:DTSID="{A54342A6-58A1-40C3-8A71-4C579F096825}"
+              DTS:DTSID="{DCAF819B-4A77-4CDC-ADFB-7F24DF12CA75}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3087,7 +3087,52 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Quantity_Shipped__c"
-              DTS:DTSID="{EB7E562F-423C-4F6E-9E3E-08FD8F59DDED}"
+              DTS:DTSID="{753FA793-B135-46E8-B30D-06B1484B4F33}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShipAddress1"
+              DTS:DTSID="{CAECAB92-9814-4013-B1A6-F6AA4A822812}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShipAddress2"
+              DTS:DTSID="{DD7E881D-4EFA-4CCD-AB7D-56E3DB90709A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShipCity"
+              DTS:DTSID="{A08A7847-BCA4-4B18-8273-1A5E31EBB83B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShipState"
+              DTS:DTSID="{D79B85A1-D6A5-41F0-AD79-BD65B43A2128}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShipZip"
+              DTS:DTSID="{548F6764-93A3-46D5-9D64-3A7C1BD800C5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3096,7 +3141,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Date"
-              DTS:DTSID="{FF9D4AD5-712B-4270-AF9D-840F847E57D9}"
+              DTS:DTSID="{A1159468-3CAA-4CF1-A047-91CBE4B41CA7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3105,7 +3150,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Rx_Number__c"
-              DTS:DTSID="{354D2289-0BB5-4CB0-9001-0C0E202EC40F}"
+              DTS:DTSID="{8D41EB6A-8E90-42DB-8A28-EFCCE3860D07}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3114,7 +3159,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Tracking_Number__c"
-              DTS:DTSID="{3047D521-A700-425A-B0A8-87B6475D29A9}"
+              DTS:DTSID="{F0A5347C-765F-4A02-8772-3D0F5AFCF161}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3123,7 +3168,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HcpId"
-              DTS:DTSID="{92CDFBB4-5901-499F-BCD8-6F4DED1A9C28}"
+              DTS:DTSID="{5388CF6C-1275-4346-8A23-DC2988FF9622}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3378,7 +3423,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Ship_Date_Formatted__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;&#x9;, TC.HCPId&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Ship_Date_Formatted__c&#xA;&#x9;, SAR.Ship_Address_1__c&#xA;&#x9;, SAR.Ship_Address_2__c&#xA;&#x9;, SAR.Ship_City__c&#xA;&#x9;, SAR.Ship_State__c&#xA;&#x9;, SAR.Ship_Zip__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;&#x9;, TC.HCPId&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -7331,6 +7376,7 @@ where NOT
     <DTS:Executable
       DTS:refId="Package\Extract HCPs"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{A8750C87-3475-4FE4-B23D-B022943A1FCB}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -10508,6 +10554,56 @@ WHERE
                       name="Ship_Date_Formatted__c"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_1__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Address_1__c]"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_1__c]"
+                      name="Ship_Address_1__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_2__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Address_2__c]"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_2__c]"
+                      name="Ship_Address_2__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_City__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_City__c]"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_City__c]"
+                      name="Ship_City__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_State__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_State__c]"
+                      length="2"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_State__c]"
+                      name="Ship_State__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Zip__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Zip__c]"
+                      length="10"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Zip__c]"
+                      name="Ship_Zip__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Rx_Number__c]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -10594,6 +10690,31 @@ WHERE
                       dataType="dbDate"
                       name="Ship_Date_Formatted__c" />
                     <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Address_1__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ship_Address_1__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Address_2__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ship_Address_2__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_City__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Ship_City__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_State__c]"
+                      dataType="wstr"
+                      length="2"
+                      name="Ship_State__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Ship_Zip__c]"
+                      dataType="wstr"
+                      length="10"
+                      name="Ship_Zip__c" />
+                    <externalMetadataColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[Rx_Number__c]"
                       dataType="wstr"
                       length="30"
@@ -10679,6 +10800,36 @@ WHERE
                       dataType="dbDate"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Date_Formatted__c]"
                       name="Ship_Date_Formatted__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Address_1__c]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Address_1__c]"
+                      name="Ship_Address_1__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Address_2__c]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Address_2__c]"
+                      name="Ship_Address_2__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_City__c]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_City__c]"
+                      name="Ship_City__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_State__c]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_State__c]"
+                      name="Ship_State__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Zip__c]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Ship_Zip__c]"
+                      name="Ship_Zip__c" />
                     <outputColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Rx_Number__c]"
                       dataType="wstr"
@@ -10846,6 +10997,41 @@ WHERE
                       cachedName="HCPId"
                       externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[HcpId]"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[HCPId]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_Address_1__c]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Ship_Address_1__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipAddress1]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_1__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_Address_2__c]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Ship_Address_2__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipAddress2]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Address_2__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_City__c]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Ship_City__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipCity]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_City__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_State__c]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Ship_State__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipState]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_State__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[Ship_Zip__c]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Ship_Zip__c"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipZip]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Zip__c]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10918,6 +11104,31 @@ WHERE
                       dataType="wstr"
                       length="50"
                       name="HcpId" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipAddress1]"
+                      dataType="wstr"
+                      length="100"
+                      name="ShipAddress1" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipAddress2]"
+                      dataType="wstr"
+                      length="100"
+                      name="ShipAddress2" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipCity]"
+                      dataType="wstr"
+                      length="100"
+                      name="ShipCity" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipState]"
+                      dataType="wstr"
+                      length="50"
+                      name="ShipState" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[ShipZip]"
+                      dataType="wstr"
+                      length="50"
+                      name="ShipZip" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -11033,6 +11244,10 @@ WHERE
           Id="Package\Build Cases Table"
           TopLeft="77,136" />
         <NodeLayout
+          Size="154,42"
+          Id="Package\Build HCP Table"
+          TopLeft="107,555" />
+        <NodeLayout
           Size="172,42"
           Id="Package\Build Patients Table"
           TopLeft="83,241" />
@@ -11052,6 +11267,10 @@ WHERE
           Size="187,42"
           Id="Package\Extract Case Detail File"
           TopLeft="364,546" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Extract HCPs"
+          TopLeft="359,135" />
         <NodeLayout
           Size="152,42"
           Id="Package\Extract Patients"
@@ -11245,6 +11464,28 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="187.25,505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="166,73">
           <EdgeLayout.Curve>
@@ -11270,32 +11511,6 @@ WHERE
                     Point3="-8,35.5" />
                   <mssgle:LineSegment
                     End="-8,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Build HCP Table"
-          TopLeft="107,555" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="187.25,505">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11338,10 +11553,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Extract HCPs"
-          TopLeft="359,135" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
           TopLeft="437,230">
@@ -11428,6 +11639,64 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Extract HCPs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Extract HCPs\HcpFile"
+          TopLeft="107,179" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Extract HCPs\ADO NET Source"
+          TopLeft="105,52" />
+        <EdgeLayout
+          Id="Package\Extract HCPs.Paths[ADO NET Source Output]"
+          TopLeft="184,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.5,85"
+              Start="0,0"
+              End="-20.5,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="-4,42.5" />
+                  <mssgle:LineSegment
+                    End="-16.5,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.5,42.5"
+                    Point2="-20.5,42.5"
+                    Point3="-20.5,46.5" />
+                  <mssgle:LineSegment
+                    End="-20.5,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract HCPs\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Extract Patients">
     <LayoutInfo>
       <GraphLayout
@@ -11479,15 +11748,15 @@ WHERE
     design-time-name="Package\Extract Prescriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Extract Prescriptions\Rx Source"
-          TopLeft="121,48" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="115,42"
           Id="Package\Extract Prescriptions\Rx Dest"
           TopLeft="123,173" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Extract Prescriptions\Rx Source"
+          TopLeft="121,48" />
         <EdgeLayout
           Id="Package\Extract Prescriptions.Paths[ADO NET Source Output]"
           TopLeft="182.25,90">
@@ -11507,7 +11776,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11527,13 +11798,13 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\Extract Shipments\TezeShipments"
-          TopLeft="157,228" />
-        <NodeLayout
           Size="163,42"
           Id="Package\Extract Shipments\Shipments Source"
           TopLeft="150,95" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Extract Shipments\TezeShipments"
+          TopLeft="157,228" />
         <EdgeLayout
           Id="Package\Extract Shipments.Paths[ADO NET Source Output]"
           TopLeft="231.75,137">
@@ -11561,64 +11832,6 @@ WHERE
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Shipments\Shipments Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract HCPs">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Extract HCPs\ADO NET Source"
-          TopLeft="105,52" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Extract HCPs\HcpFile"
-          TopLeft="107,179" />
-        <EdgeLayout
-          Id="Package\Extract HCPs.Paths[ADO NET Source Output]"
-          TopLeft="184,94">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.5,85"
-              Start="0,0"
-              End="-20.5,77.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.5"
-                    Point2="0,42.5"
-                    Point3="-4,42.5" />
-                  <mssgle:LineSegment
-                    End="-16.5,42.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.5,42.5"
-                    Point2="-20.5,42.5"
-                    Point3="-20.5,46.5" />
-                  <mssgle:LineSegment
-                    End="-20.5,77.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract HCPs\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
