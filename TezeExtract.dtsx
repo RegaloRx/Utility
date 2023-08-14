@@ -12,8 +12,8 @@
   DTS:ObjectName="TezeExtract"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="256"
-  DTS:VersionGUID="{0D015132-9E6A-4E00-98EB-0E4DF5835A91}">
+  DTS:VersionBuild="264"
+  DTS:VersionGUID="{01A513A8-6190-4115-8864-C3AE1CD3540A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2430,6 +2430,79 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HcpFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2E13E3E5-BB4A-4F95-B252-0B3E14B6E466}"
+      DTS:ObjectName="HcpFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\TezeHcp.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HCP_Id__c"
+              DTS:DTSID="{ADCBFCCD-E7F9-42EC-97CF-E0117BD40F90}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="40"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{7E5B0C69-C18B-47CB-9217-31E3BB65DEFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{D7190206-091A-403B-83C9-93919A2594D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NPI__c"
+              DTS:DTSID="{A21CE265-F9D2-4714-96ED-E880798622BE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Phone"
+              DTS:DTSID="{8120BE00-F77B-4D6A-BEE9-674D55D0B6CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fax"
+              DTS:DTSID="{A4681736-9F53-4F68-B0FD-357385B9CE3E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PatientsFile]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{128D603F-59AD-4634-B996-B6BAB0A7263C}"
@@ -2934,7 +3007,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ShipId"
-              DTS:DTSID="{583E4C6C-BA3F-4DC9-B405-2EDF21C360F9}"
+              DTS:DTSID="{8D6AA63F-37AE-47B0-9B32-F4E7AA4013B9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2943,7 +3016,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case_Number__c"
-              DTS:DTSID="{0CB4EC84-6C0C-427B-A3A4-6414885B7250}"
+              DTS:DTSID="{10687EC5-4FFC-429C-B4AD-487BC9F5CE56}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2952,7 +3025,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient_Id__c"
-              DTS:DTSID="{B41A40BA-77C7-4E3B-8E90-59A893E514CA}"
+              DTS:DTSID="{19F3C233-BBED-444A-93B5-3307061E7A50}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2961,7 +3034,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Order_ID__c"
-              DTS:DTSID="{604FBF1E-5925-4FCC-A91F-293EF6491907}"
+              DTS:DTSID="{EFB907F4-A7E0-4D11-B6CB-4D152FD4E546}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2970,7 +3043,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Carrier__c"
-              DTS:DTSID="{758DD7C0-7292-43CF-8FDB-A10D1A94BD6A}"
+              DTS:DTSID="{FD84EB90-A8BC-472A-A5BC-206ACFC40042}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2979,7 +3052,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Days_Supply__c"
-              DTS:DTSID="{8E97A518-1142-49CD-8DD7-BF82C37268C2}"
+              DTS:DTSID="{A26260F7-2B62-4B54-96AF-2548708FE9D2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2988,7 +3061,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Fill_Number__c"
-              DTS:DTSID="{89C59DC9-6986-45EF-971E-2FF26B1540AB}"
+              DTS:DTSID="{FDDD07B1-0674-400A-BEBA-28C3CCA14FA6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -2997,7 +3070,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC_Number__c"
-              DTS:DTSID="{F8D1E23E-EA9B-4555-ADB0-05F2A5F0985D}"
+              DTS:DTSID="{782CAEF8-5C9C-4B93-924B-9FEE4C73B8A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3005,7 +3078,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Number_of_Fills_Remaining__c"
-              DTS:DTSID="{4FA30B7B-0B4C-4ACC-A7A7-DEEB219A7005}"
+              DTS:DTSID="{A54342A6-58A1-40C3-8A71-4C579F096825}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3014,7 +3087,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Quantity_Shipped__c"
-              DTS:DTSID="{0CF40ED0-AB8D-49D9-BFD0-9E13E89E3501}"
+              DTS:DTSID="{EB7E562F-423C-4F6E-9E3E-08FD8F59DDED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3023,7 +3096,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Date"
-              DTS:DTSID="{6B042043-9CD1-4B5A-B86B-5061D89BFBED}"
+              DTS:DTSID="{FF9D4AD5-712B-4270-AF9D-840F847E57D9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3032,7 +3105,16 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Rx_Number__c"
-              DTS:DTSID="{7176BEDA-99EA-444B-8453-520CEF428FAE}"
+              DTS:DTSID="{354D2289-0BB5-4CB0-9001-0C0E202EC40F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tracking_Number__c"
+              DTS:DTSID="{3047D521-A700-425A-B0A8-87B6475D29A9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3040,8 +3122,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="130"
               DTS:TextQualified="True"
-              DTS:ObjectName="Tracking_Number__c"
-              DTS:DTSID="{967385D5-2B1E-483E-B833-235C7D86AF25}"
+              DTS:ObjectName="HcpId"
+              DTS:DTSID="{92CDFBB4-5901-499F-BCD8-6F4DED1A9C28}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3070,7 +3152,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="RxId"
-              DTS:DTSID="{D0961243-9BEB-400A-8CD3-6C46B0142C0E}"
+              DTS:DTSID="{4DF4A5B7-137C-419E-ADFC-852691C1AA58}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3079,7 +3161,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Pharmacy_Rx_Number__c"
-              DTS:DTSID="{9ED28298-BE9D-49C9-A8B4-ADB1427E8159}"
+              DTS:DTSID="{91719C60-5B66-4FDE-A9B3-BB953AFC0538}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3088,7 +3170,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient_Id__c"
-              DTS:DTSID="{003C620D-2840-42B6-A60C-E2DFC82208EF}"
+              DTS:DTSID="{CFF9C7F7-4722-43E8-8132-A90E47E30E52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3097,7 +3179,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="CaseNumber"
-              DTS:DTSID="{E638F231-39CA-4666-900B-314C7DC0AAD5}"
+              DTS:DTSID="{5F21E2D8-EAA2-4F46-8E90-A339AC7D7CBF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3106,7 +3188,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Concurrent_Medications__c"
-              DTS:DTSID="{FC3B9B40-7CCA-4882-9931-2FCA162BF080}"
+              DTS:DTSID="{14EAD66A-2508-4C1A-BE0E-8B509BF1D82D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3115,7 +3197,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Known_Drug_Allergies__c"
-              DTS:DTSID="{7F234ABA-1B48-433D-A5B6-2784A2BB94A2}"
+              DTS:DTSID="{6F123B77-6C68-411A-97F7-2ACC84400D92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3124,7 +3206,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC__c"
-              DTS:DTSID="{C2BEDB45-02C1-4145-871F-38C27F6D048E}"
+              DTS:DTSID="{D93B5B53-2E4C-4CCC-A059-EB456177A8B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3133,7 +3215,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Refills_Selection__c"
-              DTS:DTSID="{8F1E0EF3-FDE7-4827-B5E3-626C54C2171D}"
+              DTS:DTSID="{DCAB0FAF-806F-4FBF-9336-6806B524C65B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3142,7 +3224,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Dispense_Amount_Selection__c"
-              DTS:DTSID="{0B2EF90C-7E68-4585-BE07-3D734421770B}"
+              DTS:DTSID="{F608F6B2-72BE-49C4-8D0B-2A0DE18939B0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3151,7 +3233,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Frequency_Selection__c"
-              DTS:DTSID="{9205CCD9-5D22-410E-951C-B797A946022A}"
+              DTS:DTSID="{DE41A76E-C96B-4359-B162-FCC44DBAC931}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3160,7 +3242,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Medication_Dose_Selection__c"
-              DTS:DTSID="{2A1CEA3F-F698-49B4-9166-0F2E6CD0705E}"
+              DTS:DTSID="{6218D611-044D-4B2C-B54C-0BE9FCEE8157}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3168,15 +3250,24 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Signature_Date__c"
-              DTS:DTSID="{ABEF23C9-42C5-4754-BD4F-1B7654AB605B}"
+              DTS:DTSID="{3513A2CF-9E97-49EC-A634-4578F1BBF3C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x005E_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Number_of_Fills_Remaining__c"
+              DTS:DTSID="{832ABB25-B913-4CD6-9382-1DE92688BDE3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="5"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
               DTS:TextQualified="True"
-              DTS:ObjectName="Number_of_Fills_Remaining__c"
-              DTS:DTSID="{E452A511-3DB2-45CE-BAD4-E9A76F6B802C}"
+              DTS:ObjectName="HcpId"
+              DTS:DTSID="{6506DA8E-8A0E-4815-AA5F-CFD95FEAC731}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3219,7 +3310,24 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="WITH Cases AS (&#xA;SELECT&#xA;    CSE.Id&#xA;&#x9;, CaseNumber&#xA;&#x9;, CSE.ContactId AS ContactId&#xA;&#x9;, CASE WHEN CHARINDEX('-', Legacy_Case_Id__c) &gt; 0 THEN NULL ELSE Legacy_Case_Id__c END AS HUB_CaseID__c&#xA;&#x9;, [Status]&#xA;&#x9;, cast(COALESCE(CSE.Legacy_Created_Date__c, CSE.CreatedDate) as date) AS CreatedDate&#xA;&#x9;, Sub_Status__c AS amg_sub_status__c&#xA;&#x9;,IIF(ISNULL(PA.Status__c, 'Inactive') = 'Active','Yes','No') AS Is_Current_Case__c&#xA;&#x9;, Eligibility_Determination_Date__c AS Case_Approval_Date__c&#xA;&#x9;, PAP_Eligibility_End_Date__c AS expiration_date__c&#xA;&#x9;, REPLACE(PATRES.[Six_Months_in_US_or_Territory__c], 'N/A', '') AS [AMG_6m_in_US_or_Territory__c]&#xA;    , CASE INS.Plan_Type__c WHEN 'Commercial' THEN N'Yes' ELSE N'None' END AS E1_Ping_Commercial_insurance__c&#xA;    , REPLACE(CASE WHEN  PATRES.US_Citizen_Resident_Alien__c IN ('US Citizen', 'Resident Alien') THEN N'Yes' ELSE N'No' END, 'N/A', N'') AS AMG_US_Citizen__c&#xA;    , REPLACE(EQ.Pregnant__c, 'N/A', '') AS AMG_Are_you_pregnant__c&#xA;    , REPLACE(EQ.Blind_or_received_SS_Disability_status__c, 'N/A', '') AS AMG_Blind_or_SS_Disability__c&#xA;    , REPLACE(EQ.Denied_Medicaid__c, 'N/A', '') AS AMG_Have_you_been_denied_Medicaid__c&#xA;    , REPLACE(EQ.Parent_Caretaker_of_dependent_children__c, 'N/A', '') AS AMG_Parents_of_dependent_children__c&#xA;    , REPLACE(EQ.Eligible_Enrolled_in_other_programs__c, 'N/A', '') AS AMG_Eligible_or_Enrolled_in_any_Programs__c&#xA;    , REPLACE(EQ.Medicare__c, 'N/A', '') AS AMG_Medicare__c&#xA;    , REPLACE(EQ.Medicaid__c, 'N/A', '') AS AMG_Do_you_have_Medicaid__c&#xA;    , REPLACE(EQ.Medicare_Part_D__c, 'N/A', '') AS AMG_Medicare_Part_D__c&#xA;    , PINC.Household_Size__c AS AMG_Household_Size__c&#xA;&#x9;, PINC.Yearly_Income__c AS AMG_Income_Yearly_Conversion__c &#xA;    , CSE.External_FPL_Percent__c AS FPL_Percent__c&#xA;&#x9;, CSE.Internal_FPL_Percent__c AS Experian_FPL_Percent&#xA;&#x9;, HCPF.HCP__c AS Prescribing_Physician__c&#xA;&#x9;, HCPFA.Account__c AS Facility_Practice_Name__c&#xA;&#x9;, Patient_Information_Sections__c&#xA;&#x9;, CSE.Eligibility_Checklist_Complete__c AS AMG_Patient_Info_Complete__c&#xA;&#x9;--, PINC.Household_Income__c AS Annual_HH_Income_Return__c&#xA;&#x9;--, AMG_FPL_Amount__c,&#xA;&#x9;, CSE.PAP_Eligibility_Start_Date__c AS PAP_Eligibility_Start_Date__c&#xA;&#x9;, CSE.Eligibility_Determination_Date__c&#xA;&#x9;, CAST(FU.PA_Effective_Date__c as date) AS PA_Effective_Date__c&#xA;&#x9;, CAST(FU.PA_End_Date__c as date) AS PA_End_Date__c&#xA;&#x9;, FU.Outcome__c AS PA_Outcome__c&#xA;&#x9;, CAST(CSE.Last_Sub_Status_Change_Date__c as date) AS Last_Sub_Status_Change_Date__c&#xA;&#x9;, ISNULL(COALESCE(CSE.Product_Name__c, PA2.Product_Name__c), N'None') AS Product&#xA;&#x9;, EQ.Eligible_Enrolled_in_other_programs__c &#xA;&#x9;, EQ.Medicare_Effective_Date__c&#xA;&#x9;, CSE.Reason_Code__c&#xA;&#x9;, CSE.Insurance__c&#xA;&#x9;, PINC.Above_Below_acceptable_FPL__c&#xA;&#x9;, PINC.External_Household_Income__c&#xA;&#x9;, PINC.External_Household_Size__c&#xA;&#x9;, PINC.Over_Net_Worth__c&#xA;&#x9;, EQ.Medicare_LIS_Status__c&#xA;&#x9;, EQ.Medicare_Part_D_LIS_Decision__c&#xA;&#x9;, PATRES.Six_Months_in_US_or_Territory__c&#xA;FROM &#xA;&#x9;[Case] CSE&#xA;&#x9;INNER JOIN Product_Affiliation__c PA2&#xA;&#x9;&#x9;ON CSE.Product_Affiliation__c = PA2.Id&#xA;&#x9;-- *******************************************&#xA;&#x9;-- These joins changed to left outer upon &#xA;&#x9;-- request of Chris McMillin in order to show &#xA;&#x9;-- cases in the Closed status&#xA;&#x9;LEFT OUTER JOIN Patient_Residency__c PATRES &#xA;&#x9;&#x9;ON CSE.Patient_Residency__c = PATRES.Id&#xA;&#x9;LEFT OUTER JOIN [Eligibility_Qualifier__c] EQ&#xA;&#x9;&#x9;ON CSE.Eligibility_Qualifier__c = EQ.Id&#xA;&#x9;LEFT OUTER JOIN Patient_Income__c PINC&#xA;&#x9;&#x9;ON CSE.Patient_Income__c = PINC.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Affiliation__c HCPF&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCPF.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPF.Facility_Affiliation__c = HCPFA.Id&#xA;&#x9;--*******************************************&#xA;&#x9;LEFT OUTER JOIN Insurance__c INS&#xA;&#x9;&#x9;ON INS.Case__c = CSE.Id&#xA;&#x9;&#x9;AND INS.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND INS.Plan_Type__c = 'Commercial'&#xA;&#x9;LEFT OUTER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON CSE.Id = PA.Active_Case__c&#xA;&#x9;&#x9;AND PA.Status__c = 'Active'&#xA;&#x9;LEFT OUTER JOIN (&#xA;&#x9;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;PA_Effective_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, PA_End_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, Outcome__c&#xA;&#x9;&#x9;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, RecordTypeId&#xA;&#x9;&#x9;&#x9;&#x9;, RANK() OVER( PARTITION BY Case__c ORDER BY PA_Effective_Date__c DESC, PA_End_Date__c DESC, Outcome__c ) AS RNK&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Salesforce.dbo.Followup_Item__c FU&#xA;&#x9;&#x9;&#x9;&#x9;LEFT OUTER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON FU.RecordTypeId = RT.Id&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND RT.[Name] = 'PA Determination Letter'&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;FU.PA_Effective_Date__c IS NOT NULL&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;&#x9;WHERE RNK = 1&#xA;&#x9;) FU&#xA;&#x9;&#x9;ON CSE.Id = FU.Case__c&#xA;--WHERE (&#xA;--&#x9;&#x9;( CSE.[Status] = 'Pending' AND CSE.Sub_Status__c IN ( 'Missing Information ', 'Ready for Processing' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Approved' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Not Eligible' AND CSE.Sub_Status__c IN ( 'Residency', 'Income', 'Coverage Available' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Withdrawn' /*AND CSE.Sub_Status__c IN ( 'Patient No Longer on Drug', 'Coverage Gained', 'Patient Request', 'Inactivity', 'Expired' )*/ )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Cancelled' AND CSE.Sub_Status__c IN ( 'Error') )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Expired' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;)&#xA;WHERE&#xA;&#x9;CSE.[Status] IN ( 'Approved', 'Pending', 'Not Eligible', 'Withdrawn', 'Expired' )&#xA;&#x9;&#xA;),&#xA;&#xA;Contacts AS (&#xA;SELECT &#xA;    C.Id&#xA;&#x9;, C.Patient_Id__c AS ASNF_ID__c&#xA;&#x9;, C.Legacy_Contact_Id__c AS LegacyContactId&#xA;&#x9;, Primary_City__c AS MailingCity&#xA;&#x9;, Primary_State__c AS MailingState&#xA;&#x9;, left(Primary_Zip_Code__c,5) AS MailingPostalCode&#xA;&#x9;, CASE Gender__c WHEN 'Male' THEN N'M' WHEN 'Female' THEN N'F' ELSE N'' END AS Gender__c&#xA;&#x9;, YEAR(Birthdate) AS BirthYear&#xA;&#x9;, C.Full_Name__c&#xA;&#x9;, C.Sonexus_Pulse_ID__c&#xA;FROM Contact C&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON C.RecordTypeId = RT.Id&#xA; WHERE &#xA;&#x9;RT.[Name] = 'Patient' &#xA;&#x9;AND NOT (C.[Name] like 'Test%' or C.[Name] like '%RxC%') &#xA;&#x9;--and C.Sonexus_Pulse_ID__c IS NOT NULL&#xA;),&#xA;MedIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS MedInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Insurer__c AS Medical_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Medical_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Medical_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Medical_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Medical_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;PharmIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS PharmInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Insurer__c AS Pharm_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Pharm_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Pharm_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Pharm_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Pharm_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Pharmacy'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Auth AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Authorization_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Authorization'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;PCert AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Certification_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Certification'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;&#xA;MinzStack AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Case__c AS [ZPAPER__Case__c]&#xA;&#x9;&#x9;, PA.Contact__c AS [ZPAPER__Patient__c]&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as date) AS MinFaxDate&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as datetime) AS MinFaxDateTime&#xA;&#x9;FROM&#xA;&#x9;&#x9;Fax__c F&#xA;&#x9;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;&#x9;ON F.Product_Affiliation__c = PA.Id&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;, PA.Contact__c&#xA;),&#xA;&#xA;CaseStatusDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY CaseStatusDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS CaseStatusDate&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;[Field] = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = (SELECT [Status] FROM [Case] WHERE Id = CaseId)&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = (SELECT [Status] FROM [Case] WHERE Id = Case__c)&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;), &#xA;IntakeCompleteDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY IntakeCompleteDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS IntakeCompleteDate&#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;Field = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND CaseId IN (SELECT Id FROM [Case])&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND Case__c IN (SELECT Id FROM [Case])&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Shipment AS (&#xA;&#x9;SELECT * &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SA.Case_Number__c AS CaseNumber,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status_Explanation__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;CAST(Ship_Date__c as date) AS ShipmentDate,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RANK() OVER (PARTITION BY SA.Case_Number__c ORDER BY SR.CreatedDate DESC, CAST(Ship_Date__c as date) DESC) AS RNK&#xA;&#x9;&#x9;&#x9;&#x9;FROM ShipmentAuthorization_Response__c SR&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN Shipment_Authorization__c SA &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON SA.Id = SR.Shipment_Authorization__c&#xA;&#x9;&#x9;&#x9;&#x9;WHERE Ship_Status__c = 'S' &#xA;&#x9;) TempShipment&#xA;&#x9;where RNK = 1 &#xA;),&#xA;MDInfo AS (&#xA;SELECT &#xA;&#x9;HCP.Id AS MDId,&#xA;&#x9;PA.Active_Case__c AS CaseId,&#xA;&#x9;FirstName,&#xA;&#x9;LastName,&#xA;&#x9;NPI_City__c AS MailingCity,&#xA;&#x9;NPI_State__c AS MailingState,&#xA;&#x9;left(NPI_Postal_Code__c, 5) AS MailingPostalCode,&#xA;&#x9;NPI_Phone__c AS Phone,&#xA;&#x9;Fax&#xA;FROM &#xA;&#x9;Contact AS HCP&#xA;&#x9;INNER JOIN HCP_Affiliation__c HCPA&#xA;&#x9;&#x9;ON HCP.Id = HCPA.HCP__c&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON HCPA.Contact__c = PA.Contact__c&#xA;&#x9;where HCPA.Id in ( SELECT HCP_Affiliation__c FROM [Case] )&#xA;),&#xA;FacilityName AS (&#xA; SELECT * FROM (&#xA; SELECT&#xA;&#x9;ACCT.[Name] AS FacilityName&#xA;&#x9;, REPLACE(CFA.Facility_Contact_Name__c, '&quot;', '') AS OfficeContactName&#xA;&#x9;, ACCT.Id AS FacilityId&#xA;&#x9;, RANK() OVER ( PARTITION BY ACCT.Id ORDER BY CFA.[Name] DESC ) AS RNK&#xA;FROM&#xA;&#x9;ACCOUNT ACCT&#xA;&#x9;INNER JOIN [Contact_Facility_Affiliation__c] CFA&#xA;&#x9;&#x9;ON ACCT.Id = CFA.Account__c&#xA;) X&#xA;WHERE RNK = 1&#xA;), &#xA;ApprovalCount AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;, Count(*) AS ApprovalCount&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field = 'Status'&#xA;&#x9;&#x9;&#x9;AND NewValue = 'Approved'&#xA;&#xA;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;, New_Value__c&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;AND New_Value__c = 'Approved'&#xA;&#x9;&#x9;&#x9;AND Case__c IS NOT NULL&#xA;&#x9;&#x9;) X&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;NewValue&#xA;&#x9;&#x9;, CaseId&#xA;&#x9;HAVING&#xA;&#x9;&#x9;Count(*) &gt; 1&#xA;),&#xA;ZipCodes AS (&#xA;  select distinct &#xA;    left(ZIP,5) AS PostalCode,&#xA;&#x9;CountyFIPS AS FIPSCode,&#xA;&#x9;CountyName,&#xA;&#x9;MetropolitanStatisticalArea AS MSA,&#xA;&#x9;MarketArea,&#xA;&#x9;CoreBasedStatisticalArea&#xA;FROM&#xA;&#x9;ZipInfo.dbo.vw_ZipInfo&#xA;)&#xA;select DISTINCT&#xA;  contacts.ASNF_ID__c AS &quot;Patient ID&quot;,&#xA;  Cases.CaseNumber AS &quot;Case ID&quot;,&#xA;  cases.HUB_CaseID__c AS &quot;HUB Case ID&quot;,&#xA;  Cases.Status AS &quot;Intake Status&quot;,&#xA;  Null AS &quot;Intake Status Reason&quot;,&#xA;  MinzStack.MinFaxDate AS &quot;File Receipt Date Time&quot;,&#xA;  Cases.CreatedDate AS &quot;Case Created Date&quot;,&#xA;  Cases.Status AS &quot;Case Status&quot;,&#xA;  Cases.amg_sub_status__c AS &quot;Case Sub-Status&quot;,&#xA;  CaseStatusDate.CaseStatusDate AS &quot;Case Status Date&quot;,&#xA;  Cases.Last_Sub_Status_Change_Date__c AS &quot;Case Sub-Status Date&quot;,&#xA;  Null AS &quot;Intake Status Date&quot;,&#xA;  Cases.Is_Current_Case__c AS &quot;Current Case Flag&quot;,&#xA;  Null AS &quot;PAP Created Date&quot;,&#xA;  IntakeCompleteDate.IntakeCompleteDate AS &quot;Intake Complete&quot;,&#xA;  iif(cases.Status='Withdrawn', cases.amg_sub_status__c, null) AS &quot;Withdrawal Reason&quot;,&#xA;  Null AS &quot;Enrollment Status&quot;,&#xA;  Null AS &quot;Service Model&quot;,&#xA;  Null AS &quot;Foundation&quot;,&#xA;  Cases.Product AS &quot;Drug&quot;,&#xA;  CASE Cases.Product WHEN 'Aimovig' THEN 'Migraine' WHEN 'Otezla' THEN 'Psoriasis' ELSE 'None' END AS &quot;Therapeutic Area&quot;,&#xA;  cast(Cases.PAP_Eligibility_Start_Date__c as date) AS &quot;Eligibility Start Date&quot;,&#xA;  Cases.expiration_date__c AS &quot;Eligibility End Date&quot;,&#xA;  Contacts.MailingCity AS &quot;Patient City&quot;,&#xA;  Contacts.MailingState AS &quot;Patient State&quot;,&#xA;  left(Contacts.MailingPostalCode,5) AS &quot;Patient Zip Code&quot;,&#xA;  ZipCodes.FIPSCode AS &quot;FIPS Code&quot;, &#xA;  ZipCodes.MarketArea AS &quot;Market Area&quot;,&#xA;  Contacts.Gender__c AS &quot;Gender&quot;,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS &quot;US Resident?&quot;,&#xA;  Cases.E1_Ping_Commercial_insurance__c AS &quot;Does the Patient Have Commercial Insurance?&quot;,&#xA;  Cases.AMG_US_Citizen__c AS &quot;IsUSCitizenOrLegalAlien?&quot;,&#xA;  Cases.AMG_Are_you_pregnant__c AS &quot;IsPregnant?&quot;,&#xA;  Cases.AMG_Blind_or_SS_Disability__c AS &quot;IsBlindOrDisabled?&quot;,&#xA;  Cases.AMG_Have_you_been_denied_Medicaid__c AS &quot;IsDeniedMedicaid?&quot;,&#xA;  Cases.AMG_Parents_of_dependent_children__c AS &quot;IsCareTakerUnder18Child?&quot;,&#xA;  Cases.AMG_Eligible_or_Enrolled_in_any_Programs__c AS &quot;Gvmt Program Eligible?&quot;,&#xA;  Cases.AMG_Medicare__c AS &quot;Enrolled in Medicare?&quot;,&#xA;  Cases.AMG_Do_you_have_Medicaid__c AS &quot;Enrolled in Medicaid?&quot;,&#xA;  Cases.AMG_Medicare_Part_D__c AS &quot;Enrolled in MedD?&quot;,&#xA;  Cases.AMG_Household_Size__c AS &quot;Household #&quot;,&#xA;  cases.AMG_Income_Yearly_Conversion__c AS &quot;Patient Reported Income&quot;, &#xA;--  round((cases.Annual_HH_Income_Return__c/cases.AMG_FPL_Amount__c)*100,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.FPL_Percent__c,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.Experian_FPL_Percent,2) AS &quot;Experian FPL Calc&quot;, &#xA;  MDInfo.FirstName AS &quot;MD First Name&quot;,&#xA;  MDInfo.LastName AS &quot;MD Last Name&quot;,&#xA;  Null AS &quot;MD Address 1&quot;, --Leave AS NULL, per Alex&#xA;  Null AS &quot;MD Address 2&quot;, --Leave as NULL, per Alex&#xA;  MDInfo.MailingCity AS &quot;MD City&quot;,&#xA;  MDInfo.MailingState AS &quot;MD State&quot;,&#xA;  MDInfo.MailingPostalCode AS &quot;MD Zip&quot;,&#xA;  MDInfo.Phone AS &quot;MD Phone&quot;,&#xA;  MDInfo.fax AS &quot;MD Fax&quot;,&#xA;  FacilityName.FacilityName AS &quot;Facility Name&quot;,&#xA;  Null AS &quot;SLN&quot;,&#xA;  FacilityName.OfficeContactName AS &quot;Office Contact First Name&quot;, &#xA;  Null AS &quot;Office Contact Last Name&quot;,  --setting this to null as the office contact full name is in the previous field&#xA;  iif(ApprovalCount.ApprovalCount&gt;1,'Yes','No') AS &quot;Re-enrollment?&quot;,&#xA;  Null AS &quot;Application Type&quot;,&#xA;  Null AS &quot;Covance Enrollment Date&quot;,&#xA;  contacts.LegacyContactId AS &quot;Covance Case ID&quot;,&#xA;  Shipment.ShipmentDate AS &quot;Last Ship Date&quot;,  &#xA;  Null AS &quot;Enrollment Source&quot;,&#xA;  replace(Cases.Patient_Information_Sections__c,',','|') AS &quot;MI Reason&quot;,&#xA;  Null AS &quot;RxC Facility ID&quot;,&#xA;  Null AS &quot;RxC MD ID&quot;,&#xA;  Null AS &quot;Facility CMA&quot;,&#xA;  Null AS &quot;HubPhysOfficeIMSID&quot;,&#xA;  Null AS &quot;Provider CMA&quot;,&#xA;  Null AS &quot;HubPhysIMSID&quot;,&#xA;  Null AS &quot;Proof Of Denial&quot;,&#xA;  Null AS &quot;IHS Coverage&quot;,&#xA;  Null AS &quot;VA Benefit Drug Coverage&quot;,&#xA;  Null AS &quot;Validated Data&quot;,&#xA;  Cases.Eligibility_Determination_Date__c AS &quot;PAP Eligibility Determination Date&quot;,&#xA;  Cases.PA_Effective_Date__c AS &quot;PA Effective Date&quot;,&#xA;  Cases.PA_End_Date__c AS &quot;PA End Date&quot;,&#xA;  Cases.PA_Outcome__c AS &quot;PA Outcome&quot;,&#xA;  Contacts.BirthYear AS &quot;Patient Birth Year&quot;,&#xA;  Cases.Eligible_Enrolled_in_other_programs__c,&#xA;  Cases.Medicare_Effective_Date__c,&#xA;  Cases.Reason_Code__c,&#xA;  Contacts.Full_Name__c,&#xA;  Cases.Insurance__c,&#xA;  MedIns.Medical_Payer_Insurer__c,&#xA;  MedIns.Medical_Plan_Type__c,&#xA;  MedIns.Medical_Plan_Name__c,&#xA;  MedIns.Medical_Effective_Date__c,&#xA;  MedIns.Medical_Effective_End_Date__c,&#xA;  PharmIns.Pharm_Payer_Insurer__c,&#xA;  PharmIns.Pharm_Plan_Type__c,&#xA;  PharmIns.Pharm_Plan_Name__c,&#xA;  PharmIns.Pharm_Effective_Date__c,&#xA;  PharmIns.Pharm_Effective_End_Date__c,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS Six_Months_in_US_or_Territory__c,&#xA;  Cases.Above_Below_acceptable_FPL__c,&#xA;  Cases.External_Household_Income__c,&#xA;  Cases.External_Household_Size__c,&#xA;  Cases.Over_Net_Worth__c,&#xA;  Cases.Medicare_LIS_Status__c,&#xA;  Cases.Medicare_Part_D_LIS_Decision__c,&#xA;  Auth.Authorization_Signature_Date__c,&#xA;  Auth.Authorization_Signature__c,&#xA;  PCert.Certification_Signature_Date__c,&#xA;  PCert.Certification_Signature__c,&#xA;  Contacts.Sonexus_Pulse_ID__c&#xA;into RegaloRx_Work.dbo.TezeCases&#xA;from Cases&#xA;left outer join Contacts on Cases.ContactId = Contacts.Id&#xA;left outer join MinzStack on MinzStack.ZPAPER__Case__c=cases.Id&#xA;       and MinzStack.ZPAPER__Patient__c=Contacts.Id&#xA;left outer join CaseStatusDate on CaseStatusDate.CaseId = cases.Id&#xA;left outer join IntakeCompleteDate on IntakeCompleteDate.CaseId = cases.Id&#xA;left outer join ZipCodes on ZipCodes.PostalCode = contacts.MailingPostalCode&#xA;left outer join MDInfo on MDInfo.MDId=cases.Prescribing_Physician__c&#xA;left outer join FacilityName on FacilityName.FacilityId=cases.Facility_Practice_Name__c&#xA;left outer join ApprovalCount on ApprovalCount.CaseId = cases.Id&#xA;left outer join Shipment on shipment.CaseNumber = Cases.CaseNumber&#xA;left outer join MedIns on MedIns.CaseId = Cases.Id&#xA;left outer join PharmIns on PharmIns.CaseId = Cases.Id&#xA;left outer join Auth on Auth.Case__c = Cases.Id&#xA;left outer join PCert on PCert.Case__c = Cases.Id&#xA;where NOT&#xA;&#x9;( &#xA;&#x9;&#x9;Cases.[Status] = 'Cancelled'&#xA;&#x9;&#x9;and Contacts.ASNF_ID__c is null&#xA;&#x9;)&#xA;&#x9;and Cases.Product = 'Tezspire'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="WITH Cases AS (&#xA;SELECT&#xA;    CSE.Id&#xA;&#x9;, CaseNumber&#xA;&#x9;, CSE.ContactId AS ContactId&#xA;&#x9;, CASE WHEN CHARINDEX('-', Legacy_Case_Id__c) &gt; 0 THEN NULL ELSE Legacy_Case_Id__c END AS HUB_CaseID__c&#xA;&#x9;, [Status]&#xA;&#x9;, cast(COALESCE(CSE.Legacy_Created_Date__c, CSE.CreatedDate) as date) AS CreatedDate&#xA;&#x9;, Sub_Status__c AS amg_sub_status__c&#xA;&#x9;,IIF(ISNULL(PA.Status__c, 'Inactive') = 'Active','Yes','No') AS Is_Current_Case__c&#xA;&#x9;, Eligibility_Determination_Date__c AS Case_Approval_Date__c&#xA;&#x9;, PAP_Eligibility_End_Date__c AS expiration_date__c&#xA;&#x9;, REPLACE(PATRES.[Six_Months_in_US_or_Territory__c], 'N/A', '') AS [AMG_6m_in_US_or_Territory__c]&#xA;    , CASE INS.Plan_Type__c WHEN 'Commercial' THEN N'Yes' ELSE N'None' END AS E1_Ping_Commercial_insurance__c&#xA;    , REPLACE(CASE WHEN  PATRES.US_Citizen_Resident_Alien__c IN ('US Citizen', 'Resident Alien') THEN N'Yes' ELSE N'No' END, 'N/A', N'') AS AMG_US_Citizen__c&#xA;    , REPLACE(EQ.Pregnant__c, 'N/A', '') AS AMG_Are_you_pregnant__c&#xA;    , REPLACE(EQ.Blind_or_received_SS_Disability_status__c, 'N/A', '') AS AMG_Blind_or_SS_Disability__c&#xA;    , REPLACE(EQ.Denied_Medicaid__c, 'N/A', '') AS AMG_Have_you_been_denied_Medicaid__c&#xA;    , REPLACE(EQ.Parent_Caretaker_of_dependent_children__c, 'N/A', '') AS AMG_Parents_of_dependent_children__c&#xA;    , REPLACE(EQ.Eligible_Enrolled_in_other_programs__c, 'N/A', '') AS AMG_Eligible_or_Enrolled_in_any_Programs__c&#xA;    , REPLACE(EQ.Medicare__c, 'N/A', '') AS AMG_Medicare__c&#xA;    , REPLACE(EQ.Medicaid__c, 'N/A', '') AS AMG_Do_you_have_Medicaid__c&#xA;    , REPLACE(EQ.Medicare_Part_D__c, 'N/A', '') AS AMG_Medicare_Part_D__c&#xA;    , PINC.Household_Size__c AS AMG_Household_Size__c&#xA;&#x9;, PINC.Yearly_Income__c AS AMG_Income_Yearly_Conversion__c &#xA;    , CSE.External_FPL_Percent__c AS FPL_Percent__c&#xA;&#x9;, CSE.Internal_FPL_Percent__c AS Experian_FPL_Percent&#xA;&#x9;, HCPF.HCP__c AS Prescribing_Physician__c&#xA;&#x9;, HCPFA.Account__c AS Facility_Practice_Name__c&#xA;&#x9;, Patient_Information_Sections__c&#xA;&#x9;, CSE.Eligibility_Checklist_Complete__c AS AMG_Patient_Info_Complete__c&#xA;&#x9;--, PINC.Household_Income__c AS Annual_HH_Income_Return__c&#xA;&#x9;--, AMG_FPL_Amount__c,&#xA;&#x9;, CSE.PAP_Eligibility_Start_Date__c AS PAP_Eligibility_Start_Date__c&#xA;&#x9;, CSE.Eligibility_Determination_Date__c&#xA;&#x9;, CAST(FU.PA_Effective_Date__c as date) AS PA_Effective_Date__c&#xA;&#x9;, CAST(FU.PA_End_Date__c as date) AS PA_End_Date__c&#xA;&#x9;, FU.Outcome__c AS PA_Outcome__c&#xA;&#x9;, CAST(CSE.Last_Sub_Status_Change_Date__c as date) AS Last_Sub_Status_Change_Date__c&#xA;&#x9;, ISNULL(COALESCE(CSE.Product_Name__c, PA2.Product_Name__c), N'None') AS Product&#xA;&#x9;, EQ.Eligible_Enrolled_in_other_programs__c &#xA;&#x9;, EQ.Medicare_Effective_Date__c&#xA;&#x9;, CSE.Reason_Code__c&#xA;&#x9;, CSE.Insurance__c&#xA;&#x9;, PINC.Above_Below_acceptable_FPL__c&#xA;&#x9;, PINC.External_Household_Income__c&#xA;&#x9;, PINC.External_Household_Size__c&#xA;&#x9;, PINC.Over_Net_Worth__c&#xA;&#x9;, EQ.Medicare_LIS_Status__c&#xA;&#x9;, EQ.Medicare_Part_D_LIS_Decision__c&#xA;&#x9;, PATRES.Six_Months_in_US_or_Territory__c&#xA;FROM &#xA;&#x9;[Case] CSE&#xA;&#x9;INNER JOIN Product_Affiliation__c PA2&#xA;&#x9;&#x9;ON CSE.Product_Affiliation__c = PA2.Id&#xA;&#x9;-- *******************************************&#xA;&#x9;-- These joins changed to left outer upon &#xA;&#x9;-- request of Chris McMillin in order to show &#xA;&#x9;-- cases in the Closed status&#xA;&#x9;LEFT OUTER JOIN Patient_Residency__c PATRES &#xA;&#x9;&#x9;ON CSE.Patient_Residency__c = PATRES.Id&#xA;&#x9;LEFT OUTER JOIN [Eligibility_Qualifier__c] EQ&#xA;&#x9;&#x9;ON CSE.Eligibility_Qualifier__c = EQ.Id&#xA;&#x9;LEFT OUTER JOIN Patient_Income__c PINC&#xA;&#x9;&#x9;ON CSE.Patient_Income__c = PINC.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Affiliation__c HCPF&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCPF.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPF.Facility_Affiliation__c = HCPFA.Id&#xA;&#x9;--*******************************************&#xA;&#x9;LEFT OUTER JOIN Insurance__c INS&#xA;&#x9;&#x9;ON INS.Case__c = CSE.Id&#xA;&#x9;&#x9;AND INS.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND INS.Plan_Type__c = 'Commercial'&#xA;&#x9;LEFT OUTER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON CSE.Id = PA.Active_Case__c&#xA;&#x9;&#x9;AND PA.Status__c = 'Active'&#xA;&#x9;LEFT OUTER JOIN (&#xA;&#x9;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;PA_Effective_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, PA_End_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, Outcome__c&#xA;&#x9;&#x9;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, RecordTypeId&#xA;&#x9;&#x9;&#x9;&#x9;, RANK() OVER( PARTITION BY Case__c ORDER BY PA_Effective_Date__c DESC, PA_End_Date__c DESC, Outcome__c ) AS RNK&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Salesforce.dbo.Followup_Item__c FU&#xA;&#x9;&#x9;&#x9;&#x9;LEFT OUTER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON FU.RecordTypeId = RT.Id&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND RT.[Name] = 'PA Determination Letter'&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;FU.PA_Effective_Date__c IS NOT NULL&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;&#x9;WHERE RNK = 1&#xA;&#x9;) FU&#xA;&#x9;&#x9;ON CSE.Id = FU.Case__c&#xA;--WHERE (&#xA;--&#x9;&#x9;( CSE.[Status] = 'Pending' AND CSE.Sub_Status__c IN ( 'Missing Information ', 'Ready for Processing' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Approved' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Not Eligible' AND CSE.Sub_Status__c IN ( 'Residency', 'Income', 'Coverage Available' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Withdrawn' /*AND CSE.Sub_Status__c IN ( 'Patient No Longer on Drug', 'Coverage Gained', 'Patient Request', 'Inactivity', 'Expired' )*/ )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Cancelled' AND CSE.Sub_Status__c IN ( 'Error') )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Expired' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;)&#xA;WHERE&#xA;&#x9;CSE.[Status] IN ( 'Approved', 'Pending', 'Not Eligible', 'Withdrawn', 'Expired' )&#xA;&#x9;&#xA;),&#xA;&#xA;Contacts AS (&#xA;SELECT &#xA;    C.Id&#xA;&#x9;, C.Patient_Id__c AS ASNF_ID__c&#xA;&#x9;, C.Legacy_Contact_Id__c AS LegacyContactId&#xA;&#x9;, Primary_City__c AS MailingCity&#xA;&#x9;, Primary_State__c AS MailingState&#xA;&#x9;, left(Primary_Zip_Code__c,5) AS MailingPostalCode&#xA;&#x9;, CASE Gender__c WHEN 'Male' THEN N'M' WHEN 'Female' THEN N'F' ELSE N'' END AS Gender__c&#xA;&#x9;, YEAR(Birthdate) AS BirthYear&#xA;&#x9;, C.Full_Name__c&#xA;&#x9;, C.Sonexus_Pulse_ID__c&#xA;FROM Contact C&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON C.RecordTypeId = RT.Id&#xA; WHERE &#xA;&#x9;RT.[Name] = 'Patient' &#xA;&#x9;AND NOT (C.[Name] like 'Test%' or C.[Name] like '%RxC%') &#xA;&#x9;--and C.Sonexus_Pulse_ID__c IS NOT NULL&#xA;),&#xA;MedIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS MedInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Insurer__c AS Medical_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Medical_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Medical_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Medical_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Medical_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;PharmIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS PharmInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Insurer__c AS Pharm_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Pharm_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Pharm_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Pharm_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Pharm_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Pharmacy'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Auth AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Authorization_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Authorization'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;PCert AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Certification_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Certification'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;&#xA;MinzStack AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Case__c AS [ZPAPER__Case__c]&#xA;&#x9;&#x9;, PA.Contact__c AS [ZPAPER__Patient__c]&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as date) AS MinFaxDate&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as datetime) AS MinFaxDateTime&#xA;&#x9;FROM&#xA;&#x9;&#x9;Fax__c F&#xA;&#x9;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;&#x9;ON F.Product_Affiliation__c = PA.Id&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;, PA.Contact__c&#xA;),&#xA;&#xA;CaseStatusDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY CaseStatusDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS CaseStatusDate&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;[Field] = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = (SELECT [Status] FROM [Case] WHERE Id = CaseId)&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = (SELECT [Status] FROM [Case] WHERE Id = Case__c)&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;), &#xA;IntakeCompleteDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY IntakeCompleteDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS IntakeCompleteDate&#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;Field = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND CaseId IN (SELECT Id FROM [Case])&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND Case__c IN (SELECT Id FROM [Case])&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Shipment AS (&#xA;&#x9;SELECT * &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SA.Case_Number__c AS CaseNumber,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status_Explanation__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;CAST(Ship_Date__c as date) AS ShipmentDate,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RANK() OVER (PARTITION BY SA.Case_Number__c ORDER BY SR.CreatedDate DESC, CAST(Ship_Date__c as date) DESC) AS RNK&#xA;&#x9;&#x9;&#x9;&#x9;FROM ShipmentAuthorization_Response__c SR&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN Shipment_Authorization__c SA &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON SA.Id = SR.Shipment_Authorization__c&#xA;&#x9;&#x9;&#x9;&#x9;WHERE Ship_Status__c = 'S' &#xA;&#x9;) TempShipment&#xA;&#x9;where RNK = 1 &#xA;),&#xA;MDInfo AS (&#xA;SELECT &#xA;&#x9;HCP.Id AS MDId,&#xA;&#x9;HCP.HCP_Id__c,&#xA;&#x9;PA.Active_Case__c AS CaseId,&#xA;&#x9;FirstName,&#xA;&#x9;LastName,&#xA;&#x9;NPI_City__c AS MailingCity,&#xA;&#x9;NPI_State__c AS MailingState,&#xA;&#x9;left(NPI_Postal_Code__c, 5) AS MailingPostalCode,&#xA;&#x9;NPI_Phone__c AS Phone,&#xA;&#x9;Fax&#xA;FROM &#xA;&#x9;Contact AS HCP&#xA;&#x9;INNER JOIN HCP_Affiliation__c HCPA&#xA;&#x9;&#x9;ON HCP.Id = HCPA.HCP__c&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON HCPA.Contact__c = PA.Contact__c&#xA;&#x9;where HCPA.Id in ( SELECT HCP_Affiliation__c FROM [Case] )&#xA;),&#xA;FacilityName AS (&#xA; SELECT * FROM (&#xA; SELECT&#xA;&#x9;ACCT.[Name] AS FacilityName&#xA;&#x9;, REPLACE(CFA.Facility_Contact_Name__c, '&quot;', '') AS OfficeContactName&#xA;&#x9;, ACCT.Id AS FacilityId&#xA;&#x9;, CFA.Facility_Contact_Phone__c&#xA;&#x9;, RANK() OVER ( PARTITION BY ACCT.Id ORDER BY CFA.[Name] DESC ) AS RNK&#xA;FROM&#xA;&#x9;ACCOUNT ACCT&#xA;&#x9;INNER JOIN [Contact_Facility_Affiliation__c] CFA&#xA;&#x9;&#x9;ON ACCT.Id = CFA.Account__c&#xA;) X&#xA;WHERE RNK = 1&#xA;), &#xA;ApprovalCount AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;, Count(*) AS ApprovalCount&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field = 'Status'&#xA;&#x9;&#x9;&#x9;AND NewValue = 'Approved'&#xA;&#xA;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;, New_Value__c&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;AND New_Value__c = 'Approved'&#xA;&#x9;&#x9;&#x9;AND Case__c IS NOT NULL&#xA;&#x9;&#x9;) X&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;NewValue&#xA;&#x9;&#x9;, CaseId&#xA;&#x9;HAVING&#xA;&#x9;&#x9;Count(*) &gt; 1&#xA;),&#xA;ZipCodes AS (&#xA;  select distinct &#xA;    left(ZIP,5) AS PostalCode,&#xA;&#x9;CountyFIPS AS FIPSCode,&#xA;&#x9;CountyName,&#xA;&#x9;MetropolitanStatisticalArea AS MSA,&#xA;&#x9;MarketArea,&#xA;&#x9;CoreBasedStatisticalArea&#xA;FROM&#xA;&#x9;ZipInfo.dbo.vw_ZipInfo&#xA;)&#xA;select DISTINCT&#xA;  contacts.ASNF_ID__c AS &quot;Patient ID&quot;,&#xA;  Cases.CaseNumber AS &quot;Case ID&quot;,&#xA;  cases.HUB_CaseID__c AS &quot;HUB Case ID&quot;,&#xA;  Cases.Status AS &quot;Intake Status&quot;,&#xA;  Null AS &quot;Intake Status Reason&quot;,&#xA;  MinzStack.MinFaxDate AS &quot;File Receipt Date Time&quot;,&#xA;  Cases.CreatedDate AS &quot;Case Created Date&quot;,&#xA;  Cases.Status AS &quot;Case Status&quot;,&#xA;  Cases.amg_sub_status__c AS &quot;Case Sub-Status&quot;,&#xA;  CaseStatusDate.CaseStatusDate AS &quot;Case Status Date&quot;,&#xA;  Cases.Last_Sub_Status_Change_Date__c AS &quot;Case Sub-Status Date&quot;,&#xA;  Null AS &quot;Intake Status Date&quot;,&#xA;  Cases.Is_Current_Case__c AS &quot;Current Case Flag&quot;,&#xA;  Null AS &quot;PAP Created Date&quot;,&#xA;  IntakeCompleteDate.IntakeCompleteDate AS &quot;Intake Complete&quot;,&#xA;  iif(cases.Status='Withdrawn', cases.amg_sub_status__c, null) AS &quot;Withdrawal Reason&quot;,&#xA;  Null AS &quot;Enrollment Status&quot;,&#xA;  Null AS &quot;Service Model&quot;,&#xA;  Null AS &quot;Foundation&quot;,&#xA;  Cases.Product AS &quot;Drug&quot;,&#xA;  CASE Cases.Product WHEN 'Aimovig' THEN 'Migraine' WHEN 'Otezla' THEN 'Psoriasis' ELSE 'None' END AS &quot;Therapeutic Area&quot;,&#xA;  cast(Cases.PAP_Eligibility_Start_Date__c as date) AS &quot;Eligibility Start Date&quot;,&#xA;  Cases.expiration_date__c AS &quot;Eligibility End Date&quot;,&#xA;  Contacts.MailingCity AS &quot;Patient City&quot;,&#xA;  Contacts.MailingState AS &quot;Patient State&quot;,&#xA;  left(Contacts.MailingPostalCode,5) AS &quot;Patient Zip Code&quot;,&#xA;  ZipCodes.FIPSCode AS &quot;FIPS Code&quot;, &#xA;  ZipCodes.MarketArea AS &quot;Market Area&quot;,&#xA;  Contacts.Gender__c AS &quot;Gender&quot;,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS &quot;US Resident?&quot;,&#xA;  Cases.E1_Ping_Commercial_insurance__c AS &quot;Does the Patient Have Commercial Insurance?&quot;,&#xA;  Cases.AMG_US_Citizen__c AS &quot;IsUSCitizenOrLegalAlien?&quot;,&#xA;  Cases.AMG_Are_you_pregnant__c AS &quot;IsPregnant?&quot;,&#xA;  Cases.AMG_Blind_or_SS_Disability__c AS &quot;IsBlindOrDisabled?&quot;,&#xA;  Cases.AMG_Have_you_been_denied_Medicaid__c AS &quot;IsDeniedMedicaid?&quot;,&#xA;  Cases.AMG_Parents_of_dependent_children__c AS &quot;IsCareTakerUnder18Child?&quot;,&#xA;  Cases.AMG_Eligible_or_Enrolled_in_any_Programs__c AS &quot;Gvmt Program Eligible?&quot;,&#xA;  Cases.AMG_Medicare__c AS &quot;Enrolled in Medicare?&quot;,&#xA;  Cases.AMG_Do_you_have_Medicaid__c AS &quot;Enrolled in Medicaid?&quot;,&#xA;  Cases.AMG_Medicare_Part_D__c AS &quot;Enrolled in MedD?&quot;,&#xA;  Cases.AMG_Household_Size__c AS &quot;Household #&quot;,&#xA;  cases.AMG_Income_Yearly_Conversion__c AS &quot;Patient Reported Income&quot;, &#xA;--  round((cases.Annual_HH_Income_Return__c/cases.AMG_FPL_Amount__c)*100,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.FPL_Percent__c,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.Experian_FPL_Percent,2) AS &quot;Experian FPL Calc&quot;, &#xA;  MDInfo.HCP_Id__c AS HCPId,&#xA;  MDInfo.FirstName AS &quot;MD First Name&quot;,&#xA;  MDInfo.LastName AS &quot;MD Last Name&quot;,&#xA;  Null AS &quot;MD Address 1&quot;, --Leave AS NULL, per Alex&#xA;  Null AS &quot;MD Address 2&quot;, --Leave as NULL, per Alex&#xA;  MDInfo.MailingCity AS &quot;MD City&quot;,&#xA;  MDInfo.MailingState AS &quot;MD State&quot;,&#xA;  MDInfo.MailingPostalCode AS &quot;MD Zip&quot;,&#xA;  MDInfo.Phone AS &quot;MD Phone&quot;,&#xA;  MDInfo.fax AS &quot;MD Fax&quot;,&#xA;  FacilityName.FacilityName AS &quot;Facility Name&quot;,&#xA;  Null AS &quot;SLN&quot;,&#xA;  FacilityName.OfficeContactName AS &quot;Office Contact First Name&quot;, &#xA;  Null AS &quot;Office Contact Last Name&quot;,  --setting this to null as the office contact full name is in the previous field&#xA;  FacilityName.Facility_Contact_Phone__c,&#xA;  iif(ApprovalCount.ApprovalCount&gt;1,'Yes','No') AS &quot;Re-enrollment?&quot;,&#xA;  Null AS &quot;Application Type&quot;,&#xA;  Null AS &quot;Covance Enrollment Date&quot;,&#xA;  contacts.LegacyContactId AS &quot;Covance Case ID&quot;,&#xA;  Shipment.ShipmentDate AS &quot;Last Ship Date&quot;,  &#xA;  Null AS &quot;Enrollment Source&quot;,&#xA;  replace(Cases.Patient_Information_Sections__c,',','|') AS &quot;MI Reason&quot;,&#xA;  Null AS &quot;RxC Facility ID&quot;,&#xA;  Null AS &quot;RxC MD ID&quot;,&#xA;  Null AS &quot;Facility CMA&quot;,&#xA;  Null AS &quot;HubPhysOfficeIMSID&quot;,&#xA;  Null AS &quot;Provider CMA&quot;,&#xA;  Null AS &quot;HubPhysIMSID&quot;,&#xA;  Null AS &quot;Proof Of Denial&quot;,&#xA;  Null AS &quot;IHS Coverage&quot;,&#xA;  Null AS &quot;VA Benefit Drug Coverage&quot;,&#xA;  Null AS &quot;Validated Data&quot;,&#xA;  Cases.Eligibility_Determination_Date__c AS &quot;PAP Eligibility Determination Date&quot;,&#xA;  Cases.PA_Effective_Date__c AS &quot;PA Effective Date&quot;,&#xA;  Cases.PA_End_Date__c AS &quot;PA End Date&quot;,&#xA;  Cases.PA_Outcome__c AS &quot;PA Outcome&quot;,&#xA;  Contacts.BirthYear AS &quot;Patient Birth Year&quot;,&#xA;  Cases.Eligible_Enrolled_in_other_programs__c,&#xA;  Cases.Medicare_Effective_Date__c,&#xA;  Cases.Reason_Code__c,&#xA;  Contacts.Full_Name__c,&#xA;  Cases.Insurance__c,&#xA;  MedIns.Medical_Payer_Insurer__c,&#xA;  MedIns.Medical_Plan_Type__c,&#xA;  MedIns.Medical_Plan_Name__c,&#xA;  MedIns.Medical_Effective_Date__c,&#xA;  MedIns.Medical_Effective_End_Date__c,&#xA;  PharmIns.Pharm_Payer_Insurer__c,&#xA;  PharmIns.Pharm_Plan_Type__c,&#xA;  PharmIns.Pharm_Plan_Name__c,&#xA;  PharmIns.Pharm_Effective_Date__c,&#xA;  PharmIns.Pharm_Effective_End_Date__c,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS Six_Months_in_US_or_Territory__c,&#xA;  Cases.Above_Below_acceptable_FPL__c,&#xA;  Cases.External_Household_Income__c,&#xA;  Cases.External_Household_Size__c,&#xA;  Cases.Over_Net_Worth__c,&#xA;  Cases.Medicare_LIS_Status__c,&#xA;  Cases.Medicare_Part_D_LIS_Decision__c,&#xA;  Auth.Authorization_Signature_Date__c,&#xA;  Auth.Authorization_Signature__c,&#xA;  PCert.Certification_Signature_Date__c,&#xA;  PCert.Certification_Signature__c,&#xA;  Contacts.Sonexus_Pulse_ID__c&#xA;into RegaloRx_Work.dbo.TezeCases&#xA;from Cases&#xA;left outer join Contacts on Cases.ContactId = Contacts.Id&#xA;left outer join MinzStack on MinzStack.ZPAPER__Case__c=cases.Id&#xA;       and MinzStack.ZPAPER__Patient__c=Contacts.Id&#xA;left outer join CaseStatusDate on CaseStatusDate.CaseId = cases.Id&#xA;left outer join IntakeCompleteDate on IntakeCompleteDate.CaseId = cases.Id&#xA;left outer join ZipCodes on ZipCodes.PostalCode = contacts.MailingPostalCode&#xA;left outer join MDInfo on MDInfo.MDId=cases.Prescribing_Physician__c&#xA;left outer join FacilityName on FacilityName.FacilityId=cases.Facility_Practice_Name__c&#xA;left outer join ApprovalCount on ApprovalCount.CaseId = cases.Id&#xA;left outer join Shipment on shipment.CaseNumber = Cases.CaseNumber&#xA;left outer join MedIns on MedIns.CaseId = Cases.Id&#xA;left outer join PharmIns on PharmIns.CaseId = Cases.Id&#xA;left outer join Auth on Auth.Case__c = Cases.Id&#xA;left outer join PCert on PCert.Case__c = Cases.Id&#xA;where NOT&#xA;&#x9;( &#xA;&#x9;&#x9;Cases.[Status] = 'Cancelled'&#xA;&#x9;&#x9;and Contacts.ASNF_ID__c is null&#xA;&#x9;)&#xA;&#x9;and Cases.Product = 'Tezspire'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Build HCP Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E4DF2E09-DA27-4836-B1BC-C655626C7661}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Build HCP Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
+          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;HCP.HCP_Id__c&#xA;&#x9;, HCP.FirstName&#xA;&#x9;, HCP.LastName&#xA;&#x9;, HCP.NPI__c&#xA;&#x9;, AmgenReporting.dbo.FormatPhone(HCP.Phone) AS Phone&#xA;&#x9;, AmgenReporting.dbo.FormatPhone(HCP.Fax) AS Fax&#xA;INTO RegaloRx_Work.dbo.TezeHCP&#xA;FROM&#xA;&#x9;Product_Affiliation__c PA&#xA;&#x9;INNER JOIN HCP_Affiliation__c HCPA&#xA;&#x9;&#x9;ON PA.Contact__c = HCPA.Contact__c&#xA;&#x9;INNER JOIN Contact HCP&#xA;&#x9;&#x9;ON HCPA.HCP__c = HCP.Id&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON HCP.HCP_Id__c = TC.HCPId&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3236,7 +3344,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="DECLARE @PAT TABLE (&#xA;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Patient_ID] [nvarchar](30) NULL,&#xA;&#x9;[Lname] [nvarchar](80) NULL,&#xA;&#x9;[Fname] [nvarchar](40) NULL,&#xA;&#x9;[MI] [nvarchar](1) NULL,&#xA;&#x9;[Gender] [nvarchar](255) NULL,&#xA;&#x9;[DOB] [date] NULL,&#xA;&#x9;[SSN] [nvarchar](11) NULL,&#xA;&#x9;[Phone_preferred] [nvarchar](40) NULL,&#xA;&#x9;[Phone_alternate] [nvarchar](40) NULL,&#xA;&#x9;[Email_addr] [nvarchar](80) NULL,&#xA;&#x9;[Addr1] [nvarchar](1300) NULL,&#xA;&#x9;[Addr_City] [nvarchar](1300) NULL,&#xA;&#x9;[Addr_State] [nvarchar](2) NULL,&#xA;&#x9;[Addr_Zip] [nvarchar](11) NULL,&#xA;&#x9;[Country__c] [nvarchar](1300) NULL&#xA;)&#xA;&#xA;DECLARE @CSE TABLE (&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[ContactId] [nvarchar](18) NULL,&#xA;&#x9;[US_Citizen_Resident_Alien__c] [nvarchar](1300) NULL,&#xA;&#x9;[Six_Months_in_US_or_Territory__c] [nvarchar](1300) NULL,&#xA;&#x9;[Patient_Household_Income__c] [float] NULL,&#xA;&#x9;[Sub_Status__c] [nvarchar](255) NULL,&#xA;&#x9;[HCP_Affiliation__c] [nvarchar](18) NULL&#xA;)&#xA;&#xA;DECLARE @INS TABLE (&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Patient__c] [nvarchar](18) NULL,&#xA;&#x9;[Case__c] [nvarchar](18) NULL,&#xA;&#x9;[Medicare_ID__c] [nvarchar](15) NULL,&#xA;&#x9;[Payer_Name__c] [nvarchar](1300) NULL,&#xA;&#x9;[Plan_Name__c] [nvarchar](255) NULL,&#xA;&#x9;[Subscriber_Name__c] [nvarchar](100) NULL,&#xA;&#x9;[Relationship_to_Patient__c] [nvarchar](100) NULL,&#xA;&#x9;[DOB__c] [date] NULL,&#xA;&#x9;[Member_ID_Policy_Number__c] [nvarchar](255) NULL,&#xA;&#x9;[Group_Number__c] [nvarchar](25) NULL&#xA;)&#xA;&#xA;DECLARE @MDL TABLE&#xA;(&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Case__c] [nvarchar](18) NULL,&#xA;&#x9;[Received_Date__c] [date] NULL&#xA;)&#xA;&#xA;DECLARE @HCP TABLE&#xA;(&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Physician_Lname] [nvarchar](80) NULL,&#xA;&#x9;[Physician_Fname] [nvarchar](40) NULL,&#xA;&#x9;[Physician_Addr1] [nvarchar](255) NULL,&#xA;&#x9;[Physician_Addr_City] [nvarchar](40) NULL,&#xA;&#x9;[Physician_Addr_State] [nvarchar](80) NULL,&#xA;&#x9;[Physician_Addr_Zip] [nvarchar](20) NULL&#xA;)&#xA;&#xA;DECLARE @EQ TABLE&#xA;(&#xA;&#x9;RNK int NULL,&#xA;&#x9;[Patient__c] nvarchar(18) NULL,&#xA;&#x9;[Case__c] nvarchar(18) NULL,&#xA;&#x9;[Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Medicare_Effective_Date__c] date NULL,&#xA;&#x9;[Emergency_Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Denied_Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Eligible_Enrolled_in_other_programs__c] nvarchar(255) NULL,&#xA;&#x9;[Pregnant__c] nvarchar(255) NULL,&#xA;&#x9;[Blind_or_received_SS_Disability_status__c] nvarchar(255) NULL,&#xA;&#x9;[Receive_Social_Security_Disability__c] nvarchar(255) NULL&#xA;)&#xA;&#xA;INSERT INTO @PAT&#xA;SELECT&#xA;&#x9;PAT.Id&#xA;&#x9;, Patient_Id__c AS Patient_ID&#xA;&#x9;, LastName AS Lname&#xA;&#x9;, FirstName AS Fname&#xA;&#x9;, LEFT(ISNULL(PAT.MiddleName, ''), 1) AS MI&#xA;&#x9;, Gender__c as Gender&#xA;&#x9;, Birthdate AS DOB&#xA;&#x9;, PAT.Social_Security_Number__c AS SSN&#xA;&#x9;, Preferred_Phone_Number__c AS Phone_preferred&#xA;&#x9;, Alternate_Phone_Number__c AS Phone_alternate&#xA;&#x9;, Email AS Email_addr&#xA;&#x9;, Primary_Street_Line_1__c AS Addr1&#xA;&#x9;, Primary_City__c AS Addr_City&#xA;&#x9;, Primary_State__c AS Addr_State&#xA;&#x9;, Primary_Zip_Code__c AS Addr_Zip&#xA;&#x9;, Primary_Country__c AS Country__c&#xA;FROM&#xA;&#x9;Contact PAT&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON PAT.RecordTypeId = RT.Id&#xA;WHERE&#xA;&#x9;RT.[Name] = 'Patient'&#xA;&#x9;AND PAT.FirstName NOT LIKE '%DNU%'&#xA;&#x9;AND PAT.LastName NOT LIKE '%DNU%'&#xA;&#xA;INSERT INTO @CSE&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY C.ContactId ORDER BY ISNULL(C.PAP_Eligibility_End_Date__c, '1900-01-01') DESC ) AS RNK&#xA;&#x9;&#x9;, C.Id&#xA;&#x9;&#x9;, C.ContactId&#xA;&#x9;&#x9;, US_Citizen_Resident_Alien__c&#xA;&#x9;&#x9;, Six_Months_in_US_or_Territory__c&#xA;&#x9;&#x9;, Patient_Household_Income__c&#xA;&#x9;&#x9;, Sub_Status__c&#xA;&#x9;&#x9;, HCP_Affiliation__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;[Case] C&#xA;&#x9;&#x9;INNER JOIN @PAT PAT&#xA;&#x9;&#x9;&#x9;ON C.ContactId = PAT.Id&#xA;&#x9;&#x9;--INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;--&#x9;ON C.Id = PA.Active_Case__c&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @INS&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY Patient__c ORDER BY [Name] DESC ) AS RNK&#xA;&#x9;&#x9;, I.Id&#xA;&#x9;&#x9;, I.Patient__c&#xA;&#x9;&#x9;, I.Case__c&#xA;&#x9;&#x9;, Medicare_ID__c&#xA;&#x9;&#x9;, Payer_Name__c&#xA;&#x9;&#x9;, Plan_Name__c&#xA;&#x9;&#x9;, Subscriber_Name__c&#xA;&#x9;&#x9;, Relationship_to_Patient__c&#xA;&#x9;&#x9;, DOB__c&#xA;&#x9;&#x9;, Member_ID_Policy_Number__c&#xA;&#x9;&#x9;, Group_Number__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;Salesforce.dbo.Insurance__c I&#xA;&#x9;&#x9;INNER JOIN @CSE CSE&#xA;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;WHERE&#xA;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND Patient__c IS NOT NULL&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @MDL&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY ISNULL(Received_Date__c, '1900-01-01') DESC ) AS RNK&#xA;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;, F.Received_Date__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;Salesforce.dbo.Followup_Item__c F&#xA;&#x9;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;ON F.RecordTypeId = RT.Id&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RT.[Name] = 'Medicaid Determination Letter'&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @HCP&#xA;SELECT&#xA;&#x9;HCPA.Id&#xA;&#x9;, HCP.LastName AS Physician_Lname&#xA;&#x9;, HCP.FirstName AS Physician_Fname&#xA;&#x9;, HCPFA.Facility_Street__c AS Physician_Addr1&#xA;&#x9;, HCPFA.Facility_City__c AS Physician_Addr_City&#xA;&#x9;, HCPFA.Facility_State__c AS Physician_Addr_State&#xA;&#x9;, HCPFA.Facility_Zip__c AS Physician_Addr_Zip&#xA;FROM&#xA;&#x9;HCP_Affiliation__c HCPA&#xA;&#x9;INNER JOIN Contact HCP&#xA;&#x9;&#x9;ON HCPA.HCP__c = HCP.Id&#xA;&#x9;INNER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPA.Facility_Affiliation__c = HCPFA.Id&#xA;&#xA;INSERT INTO @EQ&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER( PARTITION BY Patient__c, Case__c ORDER BY [Name] ) AS RNK&#xA;&#x9;&#x9;, [Patient__c]&#xA;&#x9;&#x9;, [Case__c]&#xA;&#x9;&#x9;, [Medicaid__c]&#xA;&#x9;&#x9;, [Medicare_Effective_Date__c]&#xA;&#x9;&#x9;, [Emergency_Medicaid__c]&#xA;&#x9;&#x9;, [Denied_Medicaid__c]&#xA;&#x9;&#x9;, [Eligible_Enrolled_in_other_programs__c]&#xA;&#x9;&#x9;, [Pregnant__c]&#xA;&#x9;&#x9;, [Blind_or_received_SS_Disability_status__c]&#xA;&#x9;&#x9;, [Receive_Social_Security_Disability__c]&#xA;&#x9;FROM&#xA;&#x9;&#x9;Eligibility_Qualifier__c&#xA;) X&#xA;WHERE&#xA;&#x9;RNK = 1&#xA;&#xA;&#xA;SELECT&#xA;&#x9;PAT.Patient_ID&#xA;&#x9;, PAT.Lname&#xA;&#x9;, PAT.Fname&#xA;&#x9;, PAT.MI&#xA;&#x9;, LEFT(ISNULL(PAT.Gender, 'O'), 1) AS Gender&#xA;&#x9;, FORMAT( PAT.DOB, 'MM/dd/yyyy') AS DOB&#xA;&#x9;, PAT.SSN&#xA;&#x9;, PAT.Addr1&#xA;&#x9;, PAT.Addr_City&#xA;&#x9;, PAT.Addr_State&#xA;&#x9;, LEFT(PAT.Addr_Zip, 5) AS Addr_Zip&#xA;&#x9;, PAT.Phone_preferred&#xA;&#x9;, PAT.Phone_alternate&#xA;&#x9;, PAT.Email_addr&#xA;&#x9;, CASE WHEN CSE.US_Citizen_Resident_Alien__c = 'US Citizen' THEN 'Y' WHEN CSE.US_Citizen_Resident_Alien__c IS NULL THEN NULL ELSE 'N' END AS US_Citizen&#xA;&#x9;, CASE WHEN CSE.US_Citizen_Resident_Alien__c = 'Resident Alien' THEN 'Y' WHEN CSE.US_Citizen_Resident_Alien__c IS NULL THEN NULL ELSE 'N' END AS Reside_US_10yrs&#xA;&#x9;, LEFT(CSE.Six_Months_in_US_or_Territory__c, 1) AS Lived_US_More_than_6mos&#xA;&#x9;, CASE WHEN REPLACE(PAT.Country__c, 'US', 'United States') = 'United States' AND ISNULL(CSE.Six_Months_in_US_or_Territory__c, 'N') = 'N' THEN 'Y' ELSE 'N' END AS Lived_US_Less_than_6mos&#xA;&#x9;, CSE.Patient_Household_Income__c AS yearly_Income&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART A%' THEN 'Y' ELSE 'N' END AS MedA_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART A%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedA_covered_date&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART B%' THEN 'Y' ELSE 'N' END AS MedB_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART B%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedB_covered_date&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART D%' THEN 'Y' ELSE 'N' END AS MedD_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART D%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedD_covered_date&#xA;&#x9;, INS.Medicare_ID__c AS Medicare_ID&#xA;&#x9;, LEFT(EQ.Medicaid__c, 1) AS Medicaid_covered_ind&#xA;&#x9;, LEFT(EQ.Emergency_Medicaid__c, 1) AS Emergency_Medicaid_covered_ind&#xA;&#x9;, LEFT(EQ.Denied_Medicaid__c, 1) AS Medicaid_denied_ind&#xA;&#x9;, CASE WHEN MDL.Received_Date__c IS NOT NULL THEN 'Y' ELSE 'N' END AS Medicaid_denial_letter_ind&#xA;&#x9;, LEFT(EQ.Eligible_Enrolled_in_other_programs__c, 1) AS Fed_State_Local_Health_progs_ind&#xA;&#x9;, LEFT(EQ.Pregnant__c, 1) AS Pregnant_ind&#xA;&#x9;, LEFT(EQ.Blind_or_received_SS_Disability_status__c, 1) AS Blind_or_SSDisability_ind&#xA;&#x9;, LEFT(EQ.Receive_Social_Security_Disability__c, 1) AS Receiving_SSDisability_ind&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN 'Y' ELSE 'N' END AS Insurance_Covered_ind &#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Payer_Name__c ELSE 'NA-Uninsured' END AS Insurer_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Plan_Name__c ELSE 'NA-Uninsured' END AS Plan_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Subscriber_Name__c ELSE 'NA-Uninsured' END AS Subscriber_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Relationship_to_Patient__c ELSE 'NA-Uninsured' END AS Relationship_to_Patient&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN FORMAT(INS.DOB__c, 'MM/dd/yyyy') ELSE 'NA-Uninsured' END AS Insured_DOB&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Member_ID_Policy_Number__c ELSE 'NA-Uninsured' END AS Insurance_MemberID &#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Member_ID_Policy_Number__c ELSE 'NA-Uninsured' END AS Insurance_Policy&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Group_Number__c ELSE 'NA-Uninsured' END AS Insurance_Group_Num&#xA;&#x9;, HCP.Physician_Lname&#xA;&#x9;, HCP.Physician_Fname&#xA;&#x9;, HCP.Physician_Addr1&#xA;&#x9;, HCP.Physician_Addr_City&#xA;&#x9;, HCP.Physician_Addr_State&#xA;&#x9;, HCP.Physician_Addr_Zip&#xA;into RegaloRx_Work.dbo.TezePatients&#xA;FROM &#xA;&#x9;@PAT PAT&#xA;&#x9;INNER JOIN @CSE CSE&#xA;&#x9;&#x9;ON PAT.Id = CSE.ContactId&#xA;&#x9;LEFT OUTER JOIN @EQ EQ&#xA;&#x9;&#x9;ON PAT.Id = EQ.Patient__c&#xA;&#x9;&#x9;AND CSE.Id = EQ.Case__c&#xA;&#x9;LEFT OUTER JOIN @INS INS&#xA;&#x9;&#x9;ON PAT.Id = INS.Patient__c&#xA;&#x9;&#x9;AND CSE.Id = INS.Case__c&#xA;&#x9;LEFT OUTER JOIN @MDL MDL&#xA;&#x9;&#x9;ON CSE.Id = MDL.Case__c&#xA;&#x9;LEFT OUTER JOIN @HCP HCP&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCP.Id&#xA;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;ON PAT.Id = PA.Contact__c&#xA;WHERE&#xA;&#x9;PA.Product_Name__c = 'Tezspire'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DECLARE @PAT TABLE (&#xA;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Patient_ID] [nvarchar](30) NULL,&#xA;&#x9;[Lname] [nvarchar](80) NULL,&#xA;&#x9;[Fname] [nvarchar](40) NULL,&#xA;&#x9;[MI] [nvarchar](1) NULL,&#xA;&#x9;[Gender] [nvarchar](255) NULL,&#xA;&#x9;[DOB] [date] NULL,&#xA;&#x9;[SSN] [nvarchar](11) NULL,&#xA;&#x9;[Phone_preferred] [nvarchar](40) NULL,&#xA;&#x9;[Phone_alternate] [nvarchar](40) NULL,&#xA;&#x9;[Email_addr] [nvarchar](80) NULL,&#xA;&#x9;[Addr1] [nvarchar](1300) NULL,&#xA;&#x9;[Addr_City] [nvarchar](1300) NULL,&#xA;&#x9;[Addr_State] [nvarchar](2) NULL,&#xA;&#x9;[Addr_Zip] [nvarchar](11) NULL,&#xA;&#x9;[Country__c] [nvarchar](1300) NULL&#xA;)&#xA;&#xA;DECLARE @CSE TABLE (&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[ContactId] [nvarchar](18) NULL,&#xA;&#x9;[US_Citizen_Resident_Alien__c] [nvarchar](1300) NULL,&#xA;&#x9;[Six_Months_in_US_or_Territory__c] [nvarchar](1300) NULL,&#xA;&#x9;[Patient_Household_Income__c] [float] NULL,&#xA;&#x9;[Sub_Status__c] [nvarchar](255) NULL,&#xA;&#x9;[HCP_Affiliation__c] [nvarchar](18) NULL&#xA;)&#xA;&#xA;DECLARE @INS TABLE (&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Patient__c] [nvarchar](18) NULL,&#xA;&#x9;[Case__c] [nvarchar](18) NULL,&#xA;&#x9;[Medicare_ID__c] [nvarchar](15) NULL,&#xA;&#x9;[Payer_Name__c] [nvarchar](1300) NULL,&#xA;&#x9;[Plan_Name__c] [nvarchar](255) NULL,&#xA;&#x9;[Subscriber_Name__c] [nvarchar](100) NULL,&#xA;&#x9;[Relationship_to_Patient__c] [nvarchar](100) NULL,&#xA;&#x9;[DOB__c] [date] NULL,&#xA;&#x9;[Member_ID_Policy_Number__c] [nvarchar](255) NULL,&#xA;&#x9;[Group_Number__c] [nvarchar](25) NULL&#xA;)&#xA;&#xA;DECLARE @MDL TABLE&#xA;(&#xA;&#x9;[RNK] [bigint] NULL,&#xA;&#x9;[Case__c] [nvarchar](18) NULL,&#xA;&#x9;[Received_Date__c] [date] NULL&#xA;)&#xA;&#xA;DECLARE @HCP TABLE&#xA;(&#xA;&#x9;[Id] [nvarchar](18) NULL,&#xA;&#x9;[Physician_Lname] [nvarchar](80) NULL,&#xA;&#x9;[Physician_Fname] [nvarchar](40) NULL,&#xA;&#x9;[Physician_Addr1] [nvarchar](255) NULL,&#xA;&#x9;[Physician_Addr_City] [nvarchar](40) NULL,&#xA;&#x9;[Physician_Addr_State] [nvarchar](80) NULL,&#xA;&#x9;[Physician_Addr_Zip] [nvarchar](20) NULL&#xA;)&#xA;&#xA;DECLARE @EQ TABLE&#xA;(&#xA;&#x9;RNK int NULL,&#xA;&#x9;[Patient__c] nvarchar(18) NULL,&#xA;&#x9;[Case__c] nvarchar(18) NULL,&#xA;&#x9;[Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Medicare_Effective_Date__c] date NULL,&#xA;&#x9;[Emergency_Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Denied_Medicaid__c] nvarchar(255) NULL,&#xA;&#x9;[Eligible_Enrolled_in_other_programs__c] nvarchar(255) NULL,&#xA;&#x9;[Pregnant__c] nvarchar(255) NULL,&#xA;&#x9;[Blind_or_received_SS_Disability_status__c] nvarchar(255) NULL,&#xA;&#x9;[Receive_Social_Security_Disability__c] nvarchar(255) NULL&#xA;)&#xA;&#xA;INSERT INTO @PAT&#xA;SELECT&#xA;&#x9;PAT.Id&#xA;&#x9;, Patient_Id__c AS Patient_ID&#xA;&#x9;, LastName AS Lname&#xA;&#x9;, FirstName AS Fname&#xA;&#x9;, LEFT(ISNULL(PAT.MiddleName, ''), 1) AS MI&#xA;&#x9;, Gender__c as Gender&#xA;&#x9;, Birthdate AS DOB&#xA;&#x9;, PAT.Social_Security_Number__c AS SSN&#xA;&#x9;, Preferred_Phone_Number__c AS Phone_preferred&#xA;&#x9;, Alternate_Phone_Number__c AS Phone_alternate&#xA;&#x9;, Email AS Email_addr&#xA;&#x9;, Primary_Street_Line_1__c AS Addr1&#xA;&#x9;, Primary_City__c AS Addr_City&#xA;&#x9;, Primary_State__c AS Addr_State&#xA;&#x9;, Primary_Zip_Code__c AS Addr_Zip&#xA;&#x9;, Primary_Country__c AS Country__c&#xA;FROM&#xA;&#x9;Contact PAT&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON PAT.RecordTypeId = RT.Id&#xA;WHERE&#xA;&#x9;RT.[Name] = 'Patient'&#xA;&#x9;AND PAT.FirstName NOT LIKE '%DNU%'&#xA;&#x9;AND PAT.LastName NOT LIKE '%DNU%'&#xA;&#xA;INSERT INTO @CSE&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY C.ContactId ORDER BY ISNULL(C.PAP_Eligibility_End_Date__c, '1900-01-01') DESC ) AS RNK&#xA;&#x9;&#x9;, C.Id&#xA;&#x9;&#x9;, C.ContactId&#xA;&#x9;&#x9;, US_Citizen_Resident_Alien__c&#xA;&#x9;&#x9;, C.Six_Months_in_US_or_Territory__c&#xA;&#x9;&#x9;, Patient_Household_Income__c&#xA;&#x9;&#x9;, Sub_Status__c&#xA;&#x9;&#x9;, HCP_Affiliation__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;[Case] C&#xA;&#x9;&#x9;INNER JOIN @PAT PAT&#xA;&#x9;&#x9;&#x9;ON C.ContactId = PAT.Id&#xA;&#x9;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;&#x9;ON C.CaseNumber = TC.[Case ID]&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @INS&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY Patient__c ORDER BY [Name] DESC ) AS RNK&#xA;&#x9;&#x9;, I.Id&#xA;&#x9;&#x9;, I.Patient__c&#xA;&#x9;&#x9;, I.Case__c&#xA;&#x9;&#x9;, Medicare_ID__c&#xA;&#x9;&#x9;, Payer_Name__c&#xA;&#x9;&#x9;, Plan_Name__c&#xA;&#x9;&#x9;, Subscriber_Name__c&#xA;&#x9;&#x9;, Relationship_to_Patient__c&#xA;&#x9;&#x9;, DOB__c&#xA;&#x9;&#x9;, Member_ID_Policy_Number__c&#xA;&#x9;&#x9;, Group_Number__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;Salesforce.dbo.Insurance__c I&#xA;&#x9;&#x9;INNER JOIN @CSE CSE&#xA;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;WHERE&#xA;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND Patient__c IS NOT NULL&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @MDL&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY ISNULL(Received_Date__c, '1900-01-01') DESC ) AS RNK&#xA;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;, F.Received_Date__c&#xA;&#x9;FROM&#xA;&#x9;&#x9;Salesforce.dbo.Followup_Item__c F&#xA;&#x9;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;ON F.RecordTypeId = RT.Id&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RT.[Name] = 'Medicaid Determination Letter'&#xA;) X&#xA;WHERE RNK = 1&#xA;&#xA;INSERT INTO @HCP&#xA;SELECT&#xA;&#x9;HCPA.Id&#xA;&#x9;, HCP.LastName AS Physician_Lname&#xA;&#x9;, HCP.FirstName AS Physician_Fname&#xA;&#x9;, HCPFA.Facility_Street__c AS Physician_Addr1&#xA;&#x9;, HCPFA.Facility_City__c AS Physician_Addr_City&#xA;&#x9;, HCPFA.Facility_State__c AS Physician_Addr_State&#xA;&#x9;, HCPFA.Facility_Zip__c AS Physician_Addr_Zip&#xA;FROM&#xA;&#x9;HCP_Affiliation__c HCPA&#xA;&#x9;INNER JOIN Contact HCP&#xA;&#x9;&#x9;ON HCPA.HCP__c = HCP.Id&#xA;&#x9;INNER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPA.Facility_Affiliation__c = HCPFA.Id&#xA;&#xA;INSERT INTO @EQ&#xA;SELECT * FROM (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER( PARTITION BY Patient__c, Case__c ORDER BY [Name] ) AS RNK&#xA;&#x9;&#x9;, [Patient__c]&#xA;&#x9;&#x9;, [Case__c]&#xA;&#x9;&#x9;, [Medicaid__c]&#xA;&#x9;&#x9;, [Medicare_Effective_Date__c]&#xA;&#x9;&#x9;, [Emergency_Medicaid__c]&#xA;&#x9;&#x9;, [Denied_Medicaid__c]&#xA;&#x9;&#x9;, [Eligible_Enrolled_in_other_programs__c]&#xA;&#x9;&#x9;, [Pregnant__c]&#xA;&#x9;&#x9;, [Blind_or_received_SS_Disability_status__c]&#xA;&#x9;&#x9;, [Receive_Social_Security_Disability__c]&#xA;&#x9;FROM&#xA;&#x9;&#x9;Eligibility_Qualifier__c&#xA;) X&#xA;WHERE&#xA;&#x9;RNK = 1&#xA;&#xA;&#xA;SELECT&#xA;&#x9;PAT.Patient_ID&#xA;&#x9;, PAT.Lname&#xA;&#x9;, PAT.Fname&#xA;&#x9;, PAT.MI&#xA;&#x9;, LEFT(ISNULL(PAT.Gender, 'O'), 1) AS Gender&#xA;&#x9;, FORMAT( PAT.DOB, 'MM/dd/yyyy') AS DOB&#xA;&#x9;, PAT.SSN&#xA;&#x9;, PAT.Addr1&#xA;&#x9;, PAT.Addr_City&#xA;&#x9;, PAT.Addr_State&#xA;&#x9;, LEFT(PAT.Addr_Zip, 5) AS Addr_Zip&#xA;&#x9;, PAT.Phone_preferred&#xA;&#x9;, PAT.Phone_alternate&#xA;&#x9;, PAT.Email_addr&#xA;&#x9;, CASE WHEN CSE.US_Citizen_Resident_Alien__c = 'US Citizen' THEN 'Y' WHEN CSE.US_Citizen_Resident_Alien__c IS NULL THEN NULL ELSE 'N' END AS US_Citizen&#xA;&#x9;, CASE WHEN CSE.US_Citizen_Resident_Alien__c = 'Resident Alien' THEN 'Y' WHEN CSE.US_Citizen_Resident_Alien__c IS NULL THEN NULL ELSE 'N' END AS Reside_US_10yrs&#xA;&#x9;, LEFT(CSE.Six_Months_in_US_or_Territory__c, 1) AS Lived_US_More_than_6mos&#xA;&#x9;, CASE WHEN REPLACE(PAT.Country__c, 'US', 'United States') = 'United States' AND ISNULL(CSE.Six_Months_in_US_or_Territory__c, 'N') = 'N' THEN 'Y' ELSE 'N' END AS Lived_US_Less_than_6mos&#xA;&#x9;, CSE.Patient_Household_Income__c AS yearly_Income&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART A%' THEN 'Y' ELSE 'N' END AS MedA_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART A%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedA_covered_date&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART B%' THEN 'Y' ELSE 'N' END AS MedB_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART B%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedB_covered_date&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART D%' THEN 'Y' ELSE 'N' END AS MedD_covered_ind&#xA;&#x9;, CASE WHEN CSE.Sub_Status__c LIKE '%PART D%' THEN EQ.Medicare_Effective_Date__c ELSE NULL END AS MedD_covered_date&#xA;&#x9;, INS.Medicare_ID__c AS Medicare_ID&#xA;&#x9;, LEFT(EQ.Medicaid__c, 1) AS Medicaid_covered_ind&#xA;&#x9;, LEFT(EQ.Emergency_Medicaid__c, 1) AS Emergency_Medicaid_covered_ind&#xA;&#x9;, LEFT(EQ.Denied_Medicaid__c, 1) AS Medicaid_denied_ind&#xA;&#x9;, CASE WHEN MDL.Received_Date__c IS NOT NULL THEN 'Y' ELSE 'N' END AS Medicaid_denial_letter_ind&#xA;&#x9;, LEFT(EQ.Eligible_Enrolled_in_other_programs__c, 1) AS Fed_State_Local_Health_progs_ind&#xA;&#x9;, LEFT(EQ.Pregnant__c, 1) AS Pregnant_ind&#xA;&#x9;, LEFT(EQ.Blind_or_received_SS_Disability_status__c, 1) AS Blind_or_SSDisability_ind&#xA;&#x9;, LEFT(EQ.Receive_Social_Security_Disability__c, 1) AS Receiving_SSDisability_ind&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN 'Y' ELSE 'N' END AS Insurance_Covered_ind &#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Payer_Name__c ELSE 'NA-Uninsured' END AS Insurer_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Plan_Name__c ELSE 'NA-Uninsured' END AS Plan_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Subscriber_Name__c ELSE 'NA-Uninsured' END AS Subscriber_Name&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Relationship_to_Patient__c ELSE 'NA-Uninsured' END AS Relationship_to_Patient&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN FORMAT(INS.DOB__c, 'MM/dd/yyyy') ELSE 'NA-Uninsured' END AS Insured_DOB&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Member_ID_Policy_Number__c ELSE 'NA-Uninsured' END AS Insurance_MemberID &#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Member_ID_Policy_Number__c ELSE 'NA-Uninsured' END AS Insurance_Policy&#xA;&#x9;, CASE WHEN INS.Id IS NOT NULL THEN INS.Group_Number__c ELSE 'NA-Uninsured' END AS Insurance_Group_Num&#xA;&#x9;, HCP.Physician_Lname&#xA;&#x9;, HCP.Physician_Fname&#xA;&#x9;, HCP.Physician_Addr1&#xA;&#x9;, HCP.Physician_Addr_City&#xA;&#x9;, HCP.Physician_Addr_State&#xA;&#x9;, HCP.Physician_Addr_Zip&#xA;into RegaloRx_Work.dbo.TezePatients&#xA;FROM &#xA;&#x9;@PAT PAT&#xA;&#x9;INNER JOIN @CSE CSE&#xA;&#x9;&#x9;ON PAT.Id = CSE.ContactId&#xA;&#x9;LEFT OUTER JOIN @EQ EQ&#xA;&#x9;&#x9;ON PAT.Id = EQ.Patient__c&#xA;&#x9;&#x9;AND CSE.Id = EQ.Case__c&#xA;&#x9;LEFT OUTER JOIN @INS INS&#xA;&#x9;&#x9;ON PAT.Id = INS.Patient__c&#xA;&#x9;&#x9;AND CSE.Id = INS.Case__c&#xA;&#x9;LEFT OUTER JOIN @MDL MDL&#xA;&#x9;&#x9;ON CSE.Id = MDL.Case__c&#xA;&#x9;LEFT OUTER JOIN @HCP HCP&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCP.Id&#xA;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;ON PAT.Id = PA.Contact__c&#xA;WHERE&#xA;&#x9;PA.Product_Name__c = 'Tezspire'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3253,7 +3361,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;RX.[Name] AS RxId&#xA;&#x9;, RX.Pharmacy_Rx_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, CSE.CaseNumber&#xA;&#x9;, RX.Concurrent_Medications__c&#xA;&#x9;, RX.Known_Drug_Allergies__c&#xA;&#x9;, RX.NDC__c&#xA;&#x9;, RX.Refills_Selection__c&#xA;&#x9;, RX.Dispense_Amount_Selection__c&#xA;&#x9;, RX.Frequency_Selection__c&#xA;&#x9;, RX.Medication_Dose_Selection__c&#xA;&#x9;, RX.Signature_Date__c&#xA;&#x9;, RX.Number_of_Fills_Remaining__c&#x9;&#xA;INTO RegaloRx_Work.dbo.TezeRx&#xA;FROM&#xA;&#x9;RX__c RX&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON RX.Product_Drug__c = PROD.Id&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON RX.Patient_Name__c = P.Id&#xA;&#x9;INNER JOIN [Case] CSE&#xA;&#x9;&#x9;ON RX.Case__c = CSE.Id&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON CSE.CaseNumber = TC.[Case ID]&#xA;WHERE&#xA;&#x9;PROD.[Name] LIKE 'Tezspire%'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;RX.[Name] AS RxId&#xA;&#x9;, RX.Pharmacy_Rx_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, CSE.CaseNumber&#xA;&#x9;, RX.Concurrent_Medications__c&#xA;&#x9;, RX.Known_Drug_Allergies__c&#xA;&#x9;, RX.NDC__c&#xA;&#x9;, RX.Refills_Selection__c&#xA;&#x9;, RX.Dispense_Amount_Selection__c&#xA;&#x9;, RX.Frequency_Selection__c&#xA;&#x9;, RX.Medication_Dose_Selection__c&#xA;&#x9;, RX.Signature_Date__c&#xA;&#x9;, RX.Number_of_Fills_Remaining__c&#x9;&#xA;&#x9;, TC.HcpId&#xA;INTO RegaloRx_Work.dbo.TezeRx&#xA;FROM&#xA;&#x9;RX__c RX&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON RX.Product_Drug__c = PROD.Id&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON RX.Patient_Name__c = P.Id&#xA;&#x9;INNER JOIN [Case] CSE&#xA;&#x9;&#x9;ON RX.Case__c = CSE.Id&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON CSE.CaseNumber = TC.[Case ID]&#xA;WHERE&#xA;&#x9;PROD.[Name] LIKE 'Tezspire%'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3270,7 +3378,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Ship_Date_Formatted__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="SELECT DISTINCT&#xA;&#x9;SAR.[Name] AS ShipId&#xA;&#x9;, SA.Case_Number__c&#xA;&#x9;, P.Patient_Id__c&#xA;&#x9;, SA.Order_ID__c&#xA;&#x9;, SAR.Carrier__c&#xA;&#x9;, SAR.Days_Supply__c&#xA;&#x9;, SAR.Fill_Number__c&#xA;&#x9;, SAR.NDC_Number__c&#xA;&#x9;, SAR.Number_of_Fills_Remaining__c&#xA;&#x9;, SAR.Quantity_Shipped__c&#xA;&#x9;, SAR.Ship_Date_Formatted__c&#xA;&#x9;, SAR.Rx_Number__c&#xA;&#x9;, SAR.Tracking_Number__c&#xA;&#x9;, TC.HCPId&#xA;INTO RegaloRx_Work.dbo.TezeShipments&#xA;FROM&#xA;&#x9;Shipment_Authorization__c SA&#xA;&#x9;INNER JOIN ShipmentAuthorization_Response__c SAR&#xA;&#x9;&#x9;ON SA.Id = SAR.Shipment_Authorization__c&#xA;&#x9;INNER JOIN Contact P&#xA;&#x9;&#x9;ON SA.Patient__c = P.Id&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON P.Id = PA.Contact__c&#xA;&#x9;INNER JOIN Product2 PROD&#xA;&#x9;&#x9;ON SA.NDC__c = PROD.ProductCode&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezeCases TC&#xA;&#x9;&#x9;ON SA.Case_Number__c = TC.[Case ID]&#xA;&#x9;INNER JOIN RegaloRx_Work.dbo.TezePatients TP&#xA;&#x9;&#x9;ON P.Patient_Id__c = TP.Patient_ID&#xA;WHERE&#xA;&#x9;SAR.Ship_Status__c = 'S'&#xA;&#x9;AND PA.Product_Name__c = 'Tezspire'&#xA;&#x9;AND PROD.[Name] LIKE 'Tezspire%'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3287,12 +3395,13 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C1273EED-B562-40B3-A7A6-62506B23BB1D}"
-          SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeCases]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeCases]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezePatients]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezePatients]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeRx]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeRx]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeShipments]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeShipments]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeCases]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeCases]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezePatients]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezePatients]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeRx]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeRx]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeShipments]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeShipments]&#xA;&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TezeHCP]') AND type in (N'U'))&#xA;DROP TABLE [RegaloRx_Work].[dbo].[TezeHCP]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Extract Case Detail File"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{5ce839ac-e5e4-407d-9f3b-df8897bec1b1}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -7220,6 +7329,350 @@ where NOT
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Extract HCPs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A8750C87-3475-4FE4-B23D-B022943A1FCB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract HCPs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract HCPs\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."TezeHCP"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract HCPs\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WorkConn]"
+                  connectionManagerRefId="Package.ConnectionManagers[WorkConn]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[HCP_Id__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HCP_Id__c]"
+                      length="30"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[HCP_Id__c]"
+                      name="HCP_Id__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FirstName]"
+                      length="40"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[LastName]"
+                      length="80"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[NPI__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NPI__c]"
+                      length="25"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[NPI__c]"
+                      name="NPI__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Phone]"
+                      length="15"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fax]"
+                      length="15"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HCP_Id__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="HCP_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="80"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NPI__c]"
+                      dataType="wstr"
+                      length="25"
+                      name="NPI__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="15"
+                      name="Fax" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HCP_Id__c]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HCP_Id__c]"
+                      name="HCP_Id__c" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NPI__c]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NPI__c]"
+                      name="NPI__c" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract HCPs\HcpFile"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="HcpFile"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract HCPs\HcpFile.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HcpFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[HcpFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[HCP_Id__c]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="HCP_Id__c"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[HCP_Id__c]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[HCP_Id__c]" />
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[NPI__c]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="NPI__c"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[NPI__c]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[NPI__c]" />
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Fax"
+                      externalMetadataColumnId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[Fax]"
+                      lineageId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fax]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[HCP_Id__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="HCP_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="80"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[NPI__c]"
+                      dataType="wstr"
+                      length="25"
+                      name="NPI__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="15"
+                      name="Fax" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract HCPs.Paths[ADO NET Source Output]"
+              endId="Package\Extract HCPs\HcpFile.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Extract HCPs\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Extract Patients"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
@@ -9372,6 +9825,13 @@ WHERE
                       cachedName="Number_of_Fills_Remaining__c"
                       externalMetadataColumnId="Package\Extract Prescriptions\Rx Dest.Inputs[Flat File Destination Input].ExternalColumns[Number_of_Fills_Remaining__c]"
                       lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].Columns[Number_of_Fills_Remaining__c]" />
+                    <inputColumn
+                      refId="Package\Extract Prescriptions\Rx Dest.Inputs[Flat File Destination Input].Columns[HcpId]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="HcpId"
+                      externalMetadataColumnId="Package\Extract Prescriptions\Rx Dest.Inputs[Flat File Destination Input].ExternalColumns[HcpId]"
+                      lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].Columns[HcpId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9438,6 +9898,11 @@ WHERE
                       refId="Package\Extract Prescriptions\Rx Dest.Inputs[Flat File Destination Input].ExternalColumns[Number_of_Fills_Remaining__c]"
                       dataType="r8"
                       name="Number_of_Fills_Remaining__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Prescriptions\Rx Dest.Inputs[Flat File Destination Input].ExternalColumns[HcpId]"
+                      dataType="wstr"
+                      length="50"
+                      name="HcpId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -9644,6 +10109,16 @@ WHERE
                       lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].Columns[Number_of_Fills_Remaining__c]"
                       name="Number_of_Fills_Remaining__c"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].Columns[HcpId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].ExternalColumns[HcpId]"
+                      length="30"
+                      lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].Columns[HcpId]"
+                      name="HcpId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9710,6 +10185,11 @@ WHERE
                       refId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].ExternalColumns[Number_of_Fills_Remaining__c]"
                       dataType="r8"
                       name="Number_of_Fills_Remaining__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Output].ExternalColumns[HcpId]"
+                      dataType="wstr"
+                      length="30"
+                      name="HcpId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -9793,6 +10273,12 @@ WHERE
                       dataType="r8"
                       lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Error Output].Columns[Number_of_Fills_Remaining__c]"
                       name="Number_of_Fills_Remaining__c" />
+                    <outputColumn
+                      refId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Error Output].Columns[HcpId]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Error Output].Columns[HcpId]"
+                      name="HcpId" />
                     <outputColumn
                       refId="Package\Extract Prescriptions\Rx Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -10041,6 +10527,16 @@ WHERE
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Tracking_Number__c]"
                       name="Tracking_Number__c"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[HCPId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[HCPId]"
+                      length="30"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[HCPId]"
+                      name="HCPId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10107,6 +10603,11 @@ WHERE
                       dataType="wstr"
                       length="50"
                       name="Tracking_Number__c" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].ExternalColumns[HCPId]"
+                      dataType="wstr"
+                      length="30"
+                      name="HCPId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -10190,6 +10691,12 @@ WHERE
                       length="50"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[Tracking_Number__c]"
                       name="Tracking_Number__c" />
+                    <outputColumn
+                      refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[HCPId]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[HCPId]"
+                      name="HCPId" />
                     <outputColumn
                       refId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -10332,6 +10839,13 @@ WHERE
                       cachedName="Ship_Date_Formatted__c"
                       externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[Ship_Date]"
                       lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[Ship_Date_Formatted__c]" />
+                    <inputColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].Columns[HCPId]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="HCPId"
+                      externalMetadataColumnId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[HcpId]"
+                      lineageId="Package\Extract Shipments\Shipments Source.Outputs[ADO NET Source Output].Columns[HCPId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10399,6 +10913,11 @@ WHERE
                       dataType="wstr"
                       length="50"
                       name="Ship_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Shipments\TezeShipments.Inputs[Flat File Destination Input].ExternalColumns[HcpId]"
+                      dataType="wstr"
+                      length="50"
+                      name="HcpId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -10467,11 +10986,11 @@ WHERE
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
-      DTS:DTSID="{57A05BC2-FF83-4806-81B9-9C493969F4F1}"
+      DTS:DTSID="{930A4F95-290E-4914-B88C-E7BEBE11EF78}"
       DTS:From="Package\Build Shipment Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Extract Case Detail File" />
+      DTS:To="Package\Build HCP Table" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
@@ -10480,6 +10999,22 @@ WHERE
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\Build Cases Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{C2A92507-6C4A-43A1-A775-A683571ECA87}"
+      DTS:From="Package\Build HCP Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Extract Case Detail File" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{436DA6BD-170D-4EB8-93DA-C64ADA27A6AB}"
+      DTS:From="Package\Extract Patients"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Extract HCPs" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -10516,22 +11051,22 @@ WHERE
         <NodeLayout
           Size="187,42"
           Id="Package\Extract Case Detail File"
-          TopLeft="365,457" />
+          TopLeft="364,546" />
         <NodeLayout
           Size="152,42"
           Id="Package\Extract Patients"
-          TopLeft="362,141" />
+          TopLeft="361,230" />
         <NodeLayout
           Size="175,42"
           Id="Package\Extract Prescriptions"
-          TopLeft="355,216" />
+          TopLeft="354,305" />
         <NodeLayout
           Size="164,42"
           Id="Package\Extract Shipments"
-          TopLeft="366,322" />
+          TopLeft="365,411" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="458.5,457">
+          TopLeft="457.5,546">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10565,7 +11100,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="445.25,322">
+          TopLeft="444.25,411">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10587,7 +11122,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="440.25,216">
+          TopLeft="439.25,305">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10710,28 +11245,6 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="280,481">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="85,0"
-              Start="0,0"
-              End="77.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="77.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="166,73">
           <EdgeLayout.Curve>
@@ -10757,6 +11270,104 @@ WHERE
                     Point3="-8,35.5" />
                   <mssgle:LineSegment
                     End="-8,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Build HCP Table"
+          TopLeft="107,555" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="187.25,505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="261,576">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103,-9"
+              Start="0,0"
+              End="95.5,-9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.5,0"
+                    Point2="51.5,0"
+                    Point3="51.5,-4" />
+                  <mssgle:LineSegment
+                    End="51.5,-5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.5,-5"
+                    Point2="51.5,-9"
+                    Point3="55.5,-9" />
+                  <mssgle:LineSegment
+                    End="95.5,-9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Extract HCPs"
+          TopLeft="359,135" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="437,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.5,-53"
+              Start="0,0"
+              End="-8.5,-45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-22.5"
+                    Point2="0,-26.5"
+                    Point3="-4,-26.5" />
+                  <mssgle:LineSegment
+                    End="-4.5,-26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,-26.5"
+                    Point2="-8.5,-26.5"
+                    Point3="-8.5,-30.5" />
+                  <mssgle:LineSegment
+                    End="-8.5,-45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10868,7 +11479,7 @@ WHERE
     design-time-name="Package\Extract Prescriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="126,42"
           Id="Package\Extract Prescriptions\Rx Source"
@@ -10896,9 +11507,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10918,13 +11527,13 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Shipments\Shipments Source"
-          TopLeft="150,95" />
-        <NodeLayout
           Size="150,42"
           Id="Package\Extract Shipments\TezeShipments"
           TopLeft="157,228" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Shipments\Shipments Source"
+          TopLeft="150,95" />
         <EdgeLayout
           Id="Package\Extract Shipments.Paths[ADO NET Source Output]"
           TopLeft="231.75,137">
@@ -10952,6 +11561,64 @@ WHERE
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Shipments\Shipments Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract HCPs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Extract HCPs\ADO NET Source"
+          TopLeft="105,52" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Extract HCPs\HcpFile"
+          TopLeft="107,179" />
+        <EdgeLayout
+          Id="Package\Extract HCPs.Paths[ADO NET Source Output]"
+          TopLeft="184,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.5,85"
+              Start="0,0"
+              End="-20.5,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="-4,42.5" />
+                  <mssgle:LineSegment
+                    End="-16.5,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.5,42.5"
+                    Point2="-20.5,42.5"
+                    Point3="-20.5,46.5" />
+                  <mssgle:LineSegment
+                    End="-20.5,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract HCPs\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
