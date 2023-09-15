@@ -1,0 +1,835 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/9/2021 12:37:35 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HHI-LT-0108"
+  DTS:CreatorName="HHI\cmchenry-admin"
+  DTS:DTSID="{5AF04793-C51B-44CE-B004-A92ECBEEFDCD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="TezeLetterExtract"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="325"
+  DTS:VersionGUID="{9FC22257-2E7C-462B-B0D2-519B348E5DA8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LetterFaxConn]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{EFAF9412-1786-473B-A8DA-80558DEA1D99}"
+      DTS:ObjectName="LetterFaxConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;Initial Catalog=RegaloRx_Letters_And_Faxes;Integrated Security=True;Application Name=SSIS-TezeLetterExtract-{EFAF9412-1786-473B-A8DA-80558DEA1D99}RegaloRxSqlProd1.hhi.gd.RegaloRx_Letters_And_Faxes;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TF SFTP Connection Manager]"
+      DTS:CreationName="SFTPConnection"
+      DTS:DTSID="{3029E572-861F-4A25-899F-53E6AE28F6BC}"
+      DTS:ObjectName="TF SFTP Connection Manager">
+      <DTS:ObjectData>
+        <SFTPConnectionManager
+          ConnectionString="ConnectionType=1;Charset=us-ascii;Host=172.19.151.5;Port=22;Username=jjprint;Timeout=60;DefaultRemoteDirectory=/Production/Return;UseProxy=False;ReuseConnection=False;ProxyType=0;ProxyHost=;ProxyPort=0;ProxyUsername=;UseBinaryTransfer=True;UsePassiveMode=True;IgnoreServerIP=True;TransferBufferSize=0;SSLVersion=2;MaxSSLVersion=2;AuthenticationMode=1;KeyFile=\\regalorx_smb01.hhi.gd\common\IT\Passwords\J&amp;J SFTP Key\jjprint_private.ppk;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WorkConn]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{84FE7FE5-4681-4C51-86EC-CD301400680F}"
+      DTS:ObjectName="WorkConn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RegaloRxSqlProd1.hhi.gd;Initial Catalog=RegaloRx_Work;Integrated Security=True;Application Name=SSIS-Package1-{84FE7FE5-4681-4C51-86EC-CD301400680F}RegaloRxSqlProd1.hhi.gd.Salesforce;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A65490DB-7256-454C-AFF1-170380BFF44A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DownloadDir">
+      <DTS:VariableValue
+        DTS:DataType="8">R:\IT\Chris McHenry\Projects\Teze Transfer\DeterminationLetters</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3B2278E-04C0-44FF-BA4F-3DDC932F1E7B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileFound">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DC602FDD-887F-41D1-8FCD-B4412E1F5496}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF506828-2871-4999-8CEA-CBBF7038DF04}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNames">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E4DB9AF2-BF19-4B31-B385-4062E8F4036B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::DownloadDir] + &quot;\\&quot; +  @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">R:\IT\Chris McHenry\Projects\Teze Transfer\DeterminationLetters\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6C0C53E6-9399-4E10-B433-15433F77381D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalDir">
+      <DTS:VariableValue
+        DTS:DataType="8">R:\Prod Files\LettersAndFaxes\AmGen\Aimovig\Letters\Archive\Images</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6A07620-D3DD-4841-A7F3-8C56B139EAFF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LocalDir] + &quot;\\&quot; +  @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">R:\Prod Files\LettersAndFaxes\AmGen\Aimovig\Letters\Archive\Images\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3FA1ECF6-4429-47D4-9571-4DB5A44874C1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFPW">
+      <DTS:VariableValue
+        DTS:DataType="8">Cherimch46*Zp0ln6qHYDMqVnmcCbWw977gu</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Source Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5AF58B2C-F079-4EF6-B91A-8768AB1C7E5F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Source Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EFAF9412-1786-473B-A8DA-80558DEA1D99}"
+          SQLTask:SqlStatementSource="SELECT  &#xA;&#x9;SystemCreateDate AS extract_transmission_dt&#xA;&#x9;, AutoID AS attachment_id&#xA;&#x9;, Return_Filename AS attachment_name&#xA;&#x9;, N'Determination Letter' AS attachment_category&#xA;&#x9;, N'' AS attachment_description&#xA;&#x9;, ProcessedDate AS attachment_received_dt&#xA;&#x9;, ASNF_ID AS patient_id&#xA;&#x9;, 0 AS Downloaded&#xA;INTO RegaloRx_Work.dbo.TezeDeterminationLetters&#xA;FROM &#xA;&#x9;[LettersForPrint_Staging]&#xA;WHERE &#xA;&#x9;DocType IN ( '01', '05', '02', '03' )&#xA;&#x9;AND ExtraField9 LIKE 'Tezspire%'&#xA;ORDER BY &#xA;&#x9;CAST(LetterCreateDate as date) DESC&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{AF3DC57F-92DD-4DE6-AE49-1F219436AF07}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{EC838A0C-D9C2-4FD0-9190-D10340C74E60}"
+        DTS:ObjectName="{EC838A0C-D9C2-4FD0-9190-D10340C74E60}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::FileNames" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Back Update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0FCF9153-FE2E-4814-9F5B-3441A4FB8550}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Back Update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{84FE7FE5-4681-4C51-86EC-CD301400680F}"
+              SQLTask:SqlStatementSource="UPDATE TezeDeterminationLetters&#xA;SET Downloaded = 1&#xA;WHERE&#xA;&#x9;attachment_name = @filename" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@filename"
+                SQLTask:DtsVariableName="User::FileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="100" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Downloaded?"
+          DTS:CreationName="PW.TaskFactory.FilePropertiesTask"
+          DTS:Description="TF File Properties Task"
+          DTS:DTSID="{72328FE9-87F1-4D5C-8FF2-89EE2B30150E}"
+          DTS:ExecutableType="PW.TaskFactory.FilePropertiesTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Downloaded?"
+          DTS:TaskContact="File Properties Task;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileProperties
+              File_FileName=""
+              File_Extension=""
+              File_CreationTime=""
+              File_CreationTimeUtc=""
+              File_LastAccessTimeUtc=""
+              File_LastAccessTime=""
+              File_LastWriteTime=""
+              File_LastWriteTimeUtc=""
+              File_FileInUse=""
+              File_Hidden=""
+              File_Readonly=""
+              File_Encrypted=""
+              File_Compressed=""
+              File_Archived=""
+              File_Exists="FileFound"
+              File_Content=""
+              File_Size=""
+              StopExecutionOnError="False"
+              SelectedSourceType="Variable"
+              SelectedVariableOrConnectionManager="FullFileName" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Pul From JJ sftp"
+          DTS:CreationName="PW.TaskFactory.SFTPTask"
+          DTS:Description="TF Secure FTP Task"
+          DTS:DTSID="{378A564B-F25A-4114-8BE9-B7655FD65E3A}"
+          DTS:ExecutableType="PW.TaskFactory.SFTPTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Pul From JJ sftp"
+          DTS:TaskContact="Secure FTP Task;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SFTPTask
+              NumberOfRetries="3"
+              IncludeSubdirectories="True"
+              TaskAction="Download_file_from_server"
+              StopPackageOnFailure="False"
+              LocalPathStoredInVariable="True"
+              LogFileLocation=""
+              NewFileName=""
+              LocalFileVariableName="User::DownloadDir"
+              FileFilter=""
+              LocalFileFilter=""
+              ResultVariable=""
+              LocalConnectionManagerName="&lt;Select Connection Manager&gt;"
+              OverwriteLocalFile="True"
+              RemotePathContainsFileName="False"
+              RemoteFTPConnectionName="{3029E572-861F-4A25-899F-53E6AE28F6BC}"
+              RemotePathStoredInVariable="True"
+              RemoteDirectoryOrFile="User::FileName"
+              OverwriteRemoteFile="False"
+              ShowDebugInfo="False"
+              SSHMaxPacketSize="0" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2C0970D-7643-4408-BAE4-535F092E5D98}"
+          DTS:From="Package\Foreach Loop Container\Pul From JJ sftp"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Downloaded?" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{83313FBE-246E-4181-8D4B-23AA68B7BD65}"
+          DTS:EvalOp="3"
+          DTS:Expression="@FileFound == True"
+          DTS:From="Package\Foreach Loop Container\Downloaded?"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Back Update" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{29004F8D-41FA-4915-A0A7-36961A7875FD}"
+          DTS:ObjectName="{29004F8D-41FA-4915-A0A7-36961A7875FD}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container 1"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{ad0fea61-cc17-4222-be84-9cbff4d88a90}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="0"
+      DTS:ObjectName="Foreach Loop Container 1">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{f0581041-0ec9-49c1-8206-04fc4057292d}"
+        DTS:ObjectName="{EC838A0C-D9C2-4FD0-9190-D10340C74E60}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::FileNames" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container 1\Back Update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3c7a73e8-e6a1-4bed-a280-db2639301f5e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Back Update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{84FE7FE5-4681-4C51-86EC-CD301400680F}"
+              SQLTask:SqlStatementSource="UPDATE TezeDeterminationLetters&#xA;SET Downloaded = 1&#xA;WHERE&#xA; attachment_name = @filename" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@filename"
+                SQLTask:DtsVariableName="User::FileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="100" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container 1\Copied?"
+          DTS:CreationName="PW.TaskFactory.FilePropertiesTask"
+          DTS:Description="TF File Properties Task"
+          DTS:DTSID="{8b647319-1e3e-4cf5-a05e-7c8d06ba8437}"
+          DTS:ExecutableType="PW.TaskFactory.FilePropertiesTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Copied?"
+          DTS:TaskContact="File Properties Task;SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileProperties
+              File_FileName=""
+              File_Extension=""
+              File_CreationTime=""
+              File_CreationTimeUtc=""
+              File_LastAccessTimeUtc=""
+              File_LastAccessTime=""
+              File_LastWriteTime=""
+              File_LastWriteTimeUtc=""
+              File_FileInUse=""
+              File_Hidden=""
+              File_Readonly=""
+              File_Encrypted=""
+              File_Compressed=""
+              File_Archived=""
+              File_Exists="FileFound"
+              File_Content=""
+              File_Size=""
+              StopExecutionOnError="False"
+              SelectedSourceType="Variable"
+              SelectedVariableOrConnectionManager="FullFileName" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container 1\Copy from R drive"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DisableEventHandlers="True"
+          DTS:DTSID="{6CBF272A-5388-4848-9510-EC4390751ADC}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:ForceExecValue="True"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="1000"
+          DTS:ObjectName="Copy from R drive"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\Foreach Loop Container 1\Copy from R drive.EventHandlers[OnError]"
+              DTS:CreationName="OnError"
+              DTS:DTSID="{602D7015-C8DC-4C30-B9DB-662109833993}"
+              DTS:EventID="1768776801"
+              DTS:EventName="OnError"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{425F81BD-0649-4406-AD96-A60F22B51651}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables />
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::LocalFileName"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::DownloadDir"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F7A709C9-4C39-49D1-B2DB-5F046F683A5E}"
+          DTS:From="Package\Foreach Loop Container 1\Copy from R drive"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container 1\Copied?"
+          DTS:Value="2" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{6663cbe9-f45a-4b17-939f-7db8ad454bd5}"
+          DTS:EvalOp="3"
+          DTS:Expression="@FileFound == True"
+          DTS:From="Package\Foreach Loop Container 1\Copied?"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container 1\Back Update" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{a58aaf5b-fef8-4cee-8d43-7e18d71a6ee1}"
+          DTS:ObjectName="{29004F8D-41FA-4915-A0A7-36961A7875FD}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populate remaining into Source List"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{868311e7-f08d-4070-b280-dbcb7c5574cb}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populate remaining into Source List"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{84FE7FE5-4681-4C51-86EC-CD301400680F}"
+          SQLTask:SqlStatementSource="SELECT&#xA; attachment_name&#xA;FROM&#xA; TezeDeterminationLetters&#xA;WHERE&#xA; attachment_name != 'No Address'&#xA; AND Downloaded = 0"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::FileNames" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populate Source List"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E9E29A85-2E5A-465F-ADFD-6587C9EAF5D7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populate Source List"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{84FE7FE5-4681-4C51-86EC-CD301400680F}"
+          SQLTask:SqlStatementSource="SELECT&#xA;&#x9;attachment_name&#xA;FROM&#xA;&#x9;TezeDeterminationLetters&#xA;WHERE&#xA;&#x9;attachment_name != 'No Address'"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::FileNames" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{462C1AAA-395D-4947-9619-371E3B24FE09}"
+      DTS:From="Package\Populate Source List"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{19c6bc3d-b5d4-4e6b-ba69-5938ba7a74aa}"
+      DTS:From="Package\Populate remaining into Source List"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Foreach Loop Container 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0AE73B60-755D-4C5D-BA96-6616702B0EA3}"
+      DTS:From="Package\Foreach Loop Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Populate remaining into Source List" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F75ABAB-2400-4269-8DB1-E299FBD8DAE1}"
+      DTS:From="Package\Create Source Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Populate Source List" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Populate Source List"
+          TopLeft="89,193" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Foreach Loop Container\Downloaded?"
+          TopLeft="22,108" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Foreach Loop Container\Back Update"
+          TopLeft="34,206" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="93,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,56"
+              Start="0,0"
+              End="10,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="6,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,28"
+                    Point2="10,28"
+                    Point3="10,32" />
+                  <mssgle:LineSegment
+                    End="10,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3,33,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Pul From JJ sftp"
+          TopLeft="22,18" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="96,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="222,306"
+          Size="222,349"
+          Id="Package\Foreach Loop Container"
+          TopLeft="73,303" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="176.5,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.1666666666667,68"
+              Start="0,0"
+              End="-28.1666666666667,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5080500894454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5080500894454"
+                    Point2="0,40.5080500894454"
+                    Point3="-4,40.5080500894454" />
+                  <mssgle:LineSegment
+                    End="-24.1666666666667,40.5080500894454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.1666666666667,40.5080500894454"
+                    Point2="-28.1666666666667,40.5080500894454"
+                    Point3="-28.1666666666667,44.5080500894454" />
+                  <mssgle:LineSegment
+                    End="-28.1666666666667,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Populate remaining into Source List"
+          TopLeft="400,167" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Foreach Loop Container 1\Back Update"
+          TopLeft="42,206" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Foreach Loop Container 1\Copied?"
+          TopLeft="56,108" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint 1]"
+          TopLeft="112.5,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,16.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Foreach Loop Container 1\Copy from R drive"
+          TopLeft="32,20" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint]"
+          TopLeft="114,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,13.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="222,306"
+          Size="222,349"
+          Id="Package\Foreach Loop Container 1"
+          TopLeft="411,301" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="562.666666666667,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-40.6666666666666,92"
+              Start="0,0"
+              End="-40.6666666666666,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.156704361874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.156704361874"
+                    Point2="0,37.156704361874"
+                    Point3="-4,37.156704361874" />
+                  <mssgle:LineSegment
+                    End="-36.6666666666666,37.156704361874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.6666666666666,37.156704361874"
+                    Point2="-40.6666666666666,37.156704361874"
+                    Point3="-40.6666666666666,41.156704361874" />
+                  <mssgle:LineSegment
+                    End="-40.6666666666666,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="219.666666666667,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="263.666666666667,-94"
+              Start="0,0"
+              End="263.666666666667,-86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-43.0406135234392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-43.0406135234392"
+                    Point2="0,-47.0406135234392"
+                    Point3="4,-47.0406135234392" />
+                  <mssgle:LineSegment
+                    End="259.666666666667,-47.0406135234392" />
+                  <mssgle:CubicBezierSegment
+                    Point1="259.666666666667,-47.0406135234392"
+                    Point2="263.666666666667,-47.0406135234392"
+                    Point3="263.666666666667,-51.0406135234392" />
+                  <mssgle:LineSegment
+                    End="263.666666666667,-86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Create Source Table"
+          TopLeft="92,66" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="177.75,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
