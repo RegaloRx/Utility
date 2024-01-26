@@ -12,8 +12,8 @@
   DTS:ObjectName="TezeExtract"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="303"
-  DTS:VersionGUID="{83A0B4CC-5CBC-4B7E-A76F-E43CF0C6C191}">
+  DTS:VersionBuild="314"
+  DTS:VersionGUID="{7182F965-6385-4A49-ACA1-B97782323E07}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Patients_091123120000.txt">
+          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Patients_102723190000.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient ID"
-              DTS:DTSID="{15BA4395-C90F-4188-9C61-436A460ED0FA}"
+              DTS:DTSID="{C69C569B-4174-4D92-8DBA-323F07FEFBCD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Escalation Flag"
-              DTS:DTSID="{8D44641A-91B6-425E-990B-5A4543C50F9B}"
+              DTS:DTSID="{338AE616-31EA-4780-B8B2-A03EAB67FE3E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Last Name"
-              DTS:DTSID="{E0A4B780-2152-4F58-ACD1-C07791142BEC}"
+              DTS:DTSID="{4D09C186-A1A0-4F8D-9394-8D04B1D32B83}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient First Name"
-              DTS:DTSID="{9206C343-0CC9-4B0F-B659-01FAAFBF809F}"
+              DTS:DTSID="{426288A2-CCB4-4C4F-AE42-1A35B6CFC44B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Middle Initial"
-              DTS:DTSID="{E04F51E1-B9F8-45EA-BF35-5D851BCB0EAC}"
+              DTS:DTSID="{B10AD647-1748-4800-82A5-57A7B3905367}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Address 1"
-              DTS:DTSID="{BAAFDAB4-C087-4CB3-AE85-DA53BD8E0446}"
+              DTS:DTSID="{269AC7B1-2E92-4174-B8A6-C389E03DB0D7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Address 2"
-              DTS:DTSID="{0DDECD05-EA38-422A-893C-CDF577E1A56A}"
+              DTS:DTSID="{9D4ACB4C-F2AA-4EAB-9B9A-333F9EDD9802}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient City"
-              DTS:DTSID="{DA6D4861-BDE7-48A1-9939-C88151257138}"
+              DTS:DTSID="{4BDCED05-B51A-4BBC-A829-159D6E612385}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient State"
-              DTS:DTSID="{7BBF8274-0FD0-41E0-830A-118913B0A44C}"
+              DTS:DTSID="{99777D29-CA00-4734-818D-8577C4F0C3A1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Zip Code"
-              DTS:DTSID="{B081D662-BE63-42F5-8A7C-895043005032}"
+              DTS:DTSID="{1AB09032-E923-4725-8681-7129D1A92C0C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Email"
-              DTS:DTSID="{A77DC4FC-6C10-4C26-9BE0-EDF8E42551DB}"
+              DTS:DTSID="{2D9937F8-DF25-45C9-BC04-7C8B0CA0063F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -139,7 +139,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Language Preference"
-              DTS:DTSID="{54CC8E22-799D-4C88-8105-B06EB9787B6F}"
+              DTS:DTSID="{72245973-3721-439D-85E0-3A5216332C0A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -148,7 +148,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{2C469485-AB2E-4216-9DC9-4CC0C76E11DA}"
+              DTS:DTSID="{E9108731-36C6-4648-BFFA-2794F13DAC99}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -157,7 +157,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Date of Birth"
-              DTS:DTSID="{F9FFC2CD-78F7-46C4-9345-0947341BF3AB}"
+              DTS:DTSID="{2843EA4D-5100-4455-A03C-90313C504C76}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -166,7 +166,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Home Telephone"
-              DTS:DTSID="{67D4AC6B-6C59-4DA5-9467-7E531DE02EBF}"
+              DTS:DTSID="{0F78EDDC-7CC0-495A-9649-7C87E514376F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -175,7 +175,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Mobile Telephone"
-              DTS:DTSID="{3F562B12-ADF4-46D9-AAF6-40AF5519A4C3}"
+              DTS:DTSID="{853E9575-E149-41C2-8ACF-FF726D616E2C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -184,7 +184,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient Work Telephone"
-              DTS:DTSID="{845EB8E6-EBAC-4E01-9527-E807CC31710E}"
+              DTS:DTSID="{D40909A4-7D03-46A4-9902-5BD2FA90DB21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -193,16 +193,16 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Application ID"
-              DTS:DTSID="{7B2022E2-8FFA-4DC9-B850-4270527CCCFB}"
+              DTS:DTSID="{79381F1C-DA6B-40AB-948D-F9FC92EB2635}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x007C_"
-              DTS:MaximumWidth="1"
+              DTS:MaximumWidth="20"
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Application Create Date"
-              DTS:DTSID="{3050559D-7C79-4299-9C64-54686C038038}"
+              DTS:DTSID="{EB408072-70CC-4B17-8658-5E813D3E8B06}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -211,7 +211,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Enrollment Status"
-              DTS:DTSID="{AD511E9F-1FDD-46B5-A84E-B44BD039090A}"
+              DTS:DTSID="{09835994-0F9F-45F1-81BC-7012045CE7CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -220,7 +220,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Enrollment Type"
-              DTS:DTSID="{C5C77DC4-CAC1-4356-8FAF-2F7BBFB3BFCB}"
+              DTS:DTSID="{884D471E-63D7-444A-BBFD-D71D06B70BF5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -228,7 +228,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Enrollment Beg Date"
-              DTS:DTSID="{ABD324CD-D750-477A-8A44-0E9521CAB02E}"
+              DTS:DTSID="{955B2E0C-1EF0-493A-8E8A-EC8849020E8C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -236,7 +236,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Enrollment End Date"
-              DTS:DTSID="{DC3F9563-31D0-4779-85B8-D27068C901AD}"
+              DTS:DTSID="{AFC6B518-671D-4250-A393-B9ED6E67AA88}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -244,7 +244,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="HIPAA Consent Effective Date"
-              DTS:DTSID="{FBB28383-196D-43D2-8F28-03644BA6031F}"
+              DTS:DTSID="{D0C87C51-9EC1-4173-9836-F36A119F61A7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -253,7 +253,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HIPAA Consent Expiration date"
-              DTS:DTSID="{A66BC480-A840-44A3-9CFF-1C8437F6EBF3}"
+              DTS:DTSID="{A7CAFF24-BC86-4B54-AB9B-1C14537C3DD2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -261,7 +261,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Gross Income"
-              DTS:DTSID="{A0F24352-5680-4998-BD70-466B5BB18532}"
+              DTS:DTSID="{7306DC64-52E8-4508-888F-4002BEF14727}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -269,7 +269,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Household Size"
-              DTS:DTSID="{FA7533DF-5B93-41FB-B3E5-130D735D4AA7}"
+              DTS:DTSID="{ED5776D1-E94C-48E1-8E65-FA30D4B102FD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -278,7 +278,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Program"
-              DTS:DTSID="{1955C414-C624-48C8-80A3-E53C2FD2B55A}"
+              DTS:DTSID="{4551C98C-00CF-48A0-ADF3-F0532513FDCC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -287,7 +287,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Insurance Flag"
-              DTS:DTSID="{131C6F3B-941A-4F95-9DB6-D26D3218862E}"
+              DTS:DTSID="{899DF80A-C626-46F0-A2B0-4623E141659C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -296,7 +296,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Payer ID"
-              DTS:DTSID="{657CADEC-9122-4D4B-B03E-A111E1D09556}"
+              DTS:DTSID="{8643BADC-B33D-4EE1-934B-65F838911BE0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -305,7 +305,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Payer Name"
-              DTS:DTSID="{4D5982E7-537E-4D52-9807-FA61AEC37D3C}"
+              DTS:DTSID="{D233DE9F-3314-4190-8B20-D056633B912F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -314,7 +314,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Payer Type"
-              DTS:DTSID="{7E7968A7-3BE1-4253-89AC-4ECBFCF94289}"
+              DTS:DTSID="{FD0B7A4D-2726-48C0-85B5-8D66FF2AE876}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -323,7 +323,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Plan Name"
-              DTS:DTSID="{93D3862C-F307-40BB-B6A5-1AE2BC966A49}"
+              DTS:DTSID="{FEF6A086-F658-49D7-9FD2-07521941AB48}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -332,7 +332,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Plan Type"
-              DTS:DTSID="{50280802-B124-405C-81FD-33D32C43599C}"
+              DTS:DTSID="{0020BB50-FF96-4594-BB43-F008E0FE709C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -341,7 +341,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Insurance Type"
-              DTS:DTSID="{8A465B8B-E7AF-4B7C-8FF0-555869C0B75F}"
+              DTS:DTSID="{CA695D16-D784-4DAC-9CCF-3978F72EDFAD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -350,7 +350,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Insurance Status"
-              DTS:DTSID="{83B59E3E-C8F3-4146-ABC8-7D58CE02507F}"
+              DTS:DTSID="{DC3DA2BA-AB35-4E24-9FAC-37B12AB81322}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -358,7 +358,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Effective Date"
-              DTS:DTSID="{F0E85AF9-ECD0-4CBB-8A7A-A14414F1AD4C}"
+              DTS:DTSID="{BF268D62-1060-455A-8F1E-7F57905027E7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -366,7 +366,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Term Date"
-              DTS:DTSID="{CAADF978-CFB5-4688-B3FC-4B3BD6F5B6B5}"
+              DTS:DTSID="{29C82F15-10DE-4039-BF01-DDC203265FE2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -375,7 +375,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PBM Name"
-              DTS:DTSID="{CF7F6002-D1CF-421E-9F50-1F683D52B6D1}"
+              DTS:DTSID="{895BB1CC-DF5D-41AF-9061-EEDAD9413EE5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -384,7 +384,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PBM Phone"
-              DTS:DTSID="{A5343771-1581-4289-B9C3-6A909F4D66A6}"
+              DTS:DTSID="{C667C0A9-B6CD-491A-A532-57E7608ABE2B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -393,7 +393,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Member ID"
-              DTS:DTSID="{AB4D67E6-FC6B-4733-B801-E0987A7844E1}"
+              DTS:DTSID="{59CBE95F-172F-4FF1-86E8-ABBC3A0027D0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -402,7 +402,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PCN Number"
-              DTS:DTSID="{5F40184E-8094-4A7B-917A-212B9D430800}"
+              DTS:DTSID="{578A28F4-F27C-4E47-B776-1C7D4429612E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -411,7 +411,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Group Number"
-              DTS:DTSID="{3DCE2E8F-2661-4682-8467-31532E74352E}"
+              DTS:DTSID="{1791D3EC-A5CF-4481-B549-D89BEE535D2F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -420,7 +420,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BIN Number"
-              DTS:DTSID="{826826EA-CE7D-4481-B3A1-683D128D83D8}"
+              DTS:DTSID="{CB2B1EDC-926B-4BF1-B3B0-6EC10F261A87}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -429,7 +429,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Appeal Processed"
-              DTS:DTSID="{A2F1A064-BF35-4FD6-82AF-242CFA6F94D4}"
+              DTS:DTSID="{5158708D-E861-4C96-9AD9-E3FEF0872205}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -438,7 +438,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Appeal Status"
-              DTS:DTSID="{444E337A-3E81-428D-91F5-F60781FD3982}"
+              DTS:DTSID="{6685A16D-A5E4-4592-B0D0-F3A993F5C353}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -447,7 +447,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician First Name"
-              DTS:DTSID="{0DC1B080-063C-46CA-AD2A-D8910272A22B}"
+              DTS:DTSID="{5F7F51AB-C624-4453-8839-6923A0FA0A13}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -456,7 +456,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Last Name"
-              DTS:DTSID="{25033EF1-0534-4837-A4D0-3BCB30D34952}"
+              DTS:DTSID="{081F4601-464B-4C7B-ADC8-C1A32C7244A9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -465,7 +465,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Address 1"
-              DTS:DTSID="{BFE4E4C4-6027-432C-A7DF-BE70654FAAA0}"
+              DTS:DTSID="{7DEE6498-09F1-4685-9665-FFCAB2725B48}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -474,7 +474,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Address 2"
-              DTS:DTSID="{0B144524-3F26-4A85-B927-42A5D36E9099}"
+              DTS:DTSID="{B2AC1D70-FD2D-4AC0-BC99-0B308857DD2D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -483,7 +483,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician City"
-              DTS:DTSID="{F1078CBD-99DF-4BF8-89A0-133CA29040E1}"
+              DTS:DTSID="{5F0FF0FB-330C-4593-AD93-3753D0230E13}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -492,7 +492,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician State"
-              DTS:DTSID="{B1A3EBF6-E352-4782-9BEA-C3EEB21BFF33}"
+              DTS:DTSID="{FE8E22C0-586C-45BB-9E30-2D92DF7B01D9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -501,7 +501,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Zip Code"
-              DTS:DTSID="{04048DAB-6B38-48E6-9519-57798BF233C0}"
+              DTS:DTSID="{D7A905CB-9D24-413B-AC90-2CA050863E3D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -510,7 +510,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Telephone"
-              DTS:DTSID="{4A1E2567-CBFE-4AD1-A38B-9FB6B639FC01}"
+              DTS:DTSID="{6D3E0241-74C6-459C-A438-A76C1A79C343}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -519,7 +519,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Physician Fax"
-              DTS:DTSID="{31FA3C96-C600-4976-BFCA-3B8D1AC09477}"
+              DTS:DTSID="{BF88DDEB-0B47-4716-BABE-FD271662C174}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -528,7 +528,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="State License Number"
-              DTS:DTSID="{1D843867-2136-485E-82B8-73F4EE11891A}"
+              DTS:DTSID="{8DD4971A-24CF-4F71-9A67-9BCB90E79042}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -537,7 +537,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="State License Number State"
-              DTS:DTSID="{009C2937-6DFC-479C-8912-CF26AD45B0D1}"
+              DTS:DTSID="{703C49A6-D007-440B-A91E-DDDC93C5D01C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -546,7 +546,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="State License Expiration Date"
-              DTS:DTSID="{17395A14-E96A-4E63-B5F1-D44DF517A58C}"
+              DTS:DTSID="{5BDD7009-1250-4AD5-B631-1496864C15CC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -555,7 +555,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DEA Number"
-              DTS:DTSID="{9E605020-6499-4F0E-994E-2CDE4F60F8F2}"
+              DTS:DTSID="{A656DA61-C4C6-4B3C-A96F-BAFCD7AC02CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -564,7 +564,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DEA Expiration Date"
-              DTS:DTSID="{2A651F66-4DA0-4FAA-9A9E-5403F61D2A19}"
+              DTS:DTSID="{D399ECA9-5ACB-417A-BE78-545A7AB15FAE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -573,7 +573,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NPI"
-              DTS:DTSID="{DA61A746-C0DF-4F43-8613-661A49F86EFC}"
+              DTS:DTSID="{C1CBE261-38EC-469A-A1DB-684A0667179A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -582,7 +582,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Provider Type"
-              DTS:DTSID="{91641424-276A-46DB-80E1-7B22E2EC8983}"
+              DTS:DTSID="{D9A781F4-0216-4B77-8BCE-009E46F00A8B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -591,7 +591,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Provider Title"
-              DTS:DTSID="{289AFD31-1F7D-4BCA-857E-B343CAA64C00}"
+              DTS:DTSID="{1F1FED00-39C6-4B87-9B40-06E1022B07F5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -600,7 +600,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Order ID"
-              DTS:DTSID="{A484326A-988D-4AC5-B8FF-DEB24D6FE538}"
+              DTS:DTSID="{79C17F9C-9F95-43E0-90A2-30A0FB7D9726}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -609,7 +609,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Scrip Number"
-              DTS:DTSID="{A50893DE-69E1-4F0A-BC1E-30472367764A}"
+              DTS:DTSID="{EAD0AFFD-390D-4A1A-831B-08EDCBACDFC0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -617,7 +617,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Refills Remaining"
-              DTS:DTSID="{7B969CB4-30CE-4C98-ACA7-4CDB10C10B1D}"
+              DTS:DTSID="{2CD87759-E12F-41D0-BFC9-BA364CA82A98}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -625,7 +625,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Date of last shipment"
-              DTS:DTSID="{ACCDC75C-C78E-4254-AC75-2920CD3B44B3}"
+              DTS:DTSID="{7D4C0E7F-9952-4121-A606-2B66B2860DB4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -634,7 +634,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Day Supply"
-              DTS:DTSID="{1C454E5A-C112-40C9-9ED7-05D10D85BEC9}"
+              DTS:DTSID="{5DC2705A-022B-4A91-8A4A-29B7FACF39A3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -643,7 +643,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC"
-              DTS:DTSID="{DDB2A77D-6680-47D2-A762-1011AD995284}"
+              DTS:DTSID="{74960270-05F8-4E15-B5B3-EA0E9670E4D3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -652,7 +652,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Product Name"
-              DTS:DTSID="{438B8FCA-A34D-44A7-AEA3-C8027BB330EA}"
+              DTS:DTSID="{6B61FAC6-5045-49AD-91E9-89DC3A4DDF81}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -661,7 +661,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Quantity"
-              DTS:DTSID="{18A22B1A-3C9E-424B-A482-F37EC80BE6F6}"
+              DTS:DTSID="{5462E5A8-89CA-485A-A04C-C4962A922283}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -670,7 +670,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Tracking Number"
-              DTS:DTSID="{298B1CDA-845F-485E-BFD8-E675DB66BC96}"
+              DTS:DTSID="{75317660-2245-43AA-8E70-3CA9E2937369}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -679,7 +679,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Carrier"
-              DTS:DTSID="{E0D0D548-6961-4D3C-AB34-089698AAC51C}"
+              DTS:DTSID="{89D33C3A-37F9-46A7-9310-0D36EC9532C5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -688,7 +688,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship To"
-              DTS:DTSID="{D98BE1A7-3CC4-4AF7-843E-5425216C309E}"
+              DTS:DTSID="{34452E2A-6914-4CAF-980F-BF30416DC25C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -697,7 +697,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship to Address 1"
-              DTS:DTSID="{1B867390-D756-4182-9264-6B4AEB470814}"
+              DTS:DTSID="{40E41AB1-05C4-4D57-9402-0A90EACA981D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -706,7 +706,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship to Address 2"
-              DTS:DTSID="{A06A8AEA-39DA-40C5-B799-CD191E49B4DD}"
+              DTS:DTSID="{1C760301-631F-4B60-B0CD-65CCEAA33598}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -715,7 +715,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship to Address City"
-              DTS:DTSID="{816462CF-B69B-4528-B3AC-5F64412395AF}"
+              DTS:DTSID="{9C8ED6F5-CF0D-4717-A7EB-CB62C874B27D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -724,7 +724,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship to Address State"
-              DTS:DTSID="{3EA835C3-ED16-4FE4-BD61-E656C9366374}"
+              DTS:DTSID="{EF105A84-EB02-4719-ACFA-ACA9B4A1C573}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -733,7 +733,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship to Address Zip Code"
-              DTS:DTSID="{0EAD7326-BB0C-4234-AEE4-7792E85BB39C}"
+              DTS:DTSID="{B54D1087-BADA-425D-8CE7-510D3F3E6D9F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -742,7 +742,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Government Id"
-              DTS:DTSID="{071C291E-EF21-4329-8A64-60CC36E146E8}"
+              DTS:DTSID="{00200956-206D-4106-87D9-F1BE28C3FD48}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -751,7 +751,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Proof of Income"
-              DTS:DTSID="{6D37F9E0-BE6B-465F-8694-6333C5BF8E8F}"
+              DTS:DTSID="{047F002B-D7EF-44C8-AF63-7EE0C3D694BE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -760,7 +760,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Practice Org ID"
-              DTS:DTSID="{DB7FAB6C-CACC-4F12-9027-6090A86BC157}"
+              DTS:DTSID="{865FEF56-9DF1-4280-974B-426A7E7E6267}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -769,7 +769,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Practice Org – NPI"
-              DTS:DTSID="{A4B4EBB4-DE0F-4F8B-9FB4-5DDB518E8F5E}"
+              DTS:DTSID="{113201A6-C1FD-42B9-8EFC-6F8559A9BF65}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -778,7 +778,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Facility Name"
-              DTS:DTSID="{9AA4DA31-76CD-4514-9A34-B61B6D72C064}"
+              DTS:DTSID="{7A486C7B-5A26-4D14-B93F-F8FEC12713E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -787,7 +787,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Practice Fax"
-              DTS:DTSID="{4E1E5984-FDB0-4FD5-A52A-E249E69BB312}"
+              DTS:DTSID="{CE7DF5CC-E1F7-4E2D-9EC3-0535F2387D21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -796,7 +796,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HCP Address 1"
-              DTS:DTSID="{690C8C1A-0E48-4DD3-AA3A-DD4D6D747AC7}"
+              DTS:DTSID="{D584F33A-4695-47D3-9B52-04EA9614AC54}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -804,7 +804,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="HCP Address 2"
-              DTS:DTSID="{3C39E851-5254-43DA-9C0C-89A38A87367B}"
+              DTS:DTSID="{7B798BCE-69F0-4EBB-AA56-7BE7A0401A2A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -813,7 +813,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HCP City"
-              DTS:DTSID="{36F5721C-CEF9-416C-A9F8-FE4273D886F0}"
+              DTS:DTSID="{76B08EA4-AB41-4245-B2DE-62C963F79032}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -822,7 +822,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HCP state"
-              DTS:DTSID="{06479C11-00BF-491E-8048-EF6D7B05FDEB}"
+              DTS:DTSID="{32C633F4-7383-4F4A-A63A-4FB4E1467433}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -831,7 +831,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Practice Org Zip"
-              DTS:DTSID="{39F99205-1CC0-4744-B5AF-3401AC6EF333}"
+              DTS:DTSID="{9F77C77B-BAFD-46AC-94A2-2978AF2DB879}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -840,7 +840,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Office Contact First Name"
-              DTS:DTSID="{960C9E60-7AAD-45CC-A871-1F0BA2D88834}"
+              DTS:DTSID="{1FE558BE-D714-4FCD-A341-A03C6F51AB82}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -849,7 +849,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Office Contact- HCP Phone"
-              DTS:DTSID="{EFDF6993-B0DF-45AE-80DB-8E63BF1F61F6}"
+              DTS:DTSID="{A3928A82-6148-46AD-90A8-09FB2363D365}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -858,7 +858,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Office Contact- HCP Fax"
-              DTS:DTSID="{6F7527DF-E246-4828-B269-A66754F9A963}"
+              DTS:DTSID="{D59134C8-0516-4D31-A24E-FC69A4F13A75}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -867,7 +867,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case Medicaid Enrolled"
-              DTS:DTSID="{86AD01E4-5F4A-4CF9-A73A-1FEEC91FD53C}"
+              DTS:DTSID="{57734D86-4B27-43BC-BA41-CA5B94FA7D73}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -876,7 +876,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case Medicare Enrolled"
-              DTS:DTSID="{A529EFAF-2A7D-4846-A7B9-CFC4BB0C000D}"
+              DTS:DTSID="{C82FB09C-375D-4F0C-8FE3-382DE80B74B4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -885,7 +885,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case Med D Enrolled"
-              DTS:DTSID="{20F465D4-E342-4556-84F7-CFA67E8A35A4}"
+              DTS:DTSID="{8C34F6C5-4CB8-4E13-89BE-9FA4AEECA2E4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -893,7 +893,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="PA Effective-Date"
-              DTS:DTSID="{20E54264-D603-4B38-BCE1-4211022667BF}"
+              DTS:DTSID="{A0A8DE52-0030-4A73-B1AF-CC92341569A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -901,7 +901,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="PA Expiration-Date"
-              DTS:DTSID="{E44E33CB-5C44-4D8D-8AC0-A9BBE404A099}"
+              DTS:DTSID="{195197DA-AA8F-4A58-A69A-8456F79CBD0C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -910,7 +910,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Case- Sub status"
-              DTS:DTSID="{20C28E12-BF58-42F6-959A-39D6B9355980}"
+              DTS:DTSID="{BA89A2B1-41BF-4B99-87C5-0CCB80554EDD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -919,7 +919,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Indication"
-              DTS:DTSID="{94CF851E-C0A0-4DC7-8DF0-6292AA53781B}"
+              DTS:DTSID="{9D56B616-7C96-4E23-B3DA-AB01721AB62E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3351,7 +3351,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Facility_090523120000.txt">
+          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Facility_102723190000.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3360,7 +3360,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ASNF ID"
-              DTS:DTSID="{276EB724-662A-4C26-8873-658FA8E8E47D}"
+              DTS:DTSID="{8FD91C48-C277-4C1E-9B76-715D7948CA0B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3369,7 +3369,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Name of HCO"
-              DTS:DTSID="{DF02FE18-4C3F-4524-B666-E8C215E5C47D}"
+              DTS:DTSID="{31403764-774B-4EC6-9172-F28753586178}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3378,7 +3378,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Address 1"
-              DTS:DTSID="{B1BE1CA8-5C38-4CE2-8A9F-FB8294FEB7CD}"
+              DTS:DTSID="{55AEEAB3-0C76-4AE8-9D59-429628C35E63}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3387,7 +3387,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="City"
-              DTS:DTSID="{BDA9A840-2EE1-4555-893B-0F1AA9D0FFCB}"
+              DTS:DTSID="{14B2674B-BCA1-4B01-9D80-C63BE8119D82}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3396,7 +3396,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="State or Province"
-              DTS:DTSID="{35035E91-DAC5-4D29-8754-5131011375C5}"
+              DTS:DTSID="{03CA3602-1D43-4D89-AFFB-D01775443EF8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3405,7 +3405,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Country"
-              DTS:DTSID="{1D7CF182-B381-4207-85EB-A6267D3D8081}"
+              DTS:DTSID="{BA2D80D7-9489-45A0-8C1B-6CB45EA2E9C0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3414,7 +3414,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Zip or Postal Code"
-              DTS:DTSID="{BB6E002F-9571-46B0-AFAC-92C37FDB8357}"
+              DTS:DTSID="{F4ACEAD5-CCE7-489B-924F-141B4BE44AA4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3423,7 +3423,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Phone Number 1"
-              DTS:DTSID="{94F7BAF3-84C3-4AD5-A0F3-83E51B4349A4}"
+              DTS:DTSID="{ADB824DB-0C51-416F-8AE2-52C2F9305885}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3432,7 +3432,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Fax Number"
-              DTS:DTSID="{C69FE65A-1C11-4420-BC1C-032B0FDCE42A}"
+              DTS:DTSID="{241D6443-39A5-4CA1-BE17-8EFE9D35ED9E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3441,7 +3441,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Professional Designation 1"
-              DTS:DTSID="{F93FA7F5-1133-4BC5-97C0-3DF22EBBD0E9}"
+              DTS:DTSID="{FCDEC4BD-1259-494F-A897-1A1749F74068}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3450,7 +3450,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="License ID"
-              DTS:DTSID="{0C400979-1109-4D84-8C60-FE070AE21852}"
+              DTS:DTSID="{EC818CD5-0AF0-42E3-A80E-7E7FAF897800}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3459,7 +3459,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="License Number"
-              DTS:DTSID="{FAE62695-0CAD-49B6-9B51-CE7ECE30856F}"
+              DTS:DTSID="{78101D26-750B-481D-9A3C-8F3F747FCA2E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3468,7 +3468,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="License Type"
-              DTS:DTSID="{833ECC5F-EC81-4123-9D10-C10B514C6AFB}"
+              DTS:DTSID="{D08F3F10-B12C-4E70-97F2-4627285EBEC6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3477,7 +3477,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Expiry Date"
-              DTS:DTSID="{C1A65A06-F11D-47C9-A6EB-B2CA9C0D9E8C}"
+              DTS:DTSID="{C52663AC-6787-417E-9508-9F2AB5413D52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3486,7 +3486,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Preferred Delivery Frequency "
-              DTS:DTSID="{3F475CC3-AEE4-47F5-BEF7-48599036CBA5}"
+              DTS:DTSID="{2D115D11-B943-4511-A463-7C9427DF7EE6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3495,7 +3495,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="If monthly delivery, which week (1-4)"
-              DTS:DTSID="{0FFAFA9A-FAF1-4A7D-9DCA-A44252A76C21}"
+              DTS:DTSID="{FC3121B4-AC01-49FA-976A-92C75A897DE9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3504,7 +3504,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Preferred Delivery Day (Tu, W, Th)"
-              DTS:DTSID="{D95F346D-4677-4F98-BDAF-1D05900B5D68}"
+              DTS:DTSID="{BC8B2C21-B982-4376-934C-FA887EFF7267}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3513,7 +3513,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Facility Contact"
-              DTS:DTSID="{E6EB3384-A40E-4C85-86FF-BBE0893073F2}"
+              DTS:DTSID="{2B960295-D605-49B8-BB9F-A3AA0910A66D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3522,7 +3522,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Facility Contact Phone"
-              DTS:DTSID="{BC2DD93D-1B60-4E8C-824A-71B3F42CE114}"
+              DTS:DTSID="{FE8DAAD4-8F89-4B4D-A51B-FF847271891A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3531,7 +3531,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Facility Contact Fax"
-              DTS:DTSID="{4E6E4233-0194-4BEF-88A7-E864694E4C67}"
+              DTS:DTSID="{D79ACBD1-D717-4ACA-BE2D-68CD718FFFDF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -3540,7 +3540,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Facility Contact Email"
-              DTS:DTSID="{7B715FAC-D27F-43AC-8554-49A3D89D5BDF}"
+              DTS:DTSID="{4BA6062C-685E-4BF4-A740-03C5808E8049}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -4116,7 +4116,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Shipments_091223120000.txt">
+          DTS:ConnectionString="R:\IT\Chris McHenry\Projects\Teze Transfer\ASNF_Teze_Shipments_102723190000.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4125,7 +4125,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Patient_Id__c"
-              DTS:DTSID="{B6BF8D32-F39C-45B1-B582-3B1ACAFADF34}"
+              DTS:DTSID="{88D14744-B1E8-4448-8E40-61E6105F1E9C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4134,7 +4134,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Order_ID__c"
-              DTS:DTSID="{3CA29724-3447-4018-BB70-0C64C819100B}"
+              DTS:DTSID="{68DE1A04-8252-49EC-A58E-5C95F52CF4C1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4143,7 +4143,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Rx_Number__c"
-              DTS:DTSID="{02121B8F-E43E-4E31-B73C-8678EED93EC2}"
+              DTS:DTSID="{01F4120B-C860-4731-8828-D4ADA909B6A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4151,7 +4151,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="Number_of_Fills_Remaining__c"
-              DTS:DTSID="{B9F696B0-93DC-449E-AD57-8EA170ECF8F6}"
+              DTS:DTSID="{074BDC4C-1088-4DD7-A0FE-72B3BF48475F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4159,7 +4159,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Date_Formatted__c"
-              DTS:DTSID="{901659C9-0595-4344-99D2-C2E574EEF9AD}"
+              DTS:DTSID="{8156DFF4-2CE6-4FA6-BD32-DC7C723A9A82}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4168,7 +4168,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Days_Supply__c"
-              DTS:DTSID="{4871F6A0-55E0-44D1-A819-F63690B8C69F}"
+              DTS:DTSID="{F1F2D94C-888D-471B-B704-5259AF0FEA69}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4177,7 +4177,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="NDC_Number__c"
-              DTS:DTSID="{5B6AE7BD-C502-4A0C-876A-8151392CFA25}"
+              DTS:DTSID="{3C3DAE68-0E1A-4785-8889-9B0DDABC9FAA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4186,7 +4186,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Product"
-              DTS:DTSID="{5F1F39A5-D5F9-41AC-B6D0-F91D349213ED}"
+              DTS:DTSID="{848AD44A-C9A6-4BA9-B4CD-7AECED987EEF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4195,7 +4195,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Quantity_Shipped__c"
-              DTS:DTSID="{4BD08BE2-D61C-422E-A9CB-5306B3E62D64}"
+              DTS:DTSID="{19DA7346-A757-4279-AF86-AACE501B67C1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4204,7 +4204,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Tracking_Number__c"
-              DTS:DTSID="{28DED451-F1B5-41C5-89D9-084E96706954}"
+              DTS:DTSID="{493143EA-22B4-415F-B670-A3944B6E73DA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4213,7 +4213,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Carrier__c"
-              DTS:DTSID="{641887F9-3DE1-4C81-940D-76E4A26BA399}"
+              DTS:DTSID="{568B1426-EB73-4FFD-B407-7E261E5CF4A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4222,7 +4222,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_To__c"
-              DTS:DTSID="{AD2AC088-EA63-4C33-A3EA-54869C20ACD0}"
+              DTS:DTSID="{6B4BBC4A-C205-4661-8001-1FFE040CFE4C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4231,7 +4231,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Address_1__c"
-              DTS:DTSID="{4223B4DE-F4BE-4579-8ACA-7955AB777852}"
+              DTS:DTSID="{D947C5D8-AC8C-43A6-860A-D5718737CD30}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4240,7 +4240,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Address_2__c"
-              DTS:DTSID="{499492EB-BABB-44B8-9E77-FE7E24869C3D}"
+              DTS:DTSID="{77461B3F-ACFD-4207-B744-154F629228BF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4249,7 +4249,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_City__c"
-              DTS:DTSID="{D98111E5-7F6D-4971-A5C3-E78A9198B3C3}"
+              DTS:DTSID="{63BAD9DE-ADD7-4CB7-8678-A162C4283C8F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4258,7 +4258,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_State__c"
-              DTS:DTSID="{C517AD0B-BE4F-4A8B-8A9F-C4F60E79AABF}"
+              DTS:DTSID="{F614C344-B4C4-45D1-8B1B-B0FC4EFCAFD2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -4267,7 +4267,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Ship_Zip__c"
-              DTS:DTSID="{0318562B-D0DE-408C-9A27-E4DF72B89EE9}"
+              DTS:DTSID="{54FD9C12-D68F-43C2-AA2C-699723A12EB5}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -4454,7 +4454,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{54114922-DA92-4ECA-847B-72ED4F338631}"
-          SQLTask:SqlStatementSource="WITH Cases AS (&#xA;SELECT&#xA;    CSE.Id&#xA;&#x9;, CaseNumber&#xA;&#x9;, CSE.ContactId AS ContactId&#xA;&#x9;, CASE WHEN CHARINDEX('-', Legacy_Case_Id__c) &gt; 0 THEN NULL ELSE Legacy_Case_Id__c END AS HUB_CaseID__c&#xA;&#x9;, [Status]&#xA;&#x9;, cast(COALESCE(CSE.Legacy_Created_Date__c, CSE.CreatedDate) as date) AS CreatedDate&#xA;&#x9;, Sub_Status__c AS amg_sub_status__c&#xA;&#x9;,IIF(ISNULL(PA.Status__c, 'Inactive') = 'Active','Yes','No') AS Is_Current_Case__c&#xA;&#x9;, Eligibility_Determination_Date__c AS Case_Approval_Date__c&#xA;&#x9;, PAP_Eligibility_End_Date__c AS expiration_date__c&#xA;&#x9;, REPLACE(PATRES.[Six_Months_in_US_or_Territory__c], 'N/A', '') AS [AMG_6m_in_US_or_Territory__c]&#xA;    , CASE INS.Plan_Type__c WHEN 'Commercial' THEN N'Yes' ELSE N'None' END AS E1_Ping_Commercial_insurance__c&#xA;    , REPLACE(CASE WHEN  PATRES.US_Citizen_Resident_Alien__c IN ('US Citizen', 'Resident Alien') THEN N'Yes' ELSE N'No' END, 'N/A', N'') AS AMG_US_Citizen__c&#xA;    , REPLACE(EQ.Pregnant__c, 'N/A', '') AS AMG_Are_you_pregnant__c&#xA;    , REPLACE(EQ.Blind_or_received_SS_Disability_status__c, 'N/A', '') AS AMG_Blind_or_SS_Disability__c&#xA;    , REPLACE(EQ.Denied_Medicaid__c, 'N/A', '') AS AMG_Have_you_been_denied_Medicaid__c&#xA;    , REPLACE(EQ.Parent_Caretaker_of_dependent_children__c, 'N/A', '') AS AMG_Parents_of_dependent_children__c&#xA;    , REPLACE(EQ.Eligible_Enrolled_in_other_programs__c, 'N/A', '') AS AMG_Eligible_or_Enrolled_in_any_Programs__c&#xA;    , REPLACE(EQ.Medicare__c, 'N/A', '') AS AMG_Medicare__c&#xA;    , REPLACE(EQ.Medicaid__c, 'N/A', '') AS AMG_Do_you_have_Medicaid__c&#xA;    , REPLACE(EQ.Medicare_Part_D__c, 'N/A', '') AS AMG_Medicare_Part_D__c&#xA;    , PINC.Household_Size__c AS AMG_Household_Size__c&#xA;&#x9;, PINC.Yearly_Income__c AS AMG_Income_Yearly_Conversion__c &#xA;    , CSE.External_FPL_Percent__c AS FPL_Percent__c&#xA;&#x9;, CSE.Internal_FPL_Percent__c AS Experian_FPL_Percent&#xA;&#x9;, HCPF.HCP__c AS Prescribing_Physician__c&#xA;&#x9;, HCPFA.Account__c AS Facility_Practice_Name__c&#xA;&#x9;, Patient_Information_Sections__c&#xA;&#x9;, CSE.Eligibility_Checklist_Complete__c AS AMG_Patient_Info_Complete__c&#xA;&#x9;--, PINC.Household_Income__c AS Annual_HH_Income_Return__c&#xA;&#x9;--, AMG_FPL_Amount__c,&#xA;&#x9;, CSE.PAP_Eligibility_Start_Date__c AS PAP_Eligibility_Start_Date__c&#xA;&#x9;, CSE.Eligibility_Determination_Date__c&#xA;&#x9;, CAST(FU.PA_Effective_Date__c as date) AS PA_Effective_Date__c&#xA;&#x9;, CAST(FU.PA_End_Date__c as date) AS PA_End_Date__c&#xA;&#x9;, FU.Outcome__c AS PA_Outcome__c&#xA;&#x9;, CAST(CSE.Last_Sub_Status_Change_Date__c as date) AS Last_Sub_Status_Change_Date__c&#xA;&#x9;, ISNULL(COALESCE(CSE.Product_Name__c, PA2.Product_Name__c), N'None') AS Product&#xA;&#x9;, EQ.Eligible_Enrolled_in_other_programs__c &#xA;&#x9;, EQ.Medicare_Effective_Date__c&#xA;&#x9;, CSE.Reason_Code__c&#xA;&#x9;, CSE.Insurance__c&#xA;&#x9;, PINC.Above_Below_acceptable_FPL__c&#xA;&#x9;, PINC.External_Household_Income__c&#xA;&#x9;, PINC.External_Household_Size__c&#xA;&#x9;, PINC.Over_Net_Worth__c&#xA;&#x9;, EQ.Medicare_LIS_Status__c&#xA;&#x9;, EQ.Medicare_Part_D_LIS_Decision__c&#xA;&#x9;, PATRES.Six_Months_in_US_or_Territory__c&#xA;FROM &#xA;&#x9;[Case] CSE&#xA;&#x9;INNER JOIN Product_Affiliation__c PA2&#xA;&#x9;&#x9;ON CSE.Product_Affiliation__c = PA2.Id&#xA;&#x9;-- *******************************************&#xA;&#x9;-- These joins changed to left outer upon &#xA;&#x9;-- request of Chris McMillin in order to show &#xA;&#x9;-- cases in the Closed status&#xA;&#x9;LEFT OUTER JOIN Patient_Residency__c PATRES &#xA;&#x9;&#x9;ON CSE.Patient_Residency__c = PATRES.Id&#xA;&#x9;LEFT OUTER JOIN [Eligibility_Qualifier__c] EQ&#xA;&#x9;&#x9;ON CSE.Eligibility_Qualifier__c = EQ.Id&#xA;&#x9;LEFT OUTER JOIN Patient_Income__c PINC&#xA;&#x9;&#x9;ON CSE.Patient_Income__c = PINC.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Affiliation__c HCPF&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCPF.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPF.Facility_Affiliation__c = HCPFA.Id&#xA;&#x9;--*******************************************&#xA;&#x9;LEFT OUTER JOIN Insurance__c INS&#xA;&#x9;&#x9;ON INS.Case__c = CSE.Id&#xA;&#x9;&#x9;AND INS.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND INS.Plan_Type__c = 'Commercial'&#xA;&#x9;LEFT OUTER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON CSE.Id = PA.Active_Case__c&#xA;&#x9;&#x9;AND PA.Status__c = 'Active'&#xA;&#x9;LEFT OUTER JOIN (&#xA;&#x9;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;PA_Effective_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, PA_End_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, Outcome__c&#xA;&#x9;&#x9;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, RecordTypeId&#xA;&#x9;&#x9;&#x9;&#x9;, RANK() OVER( PARTITION BY Case__c ORDER BY PA_Effective_Date__c DESC, PA_End_Date__c DESC, Outcome__c ) AS RNK&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Salesforce.dbo.Followup_Item__c FU&#xA;&#x9;&#x9;&#x9;&#x9;LEFT OUTER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON FU.RecordTypeId = RT.Id&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND RT.[Name] = 'PA Determination Letter'&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;FU.PA_Effective_Date__c IS NOT NULL&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;&#x9;WHERE RNK = 1&#xA;&#x9;) FU&#xA;&#x9;&#x9;ON CSE.Id = FU.Case__c&#xA;--WHERE (&#xA;--&#x9;&#x9;( CSE.[Status] = 'Pending' AND CSE.Sub_Status__c IN ( 'Missing Information ', 'Ready for Processing' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Approved' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Not Eligible' AND CSE.Sub_Status__c IN ( 'Residency', 'Income', 'Coverage Available' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Withdrawn' /*AND CSE.Sub_Status__c IN ( 'Patient No Longer on Drug', 'Coverage Gained', 'Patient Request', 'Inactivity', 'Expired' )*/ )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Cancelled' AND CSE.Sub_Status__c IN ( 'Error') )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Expired' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;)&#xA;WHERE&#xA;&#x9;CSE.[Status] IN ( 'Approved', 'Pending', 'Not Eligible', 'Withdrawn', 'Expired' )&#xA;&#x9;&#xA;),&#xA;&#xA;Contacts AS (&#xA;SELECT &#xA;    C.Id&#xA;&#x9;, C.Patient_Id__c AS ASNF_ID__c&#xA;&#x9;, C.Legacy_Contact_Id__c AS LegacyContactId&#xA;&#x9;, Primary_City__c AS MailingCity&#xA;&#x9;, Primary_State__c AS MailingState&#xA;&#x9;, left(Primary_Zip_Code__c,5) AS MailingPostalCode&#xA;&#x9;, CASE Gender__c WHEN 'Male' THEN N'M' WHEN 'Female' THEN N'F' ELSE N'' END AS Gender__c&#xA;&#x9;, YEAR(Birthdate) AS BirthYear&#xA;&#x9;, C.Full_Name__c&#xA;&#x9;, C.Sonexus_Pulse_ID__c&#xA;FROM Contact C&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON C.RecordTypeId = RT.Id&#xA; WHERE &#xA;&#x9;RT.[Name] = 'Patient' &#xA;&#x9;AND NOT (C.[Name] like 'Test%' or C.[Name] like '%RxC%') &#xA;&#x9;--and C.Sonexus_Pulse_ID__c IS NOT NULL&#xA;),&#xA;MedIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS MedInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Name__c AS Medical_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Medical_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Medical_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Plan_Phone_Number__c AS Medical_Phone_Number&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Medical_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Medical_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, Rank__c AS Medical_Rank&#xA;&#x9;&#x9;&#x9;, Status__c AS MedicalStatus&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;PharmIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS PharmInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Name__c AS Pharm_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Pharm_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Pharm_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Plan_Phone_Number__c AS Pharm_Phone_Number&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Pharm_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Pharm_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, Rank__c AS Pharm_Rank&#xA;&#x9;&#x9;&#x9;, Status__c AS PharmStatus&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Pharmacy'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Auth AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Authorization_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Authorization'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;PCert AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Certification_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Certification'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;&#xA;MinzStack AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Case__c AS [ZPAPER__Case__c]&#xA;&#x9;&#x9;, PA.Contact__c AS [ZPAPER__Patient__c]&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as date) AS MinFaxDate&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as datetime) AS MinFaxDateTime&#xA;&#x9;FROM&#xA;&#x9;&#x9;Fax__c F&#xA;&#x9;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;&#x9;ON F.Product_Affiliation__c = PA.Id&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;, PA.Contact__c&#xA;),&#xA;&#xA;CaseStatusDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY CaseStatusDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS CaseStatusDate&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;[Field] = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = (SELECT [Status] FROM [Case] WHERE Id = CaseId)&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = (SELECT [Status] FROM [Case] WHERE Id = Case__c)&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;), &#xA;IntakeCompleteDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY IntakeCompleteDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS IntakeCompleteDate&#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;Field = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND CaseId IN (SELECT Id FROM [Case])&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND Case__c IN (SELECT Id FROM [Case])&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Shipment AS (&#xA;&#x9;SELECT * &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SA.Case_Number__c AS CaseNumber,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status_Explanation__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;CAST(Ship_Date__c as date) AS ShipmentDate,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RANK() OVER (PARTITION BY SA.Case_Number__c ORDER BY SR.CreatedDate DESC, CAST(Ship_Date__c as date) DESC) AS RNK&#xA;&#x9;&#x9;&#x9;&#x9;FROM ShipmentAuthorization_Response__c SR&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN Shipment_Authorization__c SA &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON SA.Id = SR.Shipment_Authorization__c&#xA;&#x9;&#x9;&#x9;&#x9;WHERE Ship_Status__c = 'S' &#xA;&#x9;) TempShipment&#xA;&#x9;where RNK = 1 &#xA;),&#xA;MDInfo AS (&#xA;SELECT &#xA;&#x9;HCP.Id AS MDId,&#xA;&#x9;HCP.HCP_Id__c,&#xA;&#x9;HCP.NPI__c AS NPI,&#xA;&#x9;PA.Active_Case__c AS CaseId,&#xA;&#x9;FirstName,&#xA;&#x9;LastName,&#xA;&#x9;[NPI_Address_Line_1__c] AS MailingStreet,&#xA;&#x9;NPI_City__c AS MailingCity,&#xA;&#x9;NPI_State__c AS MailingState,&#xA;&#x9;left(NPI_Postal_Code__c, 5) AS MailingPostalCode,&#xA;&#x9;NPI_Phone__c AS Phone,&#xA;&#x9;Fax,&#xA;&#x9;State_License_Number__c AS SLN&#xA;FROM &#xA;&#x9;Contact AS HCP&#xA;&#x9;INNER JOIN HCP_Affiliation__c HCPA&#xA;&#x9;&#x9;ON HCP.Id = HCPA.HCP__c&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON HCPA.Contact__c = PA.Contact__c&#xA;&#x9;where HCPA.Id in ( SELECT HCP_Affiliation__c FROM [Case] )&#xA;),&#xA;FacilityName AS (&#xA; SELECT * FROM (&#xA; SELECT&#xA;&#x9;ACCT.[Name] AS FacilityName&#xA;&#x9;, REPLACE(CFA.Facility_Contact_Name__c, '&quot;', '') AS OfficeContactName&#xA;&#x9;, ACCT.Id AS FacilityId&#xA;&#x9;, CFA.Facility_Contact_Phone__c&#xA;&#x9;, COALESCE( CFA.Facility_Contact_Fax__c, ACCT.Fax ) AS OfficeFax&#xA;&#x9;, ACCT.BillingStreet&#xA;&#x9;, ACCT.BillingCity&#xA;&#x9;, ACCT.BillingState&#xA;&#x9;, ACCT.BillingPostalCode&#xA;&#x9;, RANK() OVER ( PARTITION BY ACCT.Id ORDER BY CFA.[Name] DESC ) AS RNK&#xA;FROM&#xA;&#x9;ACCOUNT ACCT&#xA;&#x9;INNER JOIN [Contact_Facility_Affiliation__c] CFA&#xA;&#x9;&#x9;ON ACCT.Id = CFA.Account__c&#xA;) X&#xA;WHERE RNK = 1&#xA;), &#xA;ApprovalCount AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;, Count(*) AS ApprovalCount&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field = 'Status'&#xA;&#x9;&#x9;&#x9;AND NewValue = 'Approved'&#xA;&#xA;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;, New_Value__c&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;AND New_Value__c = 'Approved'&#xA;&#x9;&#x9;&#x9;AND Case__c IS NOT NULL&#xA;&#x9;&#x9;) X&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;NewValue&#xA;&#x9;&#x9;, CaseId&#xA;&#x9;HAVING&#xA;&#x9;&#x9;Count(*) &gt; 1&#xA;),&#xA;ZipCodes AS (&#xA;  select distinct &#xA;    left(ZIP,5) AS PostalCode,&#xA;&#x9;CountyFIPS AS FIPSCode,&#xA;&#x9;CountyName,&#xA;&#x9;MetropolitanStatisticalArea AS MSA,&#xA;&#x9;MarketArea,&#xA;&#x9;CoreBasedStatisticalArea&#xA;FROM&#xA;&#x9;ZipInfo.dbo.vw_ZipInfo&#xA;)&#xA;select DISTINCT&#xA;  contacts.ASNF_ID__c AS &quot;Patient ID&quot;,&#xA;  Cases.CaseNumber AS &quot;Case ID&quot;,&#xA;  cases.HUB_CaseID__c AS &quot;HUB Case ID&quot;,&#xA;  Cases.Status AS &quot;Intake Status&quot;,&#xA;  Null AS &quot;Intake Status Reason&quot;,&#xA;  MinzStack.MinFaxDate AS &quot;File Receipt Date Time&quot;,&#xA;  Cases.CreatedDate AS &quot;Case Created Date&quot;,&#xA;  Cases.Status AS &quot;Case Status&quot;,&#xA;  Cases.amg_sub_status__c AS &quot;Case Sub-Status&quot;,&#xA;  CaseStatusDate.CaseStatusDate AS &quot;Case Status Date&quot;,&#xA;  Cases.Last_Sub_Status_Change_Date__c AS &quot;Case Sub-Status Date&quot;,&#xA;  Null AS &quot;Intake Status Date&quot;,&#xA;  Cases.Is_Current_Case__c AS &quot;Current Case Flag&quot;,&#xA;  Null AS &quot;PAP Created Date&quot;,&#xA;  IntakeCompleteDate.IntakeCompleteDate AS &quot;Intake Complete&quot;,&#xA;  iif(cases.Status='Withdrawn', cases.amg_sub_status__c, null) AS &quot;Withdrawal Reason&quot;,&#xA;  Null AS &quot;Enrollment Status&quot;,&#xA;  Null AS &quot;Service Model&quot;,&#xA;  Null AS &quot;Foundation&quot;,&#xA;  Cases.Product AS &quot;Drug&quot;,&#xA;  CASE Cases.Product WHEN 'Aimovig' THEN 'Migraine' WHEN 'Otezla' THEN 'Psoriasis' ELSE 'None' END AS &quot;Therapeutic Area&quot;,&#xA;  cast(Cases.PAP_Eligibility_Start_Date__c as date) AS &quot;Eligibility Start Date&quot;,&#xA;  Cases.expiration_date__c AS &quot;Eligibility End Date&quot;,&#xA;  Contacts.MailingCity AS &quot;Patient City&quot;,&#xA;  Contacts.MailingState AS &quot;Patient State&quot;,&#xA;  left(Contacts.MailingPostalCode,5) AS &quot;Patient Zip Code&quot;,&#xA;  ZipCodes.FIPSCode AS &quot;FIPS Code&quot;, &#xA;  ZipCodes.MarketArea AS &quot;Market Area&quot;,&#xA;  Contacts.Gender__c AS &quot;Gender&quot;,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS &quot;US Resident?&quot;,&#xA;  Cases.E1_Ping_Commercial_insurance__c AS &quot;Does the Patient Have Commercial Insurance?&quot;,&#xA;  Cases.AMG_US_Citizen__c AS &quot;IsUSCitizenOrLegalAlien?&quot;,&#xA;  Cases.AMG_Are_you_pregnant__c AS &quot;IsPregnant?&quot;,&#xA;  Cases.AMG_Blind_or_SS_Disability__c AS &quot;IsBlindOrDisabled?&quot;,&#xA;  Cases.AMG_Have_you_been_denied_Medicaid__c AS &quot;IsDeniedMedicaid?&quot;,&#xA;  Cases.AMG_Parents_of_dependent_children__c AS &quot;IsCareTakerUnder18Child?&quot;,&#xA;  Cases.AMG_Eligible_or_Enrolled_in_any_Programs__c AS &quot;Gvmt Program Eligible?&quot;,&#xA;  Cases.AMG_Medicare__c AS &quot;Enrolled in Medicare?&quot;,&#xA;  Cases.AMG_Do_you_have_Medicaid__c AS &quot;Enrolled in Medicaid?&quot;,&#xA;  Cases.AMG_Medicare_Part_D__c AS &quot;Enrolled in MedD?&quot;,&#xA;  Cases.AMG_Household_Size__c AS &quot;Household #&quot;,&#xA;  cases.AMG_Income_Yearly_Conversion__c AS &quot;Patient Reported Income&quot;, &#xA;--  round((cases.Annual_HH_Income_Return__c/cases.AMG_FPL_Amount__c)*100,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.FPL_Percent__c,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.Experian_FPL_Percent,2) AS &quot;Experian FPL Calc&quot;, &#xA;  MDInfo.HCP_Id__c AS HCPId,&#xA;  MDInfo.NPI,&#xA;  MDInfo.FirstName AS &quot;MD First Name&quot;,&#xA;  MDInfo.LastName AS &quot;MD Last Name&quot;,&#xA;  MDInfo.MailingStreet AS &quot;MD Address 1&quot;, --Leave AS NULL, per Alex&#xA;  Null AS &quot;MD Address 2&quot;, --Leave as NULL, per Alex&#xA;  MDInfo.MailingCity AS &quot;MD City&quot;,&#xA;  MDInfo.MailingState AS &quot;MD State&quot;,&#xA;  MDInfo.MailingPostalCode AS &quot;MD Zip&quot;,&#xA;  MDInfo.Phone AS &quot;MD Phone&quot;,&#xA;  MDInfo.fax AS &quot;MD Fax&quot;,&#xA;  FacilityName.FacilityId,&#xA;  FacilityName.FacilityName AS &quot;Facility Name&quot;,  &#xA;  FacilityName.OfficeContactName AS &quot;Office Contact First Name&quot;, &#xA;  Null AS &quot;Office Contact Last Name&quot;,  --setting this to null as the office contact full name is in the previous field&#xA;  FacilityName.Facility_Contact_Phone__c,&#xA;  FacilityName.OfficeFax,&#xA;  FacilityName.BillingStreet,&#xA;  FacilityName.BillingCity,&#xA;  FacilityName.BillingState,&#xA;  FacilityName.BillingPostalCode,&#xA;  iif(ApprovalCount.ApprovalCount&gt;1,'Yes','No') AS &quot;Re-enrollment?&quot;,&#xA;  Null AS &quot;Application Type&quot;,&#xA;  Null AS &quot;Covance Enrollment Date&quot;,&#xA;  contacts.LegacyContactId AS &quot;Covance Case ID&quot;,&#xA;  Shipment.ShipmentDate AS &quot;Last Ship Date&quot;,  &#xA;  Null AS &quot;Enrollment Source&quot;,&#xA;  replace(Cases.Patient_Information_Sections__c,',','|') AS &quot;MI Reason&quot;,&#xA;  Null AS &quot;RxC Facility ID&quot;,&#xA;  Null AS &quot;RxC MD ID&quot;,&#xA;  Null AS &quot;Facility CMA&quot;,&#xA;  Null AS &quot;HubPhysOfficeIMSID&quot;,&#xA;  Null AS &quot;Provider CMA&quot;,&#xA;  Null AS &quot;HubPhysIMSID&quot;,&#xA;  Null AS &quot;Proof Of Denial&quot;,&#xA;  Null AS &quot;IHS Coverage&quot;,&#xA;  Null AS &quot;VA Benefit Drug Coverage&quot;,&#xA;  Null AS &quot;Validated Data&quot;,&#xA;  Cases.Eligibility_Determination_Date__c AS &quot;PAP Eligibility Determination Date&quot;,&#xA;  Cases.PA_Effective_Date__c AS &quot;PA Effective Date&quot;,&#xA;  Cases.PA_End_Date__c AS &quot;PA End Date&quot;,&#xA;  Cases.PA_Outcome__c AS &quot;PA Outcome&quot;,&#xA;  Contacts.BirthYear AS &quot;Patient Birth Year&quot;,&#xA;  Cases.Eligible_Enrolled_in_other_programs__c,&#xA;  Cases.Medicare_Effective_Date__c,&#xA;  Cases.Reason_Code__c,&#xA;  Contacts.Full_Name__c,&#xA;  Cases.Insurance__c,&#xA;  MedIns.Medical_Payer_Insurer__c,&#xA;  MedIns.Medical_Plan_Type__c,&#xA;  MedIns.Medical_Plan_Name__c,&#xA;  MedIns.Medical_Phone_Number,&#xA;  MedIns.Medical_Rank,&#xA;  MedIns.Medical_Effective_Date__c,&#xA;  MedIns.Medical_Effective_End_Date__c,&#xA;  MedIns.MedicalStatus,&#xA;  PharmIns.Pharm_Payer_Insurer__c,&#xA;  PharmIns.Pharm_Plan_Type__c,&#xA;  PharmIns.Pharm_Plan_Name__c,&#xA;  PharmIns.Pharm_Phone_Number,&#xA;  PharmIns.Pharm_Rank,&#xA;  PharmIns.Pharm_Effective_Date__c,&#xA;  PharmIns.Pharm_Effective_End_Date__c,&#xA;  PharmIns.PharmStatus,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS Six_Months_in_US_or_Territory__c,&#xA;  Cases.Above_Below_acceptable_FPL__c,&#xA;  Cases.External_Household_Income__c,&#xA;  Cases.External_Household_Size__c,&#xA;  Cases.Over_Net_Worth__c,&#xA;  Cases.Medicare_LIS_Status__c,&#xA;  Cases.Medicare_Part_D_LIS_Decision__c,&#xA;  Auth.Authorization_Signature_Date__c,&#xA;  Auth.Authorization_Signature__c,&#xA;  PCert.Certification_Signature_Date__c,&#xA;  PCert.Certification_Signature__c,&#xA;  Contacts.Sonexus_Pulse_ID__c&#xA;into RegaloRx_Work.dbo.TezeCases&#xA;from Cases&#xA;left outer join Contacts on Cases.ContactId = Contacts.Id&#xA;left outer join MinzStack on MinzStack.ZPAPER__Case__c=cases.Id&#xA;       and MinzStack.ZPAPER__Patient__c=Contacts.Id&#xA;left outer join CaseStatusDate on CaseStatusDate.CaseId = cases.Id&#xA;left outer join IntakeCompleteDate on IntakeCompleteDate.CaseId = cases.Id&#xA;left outer join ZipCodes on ZipCodes.PostalCode = contacts.MailingPostalCode&#xA;left outer join MDInfo on MDInfo.MDId=cases.Prescribing_Physician__c&#xA;left outer join FacilityName on FacilityName.FacilityId=cases.Facility_Practice_Name__c&#xA;left outer join ApprovalCount on ApprovalCount.CaseId = cases.Id&#xA;left outer join Shipment on shipment.CaseNumber = Cases.CaseNumber&#xA;left outer join MedIns on MedIns.CaseId = Cases.Id&#xA;left outer join PharmIns on PharmIns.CaseId = Cases.Id&#xA;left outer join Auth on Auth.Case__c = Cases.Id&#xA;left outer join PCert on PCert.Case__c = Cases.Id&#xA;where NOT&#xA;&#x9;( &#xA;&#x9;&#x9;Cases.[Status] = 'Cancelled'&#xA;&#x9;&#x9;and Contacts.ASNF_ID__c is null&#xA;&#x9;)&#xA;&#x9;and Cases.Product = 'Tezspire'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="WITH Cases AS (&#xA;SELECT&#xA;    CSE.Id&#xA;&#x9;, CaseNumber&#xA;&#x9;, CSE.ContactId AS ContactId&#xA;&#x9;, CASE WHEN CHARINDEX('-', Legacy_Case_Id__c) &gt; 0 THEN NULL ELSE Legacy_Case_Id__c END AS HUB_CaseID__c&#xA;&#x9;, [Status]&#xA;&#x9;, cast(COALESCE(CSE.Legacy_Created_Date__c, CSE.CreatedDate) as date) AS CreatedDate&#xA;&#x9;, Sub_Status__c AS amg_sub_status__c&#xA;&#x9;,IIF(ISNULL(PA.Status__c, 'Inactive') = 'Active','Yes','No') AS Is_Current_Case__c&#xA;&#x9;, Eligibility_Determination_Date__c AS Case_Approval_Date__c&#xA;&#x9;, PAP_Eligibility_End_Date__c AS expiration_date__c&#xA;&#x9;, REPLACE(PATRES.[Six_Months_in_US_or_Territory__c], 'N/A', '') AS [AMG_6m_in_US_or_Territory__c]&#xA;    , CASE INS.Plan_Type__c WHEN 'Commercial' THEN N'Yes' ELSE N'None' END AS E1_Ping_Commercial_insurance__c&#xA;    , REPLACE(CASE WHEN  PATRES.US_Citizen_Resident_Alien__c IN ('US Citizen', 'Resident Alien') THEN N'Yes' ELSE N'No' END, 'N/A', N'') AS AMG_US_Citizen__c&#xA;    , REPLACE(EQ.Pregnant__c, 'N/A', '') AS AMG_Are_you_pregnant__c&#xA;    , REPLACE(EQ.Blind_or_received_SS_Disability_status__c, 'N/A', '') AS AMG_Blind_or_SS_Disability__c&#xA;    , REPLACE(EQ.Denied_Medicaid__c, 'N/A', '') AS AMG_Have_you_been_denied_Medicaid__c&#xA;    , REPLACE(EQ.Parent_Caretaker_of_dependent_children__c, 'N/A', '') AS AMG_Parents_of_dependent_children__c&#xA;    , REPLACE(EQ.Eligible_Enrolled_in_other_programs__c, 'N/A', '') AS AMG_Eligible_or_Enrolled_in_any_Programs__c&#xA;    , REPLACE(EQ.Medicare__c, 'N/A', '') AS AMG_Medicare__c&#xA;    , REPLACE(EQ.Medicaid__c, 'N/A', '') AS AMG_Do_you_have_Medicaid__c&#xA;    , REPLACE(EQ.Medicare_Part_D__c, 'N/A', '') AS AMG_Medicare_Part_D__c&#xA;    , PINC.Household_Size__c AS AMG_Household_Size__c&#xA;&#x9;, PINC.Yearly_Income__c AS AMG_Income_Yearly_Conversion__c &#xA;    , CSE.External_FPL_Percent__c AS FPL_Percent__c&#xA;&#x9;, CSE.Internal_FPL_Percent__c AS Experian_FPL_Percent&#xA;&#x9;, HCPF.HCP__c AS Prescribing_Physician__c&#xA;&#x9;, HCPFA.Account__c AS Facility_Practice_Name__c&#xA;&#x9;, Patient_Information_Sections__c&#xA;&#x9;, CSE.Eligibility_Checklist_Complete__c AS AMG_Patient_Info_Complete__c&#xA;&#x9;--, PINC.Household_Income__c AS Annual_HH_Income_Return__c&#xA;&#x9;--, AMG_FPL_Amount__c,&#xA;&#x9;, CSE.PAP_Eligibility_Start_Date__c AS PAP_Eligibility_Start_Date__c&#xA;&#x9;, CSE.Eligibility_Determination_Date__c&#xA;&#x9;, CAST(FU.PA_Effective_Date__c as date) AS PA_Effective_Date__c&#xA;&#x9;, CAST(FU.PA_End_Date__c as date) AS PA_End_Date__c&#xA;&#x9;, FU.Outcome__c AS PA_Outcome__c&#xA;&#x9;, CAST(CSE.Last_Sub_Status_Change_Date__c as date) AS Last_Sub_Status_Change_Date__c&#xA;&#x9;, ISNULL(COALESCE(CSE.Product_Name__c, PA2.Product_Name__c), N'None') AS Product&#xA;&#x9;, EQ.Eligible_Enrolled_in_other_programs__c &#xA;&#x9;, EQ.Medicare_Effective_Date__c&#xA;&#x9;, CSE.Reason_Code__c&#xA;&#x9;, CSE.Insurance__c&#xA;&#x9;, PINC.Above_Below_acceptable_FPL__c&#xA;&#x9;, PINC.External_Household_Income__c&#xA;&#x9;, PINC.External_Household_Size__c&#xA;&#x9;, PINC.Over_Net_Worth__c&#xA;&#x9;, EQ.Medicare_LIS_Status__c&#xA;&#x9;, EQ.Medicare_Part_D_LIS_Decision__c&#xA;&#x9;, PATRES.Six_Months_in_US_or_Territory__c&#xA;FROM &#xA;&#x9;[Case] CSE&#xA;&#x9;INNER JOIN Product_Affiliation__c PA2&#xA;&#x9;&#x9;ON CSE.Product_Affiliation__c = PA2.Id&#xA;&#x9;-- *******************************************&#xA;&#x9;-- These joins changed to left outer upon &#xA;&#x9;-- request of Chris McMillin in order to show &#xA;&#x9;-- cases in the Closed status&#xA;&#x9;LEFT OUTER JOIN Patient_Residency__c PATRES &#xA;&#x9;&#x9;ON CSE.Patient_Residency__c = PATRES.Id&#xA;&#x9;LEFT OUTER JOIN [Eligibility_Qualifier__c] EQ&#xA;&#x9;&#x9;ON CSE.Eligibility_Qualifier__c = EQ.Id&#xA;&#x9;LEFT OUTER JOIN Patient_Income__c PINC&#xA;&#x9;&#x9;ON CSE.Patient_Income__c = PINC.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Affiliation__c HCPF&#xA;&#x9;&#x9;ON CSE.HCP_Affiliation__c = HCPF.Id&#xA;&#x9;LEFT OUTER JOIN HCP_Facility_Affiliation__c HCPFA&#xA;&#x9;&#x9;ON HCPF.Facility_Affiliation__c = HCPFA.Id&#xA;&#x9;--*******************************************&#xA;&#x9;LEFT OUTER JOIN Insurance__c INS&#xA;&#x9;&#x9;ON INS.Case__c = CSE.Id&#xA;&#x9;&#x9;AND INS.Record_Type__c = 'Medical'&#xA;&#x9;&#x9;AND INS.Plan_Type__c = 'Commercial'&#xA;&#x9;LEFT OUTER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON CSE.Id = PA.Active_Case__c&#xA;&#x9;&#x9;AND PA.Status__c = 'Active'&#xA;&#x9;LEFT OUTER JOIN (&#xA;&#x9;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;PA_Effective_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, PA_End_Date__c&#xA;&#x9;&#x9;&#x9;&#x9;, Outcome__c&#xA;&#x9;&#x9;&#x9;&#x9;, Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, RecordTypeId&#xA;&#x9;&#x9;&#x9;&#x9;, RANK() OVER( PARTITION BY Case__c ORDER BY PA_Effective_Date__c DESC, PA_End_Date__c DESC, Outcome__c ) AS RNK&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Salesforce.dbo.Followup_Item__c FU&#xA;&#x9;&#x9;&#x9;&#x9;LEFT OUTER JOIN RecordType RT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON FU.RecordTypeId = RT.Id&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND RT.[Name] = 'PA Determination Letter'&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;FU.PA_Effective_Date__c IS NOT NULL&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;&#x9;WHERE RNK = 1&#xA;&#x9;) FU&#xA;&#x9;&#x9;ON CSE.Id = FU.Case__c&#xA;--WHERE (&#xA;--&#x9;&#x9;( CSE.[Status] = 'Pending' AND CSE.Sub_Status__c IN ( 'Missing Information ', 'Ready for Processing' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Approved' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Not Eligible' AND CSE.Sub_Status__c IN ( 'Residency', 'Income', 'Coverage Available' ) )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Withdrawn' /*AND CSE.Sub_Status__c IN ( 'Patient No Longer on Drug', 'Coverage Gained', 'Patient Request', 'Inactivity', 'Expired' )*/ )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Cancelled' AND CSE.Sub_Status__c IN ( 'Error') )&#xA;--&#x9;&#x9;OR&#xA;--&#x9;&#x9;( CSE.[Status] = 'Expired' AND CSE.Sub_Status__c IN ( 'Un-Insured', 'Medicare with Part D', 'Medicare Part B - w/ Supplement - Affordability', 'Medicare Part B - No Supplement', 'Under-Insured - No Drug Coverage', 'Under-Insured - Does not Have the Benefit', 'Under-Insured - Coverage Restriction' ) )&#xA;--&#x9;)&#xA;WHERE&#xA;&#x9;CSE.[Status] IN ( 'Approved', 'Pending', 'Not Eligible', 'Withdrawn', 'Expired' )&#xA;),&#xA;&#xA;Contacts AS (&#xA;SELECT &#xA;    C.Id&#xA;&#x9;, C.Patient_Id__c AS ASNF_ID__c&#xA;&#x9;, C.Legacy_Contact_Id__c AS LegacyContactId&#xA;&#x9;, Primary_City__c AS MailingCity&#xA;&#x9;, Primary_State__c AS MailingState&#xA;&#x9;, left(Primary_Zip_Code__c,5) AS MailingPostalCode&#xA;&#x9;, CASE Gender__c WHEN 'Male' THEN N'M' WHEN 'Female' THEN N'F' ELSE N'' END AS Gender__c&#xA;&#x9;, YEAR(Birthdate) AS BirthYear&#xA;&#x9;, C.Full_Name__c&#xA;&#x9;, C.Sonexus_Pulse_ID__c&#xA;FROM Contact C&#xA;&#x9;INNER JOIN RecordType RT&#xA;&#x9;&#x9;ON C.RecordTypeId = RT.Id&#xA; WHERE &#xA;&#x9;RT.[Name] = 'Patient' &#xA;&#x9;AND NOT (C.[Name] like 'Test%' or C.[Name] like '%RxC%') &#xA;&#x9;--and C.Sonexus_Pulse_ID__c IS NOT NULL&#xA;),&#xA;MedIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS MedInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Name__c AS Medical_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Medical_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Medical_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Plan_Phone_Number__c AS Medical_Phone_Number&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Medical_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Medical_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, Rank__c AS Medical_Rank&#xA;&#x9;&#x9;&#x9;, Status__c AS MedicalStatus&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Medical'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;PharmIns AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;I.Id AS PharmInsId&#xA;&#x9;&#x9;&#x9;, CSE.Id AS CaseId&#xA;&#x9;&#x9;&#x9;, Payer_Name__c AS Pharm_Payer_Insurer__c&#xA;&#x9;&#x9;&#x9;, Plan_Type__c AS Pharm_Plan_Type__c&#xA;&#x9;&#x9;&#x9;, Plan_Name__c AS Pharm_Plan_Name__c&#xA;&#x9;&#x9;&#x9;, Plan_Phone_Number__c AS Pharm_Phone_Number&#xA;&#x9;&#x9;&#x9;, Effective_Date__c AS Pharm_Effective_Date__c&#xA;&#x9;&#x9;&#x9;, Effective_End_Date__c AS Pharm_Effective_End_Date__c&#xA;&#x9;&#x9;&#x9;, Rank__c AS Pharm_Rank&#xA;&#x9;&#x9;&#x9;, Status__c AS PharmStatus&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY I.Case__c ORDER BY I.Rank__c, I.CreatedDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Insurance__c I&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON I.Case__c = CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;I.Record_Type__c = 'Pharmacy'&#xA;&#x9;) X&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Auth AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Authorization_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Authorization'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;PCert AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;PA.Case__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Authorization_Signature__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature_Date__c&#xA;&#x9;&#x9;&#x9;, PA.Certification_Signature__c&#xA;&#x9;&#x9;&#x9;, ROW_NUMBER() OVER ( PARTITION BY Case__c ORDER BY Certification_Signature_Date__c DESC ) RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Patient_Authorization__c PA&#xA;&#x9;&#x9;&#x9;INNER JOIN Cases CSE&#xA;&#x9;&#x9;&#x9;&#x9;ON PA.Case__c =CSE.Id&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Record_Type__c = 'Patient Certification'&#xA;&#x9;) X&#xA;&#x9;WHERE&#xA;&#x9;&#x9;RNK = 1&#xA;),&#xA;&#xA;MinzStack AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Case__c AS [ZPAPER__Case__c]&#xA;&#x9;&#x9;, PA.Contact__c AS [ZPAPER__Patient__c]&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as date) AS MinFaxDate&#xA;&#x9;&#x9;, CAST(MIN(COALESCE(F.Legacy_Created_Date__c, F.CreatedDate)) as datetime) AS MinFaxDateTime&#xA;&#x9;FROM&#xA;&#x9;&#x9;Fax__c F&#xA;&#x9;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;&#x9;ON F.Product_Affiliation__c = PA.Id&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;, PA.Contact__c&#xA;),&#xA;&#xA;CaseStatusDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY CaseStatusDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS CaseStatusDate&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;[Field] = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = (SELECT [Status] FROM [Case] WHERE Id = CaseId)&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = (SELECT [Status] FROM [Case] WHERE Id = Case__c)&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;), &#xA;IntakeCompleteDate AS (&#xA;&#x9;SELECT * FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;, RANK() OVER ( PARTITION BY CaseId ORDER BY IntakeCompleteDate DESC ) AS RNK&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(CreatedDate as date) AS IntakeCompleteDate&#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;Field = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND NewValue = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND CaseId IN (SELECT Id FROM [Case])&#xA;&#xA;&#x9;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;&#x9;, CAST(Original_Creation_Date__c as date)&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;Field__c = 'Sub_Status__c'&#xA;&#x9;&#x9;&#x9;&#x9;AND New_Value__c = 'Ready for Processing'&#xA;&#x9;&#x9;&#x9;&#x9;AND Case__c IN (SELECT Id FROM [Case])&#xA;&#x9;&#x9;&#x9;) X&#xA;&#x9;) Y&#xA;&#x9;WHERE RNK = 1&#xA;),&#xA;Shipment AS (&#xA;&#x9;SELECT * &#xA;&#x9;FROM (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SA.Case_Number__c AS CaseNumber,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status_Explanation__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Ship_Status__c,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;CAST(Ship_Date__c as date) AS ShipmentDate,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RANK() OVER (PARTITION BY SA.Case_Number__c ORDER BY SR.CreatedDate DESC, CAST(Ship_Date__c as date) DESC) AS RNK&#xA;&#x9;&#x9;&#x9;&#x9;FROM ShipmentAuthorization_Response__c SR&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN Shipment_Authorization__c SA &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON SA.Id = SR.Shipment_Authorization__c&#xA;&#x9;&#x9;&#x9;&#x9;WHERE Ship_Status__c = 'S' &#xA;&#x9;) TempShipment&#xA;&#x9;where RNK = 1 &#xA;),&#xA;MDInfo AS (&#xA;SELECT &#xA;&#x9;HCP.Id AS MDId,&#xA;&#x9;HCP.HCP_Id__c,&#xA;&#x9;HCP.NPI__c AS NPI,&#xA;&#x9;PA.Active_Case__c AS CaseId,&#xA;&#x9;FirstName,&#xA;&#x9;LastName,&#xA;&#x9;[NPI_Address_Line_1__c] AS MailingStreet,&#xA;&#x9;NPI_City__c AS MailingCity,&#xA;&#x9;NPI_State__c AS MailingState,&#xA;&#x9;left(NPI_Postal_Code__c, 5) AS MailingPostalCode,&#xA;&#x9;NPI_Phone__c AS Phone,&#xA;&#x9;Fax,&#xA;&#x9;State_License_Number__c AS SLN&#xA;FROM &#xA;&#x9;Contact AS HCP&#xA;&#x9;INNER JOIN HCP_Affiliation__c HCPA&#xA;&#x9;&#x9;ON HCP.Id = HCPA.HCP__c&#xA;&#x9;INNER JOIN Product_Affiliation__c PA&#xA;&#x9;&#x9;ON HCPA.Contact__c = PA.Contact__c&#xA;&#x9;where HCPA.Id in ( SELECT HCP_Affiliation__c FROM [Case] )&#xA;),&#xA;FacilityName AS (&#xA; SELECT * FROM (&#xA; SELECT&#xA;&#x9;ACCT.[Name] AS FacilityName&#xA;&#x9;, REPLACE(CFA.Facility_Contact_Name__c, '&quot;', '') AS OfficeContactName&#xA;&#x9;, ACCT.Id AS FacilityId&#xA;&#x9;, CFA.Facility_Contact_Phone__c&#xA;&#x9;, COALESCE( CFA.Facility_Contact_Fax__c, ACCT.Fax ) AS OfficeFax&#xA;&#x9;, ACCT.BillingStreet&#xA;&#x9;, ACCT.BillingCity&#xA;&#x9;, ACCT.BillingState&#xA;&#x9;, ACCT.BillingPostalCode&#xA;&#x9;, RANK() OVER ( PARTITION BY ACCT.Id ORDER BY CFA.[Name] DESC ) AS RNK&#xA;FROM&#xA;&#x9;ACCOUNT ACCT&#xA;&#x9;LEFT OUTER JOIN [Contact_Facility_Affiliation__c] CFA&#xA;&#x9;&#x9;ON ACCT.Id = CFA.Account__c&#xA;) X&#xA;WHERE RNK = 1&#xA;), &#xA;ApprovalCount AS (&#xA;&#x9;SELECT&#xA;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;, Count(*) AS ApprovalCount&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;CaseId&#xA;&#x9;&#x9;&#x9;, NewValue&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;CaseHistory&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field = 'Status'&#xA;&#x9;&#x9;&#x9;AND NewValue = 'Approved'&#xA;&#xA;&#x9;&#x9;UNION ALL&#xA;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;Case__c&#xA;&#x9;&#x9;&#x9;, New_Value__c&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Legacy_Record_History__c&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;Field__c = 'Status'&#xA;&#x9;&#x9;&#x9;AND New_Value__c = 'Approved'&#xA;&#x9;&#x9;&#x9;AND Case__c IS NOT NULL&#xA;&#x9;&#x9;) X&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;NewValue&#xA;&#x9;&#x9;, CaseId&#xA;&#x9;HAVING&#xA;&#x9;&#x9;Count(*) &gt; 1&#xA;),&#xA;ZipCodes AS (&#xA;  select distinct &#xA;    left(ZIP,5) AS PostalCode,&#xA;&#x9;CountyFIPS AS FIPSCode,&#xA;&#x9;CountyName,&#xA;&#x9;MetropolitanStatisticalArea AS MSA,&#xA;&#x9;MarketArea,&#xA;&#x9;CoreBasedStatisticalArea&#xA;FROM&#xA;&#x9;ZipInfo.dbo.vw_ZipInfo&#xA;)&#xA;select DISTINCT&#xA;  contacts.ASNF_ID__c AS &quot;Patient ID&quot;,&#xA;  Cases.CaseNumber AS &quot;Case ID&quot;,&#xA;  cases.HUB_CaseID__c AS &quot;HUB Case ID&quot;,&#xA;  Cases.Status AS &quot;Intake Status&quot;,&#xA;  Null AS &quot;Intake Status Reason&quot;,&#xA;  MinzStack.MinFaxDate AS &quot;File Receipt Date Time&quot;,&#xA;  Cases.CreatedDate AS &quot;Case Created Date&quot;,&#xA;  Cases.Status AS &quot;Case Status&quot;,&#xA;  Cases.amg_sub_status__c AS &quot;Case Sub-Status&quot;,&#xA;  CaseStatusDate.CaseStatusDate AS &quot;Case Status Date&quot;,&#xA;  Cases.Last_Sub_Status_Change_Date__c AS &quot;Case Sub-Status Date&quot;,&#xA;  Null AS &quot;Intake Status Date&quot;,&#xA;  Cases.Is_Current_Case__c AS &quot;Current Case Flag&quot;,&#xA;  Null AS &quot;PAP Created Date&quot;,&#xA;  IntakeCompleteDate.IntakeCompleteDate AS &quot;Intake Complete&quot;,&#xA;  iif(cases.Status='Withdrawn', cases.amg_sub_status__c, null) AS &quot;Withdrawal Reason&quot;,&#xA;  Null AS &quot;Enrollment Status&quot;,&#xA;  Null AS &quot;Service Model&quot;,&#xA;  Null AS &quot;Foundation&quot;,&#xA;  Cases.Product AS &quot;Drug&quot;,&#xA;  CASE Cases.Product WHEN 'Aimovig' THEN 'Migraine' WHEN 'Otezla' THEN 'Psoriasis' ELSE 'None' END AS &quot;Therapeutic Area&quot;,&#xA;  cast(Cases.PAP_Eligibility_Start_Date__c as date) AS &quot;Eligibility Start Date&quot;,&#xA;  Cases.expiration_date__c AS &quot;Eligibility End Date&quot;,&#xA;  Contacts.MailingCity AS &quot;Patient City&quot;,&#xA;  Contacts.MailingState AS &quot;Patient State&quot;,&#xA;  left(Contacts.MailingPostalCode,5) AS &quot;Patient Zip Code&quot;,&#xA;  ZipCodes.FIPSCode AS &quot;FIPS Code&quot;, &#xA;  ZipCodes.MarketArea AS &quot;Market Area&quot;,&#xA;  Contacts.Gender__c AS &quot;Gender&quot;,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS &quot;US Resident?&quot;,&#xA;  Cases.E1_Ping_Commercial_insurance__c AS &quot;Does the Patient Have Commercial Insurance?&quot;,&#xA;  Cases.AMG_US_Citizen__c AS &quot;IsUSCitizenOrLegalAlien?&quot;,&#xA;  Cases.AMG_Are_you_pregnant__c AS &quot;IsPregnant?&quot;,&#xA;  Cases.AMG_Blind_or_SS_Disability__c AS &quot;IsBlindOrDisabled?&quot;,&#xA;  Cases.AMG_Have_you_been_denied_Medicaid__c AS &quot;IsDeniedMedicaid?&quot;,&#xA;  Cases.AMG_Parents_of_dependent_children__c AS &quot;IsCareTakerUnder18Child?&quot;,&#xA;  Cases.AMG_Eligible_or_Enrolled_in_any_Programs__c AS &quot;Gvmt Program Eligible?&quot;,&#xA;  Cases.AMG_Medicare__c AS &quot;Enrolled in Medicare?&quot;,&#xA;  Cases.AMG_Do_you_have_Medicaid__c AS &quot;Enrolled in Medicaid?&quot;,&#xA;  Cases.AMG_Medicare_Part_D__c AS &quot;Enrolled in MedD?&quot;,&#xA;  Cases.AMG_Household_Size__c AS &quot;Household #&quot;,&#xA;  cases.AMG_Income_Yearly_Conversion__c AS &quot;Patient Reported Income&quot;, &#xA;--  round((cases.Annual_HH_Income_Return__c/cases.AMG_FPL_Amount__c)*100,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.FPL_Percent__c,2) AS &quot;Case FPL Percent&quot;,&#xA;  round(Cases.Experian_FPL_Percent,2) AS &quot;Experian FPL Calc&quot;, &#xA;  MDInfo.HCP_Id__c AS HCPId,&#xA;  MDInfo.NPI,&#xA;  MDInfo.FirstName AS &quot;MD First Name&quot;,&#xA;  MDInfo.LastName AS &quot;MD Last Name&quot;,&#xA;  MDInfo.MailingStreet AS &quot;MD Address 1&quot;, --Leave AS NULL, per Alex&#xA;  Null AS &quot;MD Address 2&quot;, --Leave as NULL, per Alex&#xA;  MDInfo.MailingCity AS &quot;MD City&quot;,&#xA;  MDInfo.MailingState AS &quot;MD State&quot;,&#xA;  MDInfo.MailingPostalCode AS &quot;MD Zip&quot;,&#xA;  MDInfo.Phone AS &quot;MD Phone&quot;,&#xA;  MDInfo.fax AS &quot;MD Fax&quot;,&#xA;  FacilityName.FacilityId,&#xA;  FacilityName.FacilityName AS &quot;Facility Name&quot;,  &#xA;  FacilityName.OfficeContactName AS &quot;Office Contact First Name&quot;, &#xA;  Null AS &quot;Office Contact Last Name&quot;,  --setting this to null as the office contact full name is in the previous field&#xA;  FacilityName.Facility_Contact_Phone__c,&#xA;  FacilityName.OfficeFax,&#xA;  FacilityName.BillingStreet,&#xA;  FacilityName.BillingCity,&#xA;  FacilityName.BillingState,&#xA;  FacilityName.BillingPostalCode,&#xA;  iif(ApprovalCount.ApprovalCount&gt;1,'Yes','No') AS &quot;Re-enrollment?&quot;,&#xA;  Null AS &quot;Application Type&quot;,&#xA;  Null AS &quot;Covance Enrollment Date&quot;,&#xA;  contacts.LegacyContactId AS &quot;Covance Case ID&quot;,&#xA;  Shipment.ShipmentDate AS &quot;Last Ship Date&quot;,  &#xA;  Null AS &quot;Enrollment Source&quot;,&#xA;  replace(Cases.Patient_Information_Sections__c,',','|') AS &quot;MI Reason&quot;,&#xA;  Null AS &quot;RxC Facility ID&quot;,&#xA;  Null AS &quot;RxC MD ID&quot;,&#xA;  Null AS &quot;Facility CMA&quot;,&#xA;  Null AS &quot;HubPhysOfficeIMSID&quot;,&#xA;  Null AS &quot;Provider CMA&quot;,&#xA;  Null AS &quot;HubPhysIMSID&quot;,&#xA;  Null AS &quot;Proof Of Denial&quot;,&#xA;  Null AS &quot;IHS Coverage&quot;,&#xA;  Null AS &quot;VA Benefit Drug Coverage&quot;,&#xA;  Null AS &quot;Validated Data&quot;,&#xA;  Cases.Eligibility_Determination_Date__c AS &quot;PAP Eligibility Determination Date&quot;,&#xA;  Cases.PA_Effective_Date__c AS &quot;PA Effective Date&quot;,&#xA;  Cases.PA_End_Date__c AS &quot;PA End Date&quot;,&#xA;  Cases.PA_Outcome__c AS &quot;PA Outcome&quot;,&#xA;  Contacts.BirthYear AS &quot;Patient Birth Year&quot;,&#xA;  Cases.Eligible_Enrolled_in_other_programs__c,&#xA;  Cases.Medicare_Effective_Date__c,&#xA;  Cases.Reason_Code__c,&#xA;  Contacts.Full_Name__c,&#xA;  Cases.Insurance__c,&#xA;  MedIns.Medical_Payer_Insurer__c,&#xA;  MedIns.Medical_Plan_Type__c,&#xA;  MedIns.Medical_Plan_Name__c,&#xA;  MedIns.Medical_Phone_Number,&#xA;  MedIns.Medical_Rank,&#xA;  MedIns.Medical_Effective_Date__c,&#xA;  MedIns.Medical_Effective_End_Date__c,&#xA;  MedIns.MedicalStatus,&#xA;  PharmIns.Pharm_Payer_Insurer__c,&#xA;  PharmIns.Pharm_Plan_Type__c,&#xA;  PharmIns.Pharm_Plan_Name__c,&#xA;  PharmIns.Pharm_Phone_Number,&#xA;  PharmIns.Pharm_Rank,&#xA;  PharmIns.Pharm_Effective_Date__c,&#xA;  PharmIns.Pharm_Effective_End_Date__c,&#xA;  PharmIns.PharmStatus,&#xA;  Cases.AMG_6m_in_US_or_Territory__c AS Six_Months_in_US_or_Territory__c,&#xA;  Cases.Above_Below_acceptable_FPL__c,&#xA;  Cases.External_Household_Income__c,&#xA;  Cases.External_Household_Size__c,&#xA;  Cases.Over_Net_Worth__c,&#xA;  Cases.Medicare_LIS_Status__c,&#xA;  Cases.Medicare_Part_D_LIS_Decision__c,&#xA;  Auth.Authorization_Signature_Date__c,&#xA;  Auth.Authorization_Signature__c,&#xA;  PCert.Certification_Signature_Date__c,&#xA;  PCert.Certification_Signature__c,&#xA;  Contacts.Sonexus_Pulse_ID__c&#xA;--into RegaloRx_Work.dbo.TezeCases&#xA;from Cases&#xA;left outer join Contacts on Cases.ContactId = Contacts.Id&#xA;left outer join MinzStack on MinzStack.ZPAPER__Case__c=cases.Id&#xA;       and MinzStack.ZPAPER__Patient__c=Contacts.Id&#xA;left outer join CaseStatusDate on CaseStatusDate.CaseId = cases.Id&#xA;left outer join IntakeCompleteDate on IntakeCompleteDate.CaseId = cases.Id&#xA;left outer join ZipCodes on ZipCodes.PostalCode = contacts.MailingPostalCode&#xA;left outer join MDInfo on MDInfo.MDId=cases.Prescribing_Physician__c&#xA;left outer join FacilityName on FacilityName.FacilityId=cases.Facility_Practice_Name__c&#xA;left outer join ApprovalCount on ApprovalCount.CaseId = cases.Id&#xA;left outer join Shipment on shipment.CaseNumber = Cases.CaseNumber&#xA;left outer join MedIns on MedIns.CaseId = Cases.Id&#xA;left outer join PharmIns on PharmIns.CaseId = Cases.Id&#xA;left outer join Auth on Auth.Case__c = Cases.Id&#xA;left outer join PCert on PCert.Case__c = Cases.Id&#xA;where NOT&#xA;&#x9;( &#xA;&#x9;&#x9;Cases.[Status] = 'Cancelled'&#xA;&#x9;&#x9;and Contacts.ASNF_ID__c is null&#xA;&#x9;)&#xA;&#x9;and Cases.Product = 'Tezspire'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12214,7 +12214,7 @@ order by s.Patient_Id__c, Ship_Date_Formatted__c DESC</property>
 	, ACCT.BillingCountry AS [Country]
 	, CSE.BillingPostalCode AS [Zip or Postal Code]
 	, ACCT.Phone AS [Phone Number 1]
-	, ACCT.Fax AS [Fax Number]
+	, dbo.FormatPhone(IsNull(CSE.OfficeFax, CSE.[MD Fax])) AS [Fax Number]
 	, '' AS [Professional Designation 1]
 	, '' AS [License ID]
 	, '' AS [License Number]
@@ -12353,7 +12353,7 @@ FROM
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fax Number]"
-                      length="40"
+                      length="15"
                       lineageId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fax Number]"
                       name="Fax Number"
                       truncationRowDisposition="FailComponent" />
@@ -12523,7 +12523,7 @@ FROM
                     <externalMetadataColumn
                       refId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fax Number]"
                       dataType="wstr"
-                      length="40"
+                      length="15"
                       name="Fax Number" />
                     <externalMetadataColumn
                       refId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Professional Designation 1]"
@@ -12643,7 +12643,7 @@ FROM
                     <outputColumn
                       refId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fax Number]"
                       dataType="wstr"
-                      length="40"
+                      length="15"
                       lineageId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fax Number]"
                       name="Fax Number" />
                     <outputColumn
@@ -12830,7 +12830,7 @@ FROM
                     <inputColumn
                       refId="Package\Facilities\Flat File Destination.Inputs[Flat File Destination Input].Columns[Fax Number]"
                       cachedDataType="wstr"
-                      cachedLength="40"
+                      cachedLength="15"
                       cachedName="Fax Number"
                       externalMetadataColumnId="Package\Facilities\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Fax Number]"
                       lineageId="Package\Facilities\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fax Number]" />
@@ -13114,7 +13114,7 @@ SELECT
 	, CASE WHEN Phone_preferred_type = 'Mobile' THEN dbo.FormatPhone(Phone_preferred) WHEN Phone_alternate_type = 'Mobile' THEN dbo.FormatPhone(Phone_alternate) END AS [Patient Mobile Telephone]
 	, CASE WHEN Phone_preferred_type = 'Work' THEN dbo.FormatPhone(Phone_preferred) WHEN Phone_alternate_type = 'Work' THEN dbo.FormatPhone(Phone_alternate) END AS [Patient Work Telephone]
 	, '' AS [Application ID]
-	, '' AS [Application Create Date]
+	, CONVERT(nvarchar(10), CSE.[Case Created Date], 101) AS [Application Create Date]
 	, CSE.[Case Status] AS [Enrollment Status]
 	, '' AS [Enrollment Type]
 	, CONVERT(nvarchar(10), CSE.[Eligibility Start Date], 101) AS [Enrollment Beg Date]
@@ -13126,9 +13126,9 @@ SELECT
 	, 'PAP' AS [Program]
 	, CASE PAT.Insurance_Covered_ind WHEN 'Y' THEN 'Yes' WHEN 'N' THEN 'No' ELSE 'Not Provided' END AS [Insurance Flag]
 	, '' AS [Payer ID]
-	, CSE.Medical_Payer_Insurer__c AS [Payer Name]
+	, ISNULL(CSE.Medical_Payer_Insurer__c, CSE.Medical_Plan_Name__c) AS [Payer Name]
 	, '' AS [Payer Type]
-	, CSE.Medical_Plan_Name__c AS [Plan Name]
+	, ISNULL(CSE.Medical_Plan_Name__c, CSE.Medical_Payer_Insurer__c ) AS [Plan Name]
 	, CSE.Medical_Plan_Type__c AS [Plan Type]
 	, CSE.Medical_Rank AS [Insurance Type]
 	, CSE.MedicalStatus AS [Insurance Status]
@@ -13150,7 +13150,7 @@ SELECT
 	, CSE.[MD State] AS [Physician State]
 	, CSE.[MD Zip] AS [Physician Zip Code]
 	, dbo.FormatPhone(CSE.[MD Phone]) AS [Physician Telephone]
-	, dbo.FormatPhone(CSE.[MD Fax]) AS [Physician Fax]
+	, dbo.FormatPhone(IsNull(CSE.[MD Fax], CSE.[OfficeFax])) AS [Physician Fax]
 	, '' AS [State License Number]
 	, '' AS [State License Number State]
 	, '' AS [State License Expiration Date]
@@ -13180,14 +13180,14 @@ SELECT
 	, '' AS [Practice Org ID]
 	, '' AS [Practice Org – NPI]
 	, CSE.[Facility Name]
-	, dbo.FormatPhone(CSE.OfficeFax) AS [Practice Fax]
+	, dbo.FormatPhone(IsNull(CSE.OfficeFax, CSE.[MD Fax])) AS [Practice Fax]
 	, REPLACE(REPLACE(CSE.BillingStreet, CHAR(13), ''), CHAR(10), '') AS [BillingStreet]
 	, CSE.BillingCity
 	, CSE.BillingState
 	, CSE.BillingPostalCode
 	, CSE.[Office Contact First Name]
 	, dbo.FormatPhone(CSE.[Facility_Contact_Phone__c]) AS [Facility_Contact_Phone__c]
-	, dbo.FormatPhone(CSE.[OfficeFax]) AS [OfficeFax]
+	, dbo.FormatPhone(IsNull(CSE.[OfficeFax], CSE.[MD Fax])) AS [OfficeFax]
 	, CSE.[Enrolled in Medicaid?]
 	, CSE.[Enrolled in Medicare?]
 	, CSE.[Enrolled in MedD?]
@@ -13425,7 +13425,7 @@ FROM
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Application Create Date]"
-                      length="1"
+                      length="10"
                       lineageId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Output].Columns[Application Create Date]"
                       name="Application Create Date"
                       truncationRowDisposition="FailComponent" />
@@ -14322,7 +14322,7 @@ FROM
                     <externalMetadataColumn
                       refId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Application Create Date]"
                       dataType="wstr"
-                      length="1"
+                      length="10"
                       name="Application Create Date" />
                     <externalMetadataColumn
                       refId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Enrollment Status]"
@@ -14839,7 +14839,7 @@ FROM
                     <outputColumn
                       refId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Application Create Date]"
                       dataType="wstr"
-                      length="1"
+                      length="10"
                       lineageId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Application Create Date]"
                       name="Application Create Date" />
                     <outputColumn
@@ -15494,7 +15494,7 @@ FROM
                     <inputColumn
                       refId="Package\Sonexus DTD\Flat File Destination.Inputs[Flat File Destination Input].Columns[Application Create Date]"
                       cachedDataType="wstr"
-                      cachedLength="1"
+                      cachedLength="10"
                       cachedName="Application Create Date"
                       externalMetadataColumnId="Package\Sonexus DTD\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Application Create Date]"
                       lineageId="Package\Sonexus DTD\ADO NET Source.Outputs[ADO NET Source Output].Columns[Application Create Date]" />
@@ -16151,7 +16151,7 @@ FROM
                     <externalMetadataColumn
                       refId="Package\Sonexus DTD\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Application Create Date]"
                       dataType="wstr"
-                      length="1"
+                      length="20"
                       name="Application Create Date" />
                     <externalMetadataColumn
                       refId="Package\Sonexus DTD\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Enrollment Status]"
@@ -17285,15 +17285,15 @@ FROM
     design-time-name="Package\Extract Shipments">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Shipments\Shipments Source"
-          TopLeft="150,95" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="153,42"
           Id="Package\Extract Shipments\Shipments Dest"
           TopLeft="154,199" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Shipments\Shipments Source"
+          TopLeft="150,95" />
         <EdgeLayout
           Id="Package\Extract Shipments.Paths[ADO NET Source Output]"
           TopLeft="231,137">
@@ -17313,7 +17313,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

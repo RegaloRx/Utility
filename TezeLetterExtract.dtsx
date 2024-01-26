@@ -13,8 +13,8 @@
   DTS:ObjectName="TezeLetterExtract"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="325"
-  DTS:VersionGUID="{9FC22257-2E7C-462B-B0D2-519B348E5DA8}">
+  DTS:VersionBuild="326"
+  DTS:VersionGUID="{24A72944-D3DB-4189-9AF9-887C94E6A543}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -143,6 +143,7 @@
       DTS:refId="Package\Create Source Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{5AF58B2C-F079-4EF6-B91A-8768AB1C7E5F}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -549,17 +550,43 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="175,42"
-          Id="Package\Populate Source List"
-          TopLeft="89,193" />
+          Size="174,42"
+          Id="Package\Create Source Table"
+          TopLeft="92,66" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Foreach Loop Container\Back Update"
+          TopLeft="34,206" />
         <NodeLayout
           Size="142,42"
           Id="Package\Foreach Loop Container\Downloaded?"
           TopLeft="22,108" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Foreach Loop Container\Back Update"
-          TopLeft="34,206" />
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Pul From JJ sftp"
+          TopLeft="22,18" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="96,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="93,150">
@@ -596,32 +623,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Foreach Loop Container\Pul From JJ sftp"
-          TopLeft="22,18" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="96,60">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -629,6 +630,81 @@
           Size="222,349"
           Id="Package\Foreach Loop Container"
           TopLeft="73,303" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Foreach Loop Container 1\Back Update"
+          TopLeft="42,206" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Foreach Loop Container 1\Copied?"
+          TopLeft="56,108" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Foreach Loop Container 1\Copy from R drive"
+          TopLeft="32,20" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint]"
+          TopLeft="114,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,13.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint 1]"
+          TopLeft="112.5,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,16.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="222,306"
+          Size="222,349"
+          Id="Package\Foreach Loop Container 1"
+          TopLeft="411,301" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Populate remaining into Source List"
+          TopLeft="400,167" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Populate Source List"
+          TopLeft="89,193" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="176.5,235">
@@ -663,77 +739,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="246,42"
-          Id="Package\Populate remaining into Source List"
-          TopLeft="400,167" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Foreach Loop Container 1\Back Update"
-          TopLeft="42,206" />
-        <NodeLayout
-          Size="116,42"
-          Id="Package\Foreach Loop Container 1\Copied?"
-          TopLeft="56,108" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint 1]"
-          TopLeft="112.5,150">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,16.25,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Foreach Loop Container 1\Copy from R drive"
-          TopLeft="32,20" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container 1.PrecedenceConstraints[Constraint]"
-          TopLeft="114,62">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
-              Start="0,0"
-              End="0,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.304453125,13.4453125,50.60890625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="222,306"
-          Size="222,349"
-          Id="Package\Foreach Loop Container 1"
-          TopLeft="411,301" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="562.666666666667,209">
@@ -802,10 +807,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Create Source Table"
-          TopLeft="92,66" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="177.75,108">

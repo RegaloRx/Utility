@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Utility", "Utility.dtproj", "{72720A80-7040-4501-9AC8-E1B63F6FFD30}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "AmgenUtility", "AmgenUtility.dtproj", "{72720A80-7040-4501-9AC8-E1B63F6FFD30}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SharedSvcUtility", "SharedSvcUtility\SharedSvcUtility.dtproj", "{570A5719-9D03-42B7-9137-F3D3FF26AE72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,6 +14,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{72720A80-7040-4501-9AC8-E1B63F6FFD30}.Development|Default.ActiveCfg = Development
 		{72720A80-7040-4501-9AC8-E1B63F6FFD30}.Development|Default.Build.0 = Development
+		{570A5719-9D03-42B7-9137-F3D3FF26AE72}.Development|Default.ActiveCfg = Development
+		{570A5719-9D03-42B7-9137-F3D3FF26AE72}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
